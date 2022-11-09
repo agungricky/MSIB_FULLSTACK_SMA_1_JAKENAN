@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-// ------------- Routing LandingPage
+// ------------- Routing LandingPage ------------
 Route::get('/', function () {
     return view('landingpage.home');
 });
@@ -37,4 +37,37 @@ Route::get('/portofolio', function () {
 
 Route::get('/contact', function () {
     return view('landingpage.contact');
+});
+
+// ------------- Routing Admin Page ------------
+Route::get('/administrator', function () {
+    return view('admin.dasboard');
+});
+
+Route::get('/form', function () {
+    return view('admin.form');
+});
+
+Route::get('/guru', function () {
+    return view('admin.guru');
+});
+
+Route::get('/form_siswa', function () {
+    return view('admin.form_siswa');
+});
+Route::get('/form_guru', function () {
+    return view('admin.form_guru');
+});
+
+Route::get('/siswa', function () {
+    return view('admin.siswa');
+});
+Route::get('/mapel', function () {
+    return view('admin.mapel');
+});
+Route::get('/form_mapel', function () {
+    return view('admin.form_mapel');
+});
+Route::get('/kalender', function () {
+    return view('admin.kalender');
 });

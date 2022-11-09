@@ -6,10 +6,10 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <h4>System Akademik SMA 1 JAKENAN</h4>
+            <p>Ketahui Lebih Banyak Tentang Kami ..</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <input type="email" name="email"><input type="submit" value="Search">
             </form>
           </div>
         </div>
@@ -21,13 +21,14 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>BizLand<span>.</span></h3>
+            <h3>SMA 1 JAKENAN<span>.</span></h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Jl. Jakenan Winong, <br>
+              Sempu, Puluhan Tengah, <br>
+              Kec. Jakenan, Kabupaten Pati, <br>
+              Jawa Tengah 59182<br><br>
+              <strong>Phone:</strong> (0295) 4790212<br>
+              <strong>Email:</strong> sma1jakenan@email.com<br>
             </p>
           </div>
 
@@ -36,26 +37,26 @@
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Portofolio</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Jurusan</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>model Pelayanan</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Sekolah Model</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Penerimaan Siswa Baru</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Riset Kurikulum</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">DobleTrack</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Profesionalis Theacer</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <h4>Jejaring Sosial Kami</h4>
+            <p>Ikuti Sosial Media dan Jadi yang Perama Tahu Tentang Kami</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -71,14 +72,14 @@
 
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>BizLand</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Sma1Jakenan</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://bootstrapmade.com/">Kelompok3 MSIB</a>
       </div>
     </div>
   </footer><!-- End Footer -->
