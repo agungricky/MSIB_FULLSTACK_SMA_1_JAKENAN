@@ -99,6 +99,7 @@
 
   <!-- Template Main JS File -->
   <script src="{{asset('assets/js/main.js')}}"></script>
+  <script src="https://kit.fontawesome.com/5b3710b119.js" crossorigin="anonymous"></script>
 
 </body>
 

@@ -1,50 +1,106 @@
 @extends('landingpage.index')
 @section('content')
     <!-- ======= About Section ======= -->
- <section id="about" class="about section-bg">
-  <div class="container" data-aos="fade-up">
+    <section id="about" class="d-flex align-items-center container-fluid">
+      {{-- <div class="container" data-aos="zoom-out" data-aos-delay="100"> </div> --}}
+    </section>
+    <section id="isi" class="">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-8 m-auto">
+            <p id="artikel"><i class="fa-solid fa-clock-rotate-left"></i> Artikel Terbaru</p>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                    <iframe width="370" height="315" src="https://www.youtube.com/embed/ErVKZOTUZCA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+                    {{-- <h5 class="card-title"></h5> --}}
+                    <p class="card-text">Senam Jumat Seluruh Guru TU dan SISWA <br> SMA N 1 JAKENAN.</p>
+                  </div>
+                </div>
+              </div>
 
-    <div class="section-title">
-      <h2>About</h2>
-      <h3>Find Out More <span>About Us</span></h3>
-      <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
-    </div>
 
-    <div class="row">
-      <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-        <img src="assets/img/about.jpg" class="img-fluid" alt="">
-      </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 content d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="100">
-        <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-        <p class="fst-italic">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
-        </p>
-        <ul>
-          <li>
-            <i class="bx bx-store-alt"></i>
-            <div>
-              <h5>Ullamco laboris nisi ut aliquip consequat</h5>
-              <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
+              <div class="col-md-6">
+                <table>
+                  <tr>
+                    <td><iframe width="200" height="100" src="https://www.youtube.com/embed/tOkDKAwc1m4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+                    <td class="p-3">Profil Sekolah Sehat - SMAN 1 Jakenan, Pati</td>
+                  </tr>
+                  <tr>
+                    <td><iframe width="200" height="100" src="https://www.youtube.com/embed/yvA5FwCflH4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+                    <td class="p-3">Karnaval Haul K. Abdul Muhith Ds Dukuhmulyo kec jakenan Pati 2022</td>
+                  </tr>
+                  <tr>
+                    <td><iframe width="200" height="100" src="https://www.youtube.com/embed/DqrWx3taGIA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+                    <td class="p-3">PROJEK P5 Tema Gaya hidup berkelanjutan</td>
+                  </tr>
+                </table>
+              </div>
             </div>
-          </li>
-          <li>
-            <i class="bx bx-images"></i>
-            <div>
-              <h5>Magnam soluta odio exercitationem reprehenderi</h5>
-              <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
-            </div>
-          </li>
-        </ul>
-        <p>
-          Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum
-        </p>
-      </div>
-    </div>
+          </div>
+          
+          <div class="col-md-4 m-auto mt-3">
+            <p id="profile"><i class="fa-duotone fa-bookmark"></i> Kegiatan</p>
+            <table cellpadding="0" cellspaccing="1" border="1" width="100%" align="center">
+              <tr>
+                <td class="td1">Bengkel Sastra <br> 
+                  <button type="button" class="btn btn-primary btn-sm">Lihat Kegiatan</button>
+                </td>
+                <td><img src="{{url('assets\img\tari.jpg')}}" alt="" class="kegiatan"></td>
+              </tr>
+              <tr>
+                <td class="td1">Baca Tulis <br> Al-Quran <br> 
+                  <button type="button" class="btn btn-primary btn-sm">Lihat Kegiatan</button>
+                </td>
+                <td><img src="{{url('assets\img\ekskull.webp')}}" alt="" class="kegiatan"></td>
+              </tr>
+              <tr>
+                <td class="td1">Ekskull Basket <br> 
+                  <button type="button" class="btn btn-primary btn-sm">Lihat Kegiatan</button>
+                </td>
+                <td><img src="{{url('assets\img\basket.jpg')}}" alt="" class="kegiatan"></td>
+              </tr>
+              
+              <tr>
+                <td class="td1">Bengkel Sastra <br> 
+                  <button type="button" class="btn btn-primary btn-sm">Lihat Kegiatan</button>
+                </td>
+                <td><img src="{{url('assets\img\teknologi.jpg')}}" alt="" style="width: 100%;
+                  height: 100px;s"></td>
+              </tr>
 
-  </div>
-</section>
+            </table>
+          </div>
+        </div> 
+        
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8 bg-info">
+              <table width="100%" border="1">
+                <tr>
+                  <th width="50%" calspan="3">Pengumuman</th>
+                  <th width="50%">Prestasi</th>
+                </tr>
+                <tr>
+                  <td>a</td>
+                  <td>b</td>
+                  <td>c</td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+          </div>
+        </div>  
+        
+        
+        
+      </div>
+    </section>
+
+    
 <!-- End About Section -->
 @endsection

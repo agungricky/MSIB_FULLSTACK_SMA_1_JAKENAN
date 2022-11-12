@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +72,5 @@ Route::get('/form_mapel', function () {
 Route::get('/kalender', function () {
     return view('admin.kalender');
 });
+
+Route::resource('staff', StaffController::class);
