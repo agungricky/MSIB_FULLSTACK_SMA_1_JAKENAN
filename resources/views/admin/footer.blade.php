@@ -6,5 +6,6 @@
 <script src="admin/js/off-canvas.js"></script>
 <script src="admin/js/misc.js"></script>
 <script src="admin/js/dashboard.js"></script>
+<script src="https://kit.fontawesome.com/5b3710b119.js" crossorigin="anonymous"></script>
 </body>
 </html>

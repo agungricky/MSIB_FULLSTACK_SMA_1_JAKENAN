@@ -44,7 +44,7 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{url('staff')}}">Guru & Staff</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('guru')}}">Guru & Staff</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('siswa')}}">Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('mapel')}}">Mata Pelajaran</a></li>
 
