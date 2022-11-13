@@ -4,10 +4,9 @@
     <div class="content-wrapper">
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
-                <div class="card card-secondary">
+                <div class="card card-secondary motivasi">
                     <span class="card-body d-lg-flex align-items-center">
-                        <p class="mb-lg-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more! </p>
-                        <a href="https://www.bootstrapdash.com/product/stellar-admin/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">Upgrade To Pro</a>
+                        <p class="mb-lg-0">"Belajar memang kadang membosankan tapi demi menggapai impianmu dan masa depan yang cerah, bersemangatlah dalam mencari ilmu." </p>
                         <button class="close popup-dismiss ml-2">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -22,70 +21,41 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Siswa</h4>
+                            <h4 class="card-title mb-sm-0">Tabel Guru</h4>
                             <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="font-weight-bold">Foto</th>
-                                        <th class="font-weight-bold">NIS</th>
+                                        <th class="font-weight-bold">No</th>
+                                        <th class="font-weight-bold">Nis</th>
                                         <th class="font-weight-bold">Nama</th>
-                                        <th class="font-weight-bold">Jenis Kelamin</th>
-                                        <th class="font-weight-bold">Tanggal Lahir</th>
-                                        <th class="font-weight-bold">Status</th>
+                                        <th class="font-weight-bold">Tempat Lahir</th>
+                                        <th class=" font-weight-bold">Jenis Kelamin</th>
+                                        <th class=" font-weight-bold">Tanggal Lahir</th>
+                                        <th class="font-weight-bold">Agama</th>
+                                        <th class="font-weight-bold">Alamat</th>
+                                        <th class="font-weight-bold">Status Siswa</th>
+                                        <th class="font-weight-bold">Foto</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $no=1; @endphp
+                                    @foreach ($siswa as $row)
                                     <tr>
-                                        <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face1.jpg" alt="profile image"> Katie Holmes
-                                        </td>
-                                        <td>$3621</td>
-                                        <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                                        <td>04 Jun 2019</td>
-                                        <td>18 Jul 2019</td>
-                                        <td>
-                                            <div class="badge badge-success p-2">Paid</div>
-                                        </td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $row->NIS }}</td>
+                                        <td>{{ $row->nama_siswa }}</td>
+                                        <td>{{ $row->tempat_lahir }}</td>
+                                        <td>{{ $row->jenis_kelamin }}</td>
+                                        <td>{{ $row->tgl_lahir }}</td>
+                                        <td>{{ $row->agama }}</td>
+                                        <td>{{ $row->alamat }}</td>
+                                        <td>{{ $row->status_siswa }}</td>
+                                        <td>{{ $row->foto }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face2.jpg" alt="profile image"> Minnie Copeland
-                                        </td>
-                                        <td>$6245</td>
-                                        <td><img src="images/dashboard/paypal.png" alt="alipay" class="gateway-icon mr-2"> Paypal</td>
-                                        <td>25 Sep 2019</td>
-                                        <td>07 Oct 2019</td>
-                                        <td>
-                                            <div class="badge badge-danger p-2">Pending</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face3.jpg" alt="profile image"> Rodney Sims
-                                        </td>
-                                        <td>$9265</td>
-                                        <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                                        <td>12 dec 2019</td>
-                                        <td>26 Aug 2019</td>
-                                        <td>
-                                            <div class="badge badge-warning p-2">Failed</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face4.jpg" alt="profile image"> Carolyn Barker
-                                        </td>
-                                        <td>$2263</td>
-                                        <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                                        <td>30 Sep 2019</td>
-                                        <td>20 Oct 2019</td>
-                                        <td>
-                                            <div class="badge badge-success p-2">Paid</div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

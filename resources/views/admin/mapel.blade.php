@@ -5,9 +5,8 @@
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary">
-                    <span class="card-body d-lg-flex align-items-center">
-                        <p class="mb-lg-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more! </p>
-                        <a href="https://www.bootstrapdash.com/product/stellar-admin/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">Upgrade To Pro</a>
+                    <span class="card-body d-lg-flex align-items-center motivasi">
+                        <p class="mb-lg-0">Semangat dan Tekunlah Menimba Ilmu demi Masedepanmu yang Cemerlang</p>
                         <button class="close popup-dismiss ml-2">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -22,7 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Guru</h4>
+                            <h4 class="card-title mb-sm-0">Tabel Mata Pelajaran</h4>
                             <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
                         </div>
                         <div class="table-responsive border rounded p-1">
@@ -32,7 +31,7 @@
                                         <th class="font-weight-bold">ID Mapel</th>
                                         <th class="font-weight-bold">Nama</th>
                                         <th class="font-weight-bold">Tenaga Pengajar</th>
-                                        <th class="font-weight-bold">Kelas</th>
+                                        <th class=" font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Jam</th>
                                         <th class="font-weight-bold">Status</th>
                                     </tr>

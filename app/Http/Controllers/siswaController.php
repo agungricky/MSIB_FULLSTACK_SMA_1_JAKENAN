@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Staff;
 use Illuminate\Http\Request;
+use App\Models\Siswa;
 
-class StaffController extends Controller
+
+class siswaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $staff = staff::all();
-        return view('admin.data_staff', compact('staff'));
+        // menampilkan seluruh data siswa
+        $siswa = Siswa::all();
+        return view('admin.siswa', compact('siswa'));
     }
 
     /**

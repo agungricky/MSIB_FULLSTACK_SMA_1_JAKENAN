@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\siswaController;
+use App\Http\Controllers\guruController;
+use App\Http\Controllers\mapelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +52,9 @@ Route::get('/form', function () {
     return view('admin.form');
 });
 
-Route::get('/guru', function () {
-    return view('admin.guru');
-});
+// Route::get('/guru', function () {
+//     return view('admin.guru');
+// });
 
 Route::get('/form_siswa', function () {
     return view('admin.form_siswa');
@@ -60,9 +63,9 @@ Route::get('/form_guru', function () {
     return view('admin.form_guru');
 });
 
-Route::get('/siswa', function () {
-    return view('admin.siswa');
-});
+// Route::get('/siswa', function () {
+//     return view('admin.siswa');
+// });
 Route::get('/mapel', function () {
     return view('admin.mapel');
 });
@@ -74,3 +77,9 @@ Route::get('/kalender', function () {
 });
 
 Route::resource('staff', StaffController::class);
+
+Route::resource('siswa', siswaController::class);
+
+Route::resource('guru', guruController::class);
+
+// Route::resource('mapel', mapelController::class);

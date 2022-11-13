@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Staff;
 use Illuminate\Http\Request;
+use App\Models\Guru;
 
-class StaffController extends Controller
+
+class guruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class StaffController extends Controller
      */
     public function index()
     {
-        $staff = staff::all();
-        return view('admin.data_staff', compact('staff'));
+        $guru = Guru::all();
+        return view('admin.guru', compact('guru'));
     }
 
     /**
@@ -47,7 +48,8 @@ class StaffController extends Controller
      */
     public function show($id)
     {
-        //
+        $row = Guru::find($id);
+        return view('admin.ditail_guru', compact('row'));
     }
 
     /**

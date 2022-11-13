@@ -5,9 +5,8 @@
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary">
-                    <span class="card-body d-lg-flex align-items-center">
-                        <p class="mb-lg-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more! </p>
-                        <a href="https://www.bootstrapdash.com/product/stellar-admin/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">Upgrade To Pro</a>
+                    <span class="card-body d-lg-flex align-items-center motivasi">
+                        <p class="mb-lg-0">"Guru itu bukan buruh, guru adalah ujung tombak pendidikan bangsa. Hargai gurumu, jayalah generasi bangsamu." </p>
                         <button class="close popup-dismiss ml-2">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -29,63 +28,52 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="font-weight-bold">Foto</th>
+                                        <th class="font-weight-bold">No</th>
                                         <th class="font-weight-bold">NIP</th>
                                         <th class="font-weight-bold">Nama</th>
+                                        <th class="font-weight-bold">Nik</th>
                                         <th class="font-weight-bold">Jabatan</th>
-                                        <th class="font-weight-bold">Golongan</th>
-                                        <th class="font-weight-bold">Status</th>
+                                        <th class="font-weight-bold">Bidang</th>
+                                        <th class="font-weight-bold">Tanggal Lahir</th>
+                                        <th class="font-weight-bold">Alamat</th>
+                                        <th class="font-weight-bold">Gender</th>
+                                        <th class="font-weight-bold">Tempat Lahir</th>
+                                        <th class="font-weight-bold">Status Pegawai</th>
+                                        <th class="font-weight-bold">Status Sosial</th>
+                                        <th class="font-weight-bold">No Telp</th>
+                                        <th class="font-weight-bold">Email</th>
+                                        <th class="font-weight-bold">Agama</th>
+                                        <th class="font-weight-bold">Foto</th>
+                                        <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach ($guru as $row)
                                     <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $row->nip}}</td>
+                                        <td>{{ $row->nama }}</td>
+                                        <td>{{ $row->nik }}</td>
+                                        <td>{{ $row->jabatan }}</td>
+                                        <td>{{ $row->bidang }}</td>
+                                        <td>{{ $row->tgl_lahir }}</td>
+                                        <td>{{ $row->alamat }}</td>
+                                        <td>{{ $row->gender }}</td>
+                                        <td>{{ $row->tempat_lahir }}</td>
+                                        <td>{{ $row->status_pegawai }}</td>
+                                        <td>{{ $row->status }}</td>
+                                        <td>{{ $row->no_telp}}</td>
+                                        <td>{{ $row->email }}</td>
+                                        <td>{{ $row->agama }}</td>
+                                        <td>{{ $row->foto }}</td>
                                         <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face1.jpg" alt="profile image"> Katie Holmes
+                                            <a href="{{ route('guru.show', $row->id) }}" class="btn btn-info btn-sm">
+                                                <i class="fa-solid fa-eye"></i> </a>
                                         </td>
-                                        <td>$3621</td>
-                                        <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                                        <td>04 Jun 2019</td>
-                                        <td>18 Jul 2019</td>
-                                        <td>
-                                            <div class="badge badge-success p-2">Paid</div>
-                                        </td>
+
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face2.jpg" alt="profile image"> Minnie Copeland
-                                        </td>
-                                        <td>$6245</td>
-                                        <td><img src="images/dashboard/paypal.png" alt="alipay" class="gateway-icon mr-2"> Paypal</td>
-                                        <td>25 Sep 2019</td>
-                                        <td>07 Oct 2019</td>
-                                        <td>
-                                            <div class="badge badge-danger p-2">Pending</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face3.jpg" alt="profile image"> Rodney Sims
-                                        </td>
-                                        <td>$9265</td>
-                                        <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                                        <td>12 dec 2019</td>
-                                        <td>26 Aug 2019</td>
-                                        <td>
-                                            <div class="badge badge-warning p-2">Failed</div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img class="img-sm rounded-circle" src="images/faces/face4.jpg" alt="profile image"> Carolyn Barker
-                                        </td>
-                                        <td>$2263</td>
-                                        <td><img src="images/dashboard/alipay.png" alt="alipay" class="gateway-icon mr-2"> alipay</td>
-                                        <td>30 Sep 2019</td>
-                                        <td>20 Oct 2019</td>
-                                        <td>
-                                            <div class="badge badge-success p-2">Paid</div>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
