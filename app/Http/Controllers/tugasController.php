@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class tugasController extends Controller
 {
@@ -37,7 +38,39 @@ class tugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'keterangan' => 'required',
+            'jam' => 'required',
+            'hari' => 'required',
+            'tanggal' => 'required',
+            'perihal' => 'required',
+            'upload',
+        ]);
+        //------------apakah user  ingin upload foto-----------
+        //yang diedit
+        if (!empty($request->file('upload'))) {
+            $fileName = 'upload-' . $request->keterangan . '.' . $request->file('upload')->extension();
+            //$fileName = $request->foto->getClientOriginalName();
+            $request->file('upload')->move(public_path('admin/images'), $fileName);
+        } else {
+            $fileName = '';
+        }
+
+
+        // Insert tugas
+        DB::table('tugas')->insert(
+            [
+                'keterangan' => $request->keterangan,
+                'jam' => $request->jam,
+                'hari' => $request->hari,
+                'tanggal' => $request->tanggal,
+                'perihal' => $request->perihal,
+                'upload' => $request->upload,
+            ]
+        );
+        return redirect()->route('tugas.store')
+            ->with('success', 'Data Tugas Baru Berhasil Disimpan');
     }
 
     /**
@@ -59,7 +92,8 @@ class tugasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('tugas')->where('id', '=', $id)->get();
+        return view('tugas.form_edit_tugas', compact('data'));
     }
 
     /**
@@ -71,7 +105,17 @@ class tugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('tugas')->where('id', '=', $id)->update(
+            [
+                'keterangan' => $request->keterangan,
+                'jam' => $request->jam,
+                'hari' => $request->hari,
+                'tanggal' => $request->tanggal,
+                'perihal' => $request->perihal,
+                'upload' => $request->upload,
+            ]
+        );
+        return redirect('/tugas');
     }
 
     /**
@@ -85,6 +129,6 @@ class tugasController extends Controller
         $row = Tugas::find($id);
         Tugas::where('id', $id)->delete();
         return redirect()->route('tugas.index')
-            ->with('success', 'Data Siswa Berhasil Dihapus');
+            ->with('success', 'Data Tugas Berhasil Dihapus');
     }
 }

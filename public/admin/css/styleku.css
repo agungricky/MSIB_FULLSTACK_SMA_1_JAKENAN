@@ -7,3 +7,77 @@
 .kalender {
     background-color: #4649FF;
 }
+
+/* Form Mapel */
+.wrapper {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.headForm,
+.card-secondary {
+    background-color: #31C6D4;
+}
+
+.cardCenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group.two-div {
+    width: 48%;
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.form-control {
+    border-radius: 0.9rem;
+}
+
+.row {
+    padding-left: none;
+    padding-right: none;
+}
+
+.row.two-div {
+    justify-content: space-between !important;
+    flex-wrap: nowrap;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.form-group.perihal {
+    height: 10%;
+}
+
+.form-control.perihal {
+    height: 6rem;
+}
+
+/* input[type="file"] {
+    display: none;
+} */
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    width: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.submit-btn:hover {
+    box-shadow: #4ecd3597 0px 7px 29px 0px;
+    background-color: #38ce3c;
+    border: none;
+    color: #ffffff;
+}
+
+/* .form-select {
+    padding: 0.94rem 1.375rem;
+} */

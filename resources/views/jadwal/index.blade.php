@@ -32,6 +32,7 @@
                                         <th class="font-weight-bold">Jam</th>
                                         <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Mapel</th>
+                                        <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,16 +48,16 @@
                                                 <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('guru.show', $row->id) }}" class="btn btn-info btn-sm">
+                                                    {{-- <a href="{{ route('guru.show', $row->id) }}" class="btn btn-info btn-sm">
                                                         <i class="fa-solid fa-eye"></i>
-                                                    </a>
+                                                    </a> --}}
                                                     &nbsp;
-                                                    <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
-                                                        href=" {{ route('guru.edit',$row->id) }}">
+                                                    <a class="btn btn-warning btn-sm" title="Ubah Jadwal"
+                                                        href=" {{ route('jadwal.edit',$row->id) }}">
                                                         <i class="fa-solid fa-pencil"></i>
                                                     </a>
                                                     &nbsp;
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pegawai"
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jadwal"
                                                         onclick="return confirm('Anda Yakin Data akan diHapus?')">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class jadwalController extends Controller
 {
@@ -25,7 +26,8 @@ class jadwalController extends Controller
      */
     public function create()
     {
-        //
+        $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+        return view('jadwal.form_jadwal', compact('arr_hari'));
     }
 
     /**
@@ -36,7 +38,26 @@ class jadwalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // $request->validate(
+        //     [
+        //         'Hari' => 'required',
+        //         'Jam' => 'required',
+        //         'Kelas' => 'required',
+        //         'Mapel' => 'required'
+        //     ]
+        // );
+
+        DB::table('jadwal')->insert(
+            [
+                'hari' => $request->hari,
+                'Jam' => $request->jam,
+                'Kelas' => $request->kodeKelas,
+                'Mapel' => $request->mapel,
+            ]
+        );
+        return redirect()->route('jadwal.store')
+            ->with('success', 'Data Jadwal Baru Berhasil Disimpan');
     }
 
     /**
@@ -58,7 +79,8 @@ class jadwalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('jadwal')->where('id', '=', $id)->get();
+        return view('jadwal.form_edit_jadwal', compact('data'));
     }
 
     /**
@@ -70,7 +92,16 @@ class jadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('jadwal')->where('id', '=', $id)->update(
+            [
+                'Hari' => $request->hari,
+                'Jam' => $request->jam,
+                'Kelas' => $request->kodeKelas,
+                'Mapel' => $request->mapel,
+            ]
+
+        );
+        return redirect('/jadwal');
     }
 
     /**

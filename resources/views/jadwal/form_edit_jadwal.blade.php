@@ -27,31 +27,45 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                 </div> --}}
 
                 <div class="col">
-                    <form action="{{route('tugas.store')}}" method="post" name="" >
+                    @foreach ($data as $row)
+                    <form action="{{route('jadwal.update',$row->id)}}" method="post" class="php-email-form">
                         @csrf
-                        {{ method_field('POST')}}
-                        {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
-    
+                        @method('put')
                         <div class="row two-div">
                             <div class="form-group two-div">
-                                <label for=""> Keterangan : &nbsp </label>
-                                <input name="keterangan" type="text" placeholder="Tugas" class="form-control"> 
+                                <label for=""> Mata Pelajaran : &nbsp </label>
+                                <input name="mapel" type="text" placeholder="Mata Pelajaran" class="form-control" value="{{$row->Mapel}}"> 
+                            </div>
+        
+                            <div class="form-group two-div">
+                                <label for=""> Kelas : &nbsp </label>
+                                <input name="kodeKelas" type="text" placeholder="Kode Kelas" class="form-control" value="{{$row->Kelas}}"> 
+                            </div>
+                        </div>
+    
+                        {{-- <div class="row two-div">
+                            <div class="form-group two-div">
+                                <label for=""> Tugas : &nbsp </label>
+                                <input name="tugas" type="text" placeholder="Tugas" class="form-control"> 
                             </div>
                             
                             <div class="form-group two-div">
                                 <label for=""> Tanggal : &nbsp </label>
                                 <input name="tanggal" type="date" placeholder="Tanggal" class="form-control">
                             </div>
-                        </div>
+                        </div> --}}
     
                         <div class="row two-div">
     
                            <div class="form-group two-div">
                                 <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control">
-                                    <option selected >Hari</option>
-                                    @foreach($arr_hari as $hari)
-                                        <option value="{{ $hari }}">{{ $hari }}</option>
+                                <select name="hari" id="hari" class="form-select form-control" >
+                                    <option selected>Hari</option>
+                                    @foreach ($arr_hari as $hari)
+                                        @php
+                                            $sel1 = ($hari == $row->Hari) ? 'selected' : '';
+                                        @endphp
+                                            <option value="{{$hari}}" {{ $sel1 }}>{{ $hari }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -59,26 +73,22 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                             
                             <div class="form-group two-div">
                                 <label for=""> Jam &nbsp</label> 
-                                    <input name="jam" type="time"class="form-control">
+                                    <input name="jam" type="time"class="form-control" value="{{$row->Jam}}">
                             </div>
                             {{-- <label for=""> Selesai &nbsp </label>
                                 <input type="time" class="form-control"> --}}
                         </div> 
     
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for=""> Perihal : &nbsp </label>
                             <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="file" class="form-control" id="upload" name="upload">
-                        </div>
-
+                        </div> --}}
+    
                         <div>
                             <input type="submit" name="inputMapel" class="form-control submit-btn">
-                        </div>   
-
+                        </div>
                     </form>
+                    @endforeach
                 </div>
             </div>
         </div>
