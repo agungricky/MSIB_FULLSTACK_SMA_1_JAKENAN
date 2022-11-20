@@ -23,7 +23,7 @@
                 </div> --}}
 
                 <div class="col">
-                    <form action="{{route('tugas.store')}}" method="post" name="mapelForm" >
+                    <form action="{{route('tugas.store')}}" method="post" name="" >
                         @csrf
                         {{ method_field('POST')}}
                         {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
@@ -31,7 +31,7 @@
                         <div class="row two-div">
                             <div class="form-group two-div">
                                 <label for=""> Keterangan : &nbsp </label>
-                                <input name="tugas" type="text" placeholder="Tugas" class="form-control"> 
+                                <input name="keterangan" type="text" placeholder="Tugas" class="form-control"> 
                             </div>
                             
                             <div class="form-group two-div">
@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="file" class="form-control" id="upload ">
+                            <input type="file" class="form-control" id="upload" name="upload">
                         </div>
 
                         <div>

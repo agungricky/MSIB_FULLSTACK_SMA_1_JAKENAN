@@ -33,6 +33,7 @@
                                         <th class="font-weight-bold">Tanggal</th>
                                         <th class="font-weight-bold">Keterangan</th>
                                         <th class=" font-weight-bold">Perihal</th>
+                                        <th class=" font-weight-bold">File</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,16 +46,17 @@
                                             <td>{{ $row->tanggal }}</td>
                                             <td>{{ $row->keterangan }}</td>
                                             <td>{{ $row->perihal }}</td>
+                                            <td>{{$row->upload}}</td>
                                             <td>
                                                 <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('guru.show', $row->id) }}" class="btn btn-info btn-sm">
+                                                    <a href="{{ route('tugas.show', $row->id) }}" class="btn btn-info btn-sm">
                                                         <i class="fa-solid fa-eye"></i>
                                                     </a>
                                                     &nbsp;
-                                                    <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
-                                                        href=" {{ route('guru.edit',$row->id) }}">
+                                                    <a class="btn btn-warning btn-sm" title="Ubah Tugas"
+                                                        href=" {{ route('tugas.edit',$row->id) }}">
                                                         <i class="fa-solid fa-pencil"></i>
                                                     </a>
                                                     &nbsp;

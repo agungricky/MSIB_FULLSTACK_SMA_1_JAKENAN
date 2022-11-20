@@ -24,7 +24,7 @@
 
                 <div class="col">
                     @foreach ($data as $row)
-                    <form action="{{route('jadwal.store')}}" method="store" role="form" class="php-email-form">
+                    <form action="{{route('jadwal.update',$row->id)}}" method="post" class="php-email-form">
                         @csrf
                         @method('put')
                         <div class="row two-div">

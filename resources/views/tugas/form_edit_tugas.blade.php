@@ -24,15 +24,15 @@
 
                 <div class="col">
                     @foreach ($data as $row)
-                    <form action="{{url('store.tugas')}}" method="post" name="mapelForm" >
+                    <form action="{{route('tugas.update', $row->id)}}" method="post" >
                         @csrf
-                        {{ method_field('PUT')}}
+                        @method('put')
                         {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
     
                         <div class="row two-div">
                             <div class="form-group two-div">
                                 <label for=""> Keterangan : &nbsp </label>
-                                <input name="Keterangan" type="text" placeholder="Tugas" class="form-control" value={{$row->Keterangan}}> 
+                                <input name="keterangan" type="text" placeholder="Tugas" class="form-control" value={{$row->keterangan}}> 
                             </div>
                             
                             <div class="form-group two-div">
