@@ -37,7 +37,17 @@ class tugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tugas')->insert(
+            [
+                'keterangan' => $request->keterangan,
+                'jam' => $request->jam,
+                'hari' => $request->hari,
+                'tanggal' => $request->tanggal,
+                'perihal' => $request->perihal,
+                'upload' => $request->upload,
+            ]
+        );
+        return redirect('/tugas');
     }
 
     /**
@@ -59,7 +69,8 @@ class tugasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('tugas') - where('$id', '=', $id)->get();
+        return view('tugas.form_edit_tugas', compact('data'));
     }
 
     /**

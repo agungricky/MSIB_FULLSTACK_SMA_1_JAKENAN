@@ -10,5 +10,5 @@ class Tugas extends Model
     use HasFactory;
     protected $table = 'tugas';
     //memanggil ke kolom field
-    protected $fillabel = ['id', 'keterangan', 'jam', 'hari', 'tanggal', 'perihal'];
+    protected $fillabel = ['id', 'keterangan', 'jam', 'hari', 'tanggal', 'perihal', 'upload'];
 }
