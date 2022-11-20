@@ -23,14 +23,25 @@
                 </div> --}}
 
                 <div class="col">
-                    <form action="{{route('tugas.store')}}" method="post" name="mapelForm" >
+                    @foreach ($data as $row)
+                    <form action="{{route('jadwal.store')}}" method="store" role="form" class="php-email-form">
                         @csrf
-                        {{ method_field('POST')}}
-                        {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
-    
+                        @method('put')
                         <div class="row two-div">
                             <div class="form-group two-div">
-                                <label for=""> Keterangan : &nbsp </label>
+                                <label for=""> Mata Pelajaran : &nbsp </label>
+                                <input name="mapel" type="text" placeholder="Mata Pelajaran" class="form-control" value="{{$row->Mapel}}"> 
+                            </div>
+        
+                            <div class="form-group two-div">
+                                <label for=""> Kelas : &nbsp </label>
+                                <input name="kodeKelas" type="text" placeholder="Kode Kelas" class="form-control" value="{{$row->Kelas}}"> 
+                            </div>
+                        </div>
+    
+                        {{-- <div class="row two-div">
+                            <div class="form-group two-div">
+                                <label for=""> Tugas : &nbsp </label>
                                 <input name="tugas" type="text" placeholder="Tugas" class="form-control"> 
                             </div>
                             
@@ -38,13 +49,13 @@
                                 <label for=""> Tanggal : &nbsp </label>
                                 <input name="tanggal" type="date" placeholder="Tanggal" class="form-control">
                             </div>
-                        </div>
+                        </div> --}}
     
                         <div class="row two-div">
     
                            <div class="form-group two-div">
                                 <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control">
+                                <select name="hari" id="hari" class="form-select form-control" value="{{$row->Hari}}">
                                     <option selected >Hari</option>
                                     <option value="Senin">Senin</option>
                                     <option value="Senin">Selasa</option>
@@ -53,32 +64,29 @@
                                     <option value="Senin">Jumat</option>
                                     <option value="Senin">Sabtu</option>
                                     <option value="Senin">Minggu</option>
+                                    
                                 </select>
                             </div>
     
                             
                             <div class="form-group two-div">
                                 <label for=""> Jam &nbsp</label> 
-                                    <input name="jam" type="time"class="form-control">
+                                    <input name="jam" type="time"class="form-control" value="{{$row->Jam}}">
                             </div>
                             {{-- <label for=""> Selesai &nbsp </label>
                                 <input type="time" class="form-control"> --}}
                         </div> 
     
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for=""> Perihal : &nbsp </label>
                             <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="file" class="form-control" id="upload ">
-                        </div>
-
+                        </div> --}}
+    
                         <div>
                             <input type="submit" name="inputMapel" class="form-control submit-btn">
-                        </div>   
-
+                        </div>
                     </form>
+                    @endforeach
                 </div>
             </div>
         </div>

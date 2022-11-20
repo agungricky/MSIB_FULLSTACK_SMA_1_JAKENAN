@@ -23,20 +23,21 @@
                 </div> --}}
 
                 <div class="col">
-                    <form action="{{route('tugas.store')}}" method="post" name="mapelForm" >
+                    @foreach ($data as $row)
+                    <form action="{{url('store.tugas')}}" method="post" name="mapelForm" >
                         @csrf
-                        {{ method_field('POST')}}
+                        {{ method_field('PUT')}}
                         {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
     
                         <div class="row two-div">
                             <div class="form-group two-div">
                                 <label for=""> Keterangan : &nbsp </label>
-                                <input name="tugas" type="text" placeholder="Tugas" class="form-control"> 
+                                <input name="Keterangan" type="text" placeholder="Tugas" class="form-control" value={{$row->Keterangan}}> 
                             </div>
                             
                             <div class="form-group two-div">
                                 <label for=""> Tanggal : &nbsp </label>
-                                <input name="tanggal" type="date" placeholder="Tanggal" class="form-control">
+                                <input name="tanggal" type="date" placeholder="Tanggal" class="form-control" value={{$row->tanggal}}>
                             </div>
                         </div>
     
@@ -44,7 +45,7 @@
     
                            <div class="form-group two-div">
                                 <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control">
+                                <select name="hari" id="hari" class="form-select form-control" value={{$row->hari}}>
                                     <option selected >Hari</option>
                                     <option value="Senin">Senin</option>
                                     <option value="Senin">Selasa</option>
@@ -59,7 +60,7 @@
                             
                             <div class="form-group two-div">
                                 <label for=""> Jam &nbsp</label> 
-                                    <input name="jam" type="time"class="form-control">
+                                    <input name="jam" type="time"class="form-control" value={{$row->jam}}>
                             </div>
                             {{-- <label for=""> Selesai &nbsp </label>
                                 <input type="time" class="form-control"> --}}
@@ -67,17 +68,17 @@
     
                         <div class="form-group">
                             <label for=""> Perihal : &nbsp </label>
-                            <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
+                            <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal" value={{$row->perihal}}></textarea>
                         </div>
 
                         <div class="form-group">
-                            <input type="file" class="form-control" id="upload ">
+                            <input type="file" class="form-control" id="upload value={{$row->upload}}">
                         </div>
 
                         <div>
                             <input type="submit" name="inputMapel" class="form-control submit-btn">
                         </div>   
-
+                        @endforeach
                     </form>
                 </div>
             </div>

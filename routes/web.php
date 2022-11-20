@@ -74,6 +74,10 @@ Route::get('/form_guru', function () {
 Route::get('/form_tugas', function () {
     return view('tugas.form_tugas');
 });
+
+Route::get('/form_jadwal', function () {
+    return view('tugas.form_jadwal');
+});
 Route::get('/kalender', function () {
     return view('admin.kalender');
 });
@@ -87,3 +91,5 @@ Route::resource('guru', guruController::class);
 Route::resource('tugas', tugasController::class);
 
 Route::resource('jadwal', jadwalController::class);
+
+Route::resource('tugas', jadwalController::class);
