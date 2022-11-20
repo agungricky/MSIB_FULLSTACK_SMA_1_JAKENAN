@@ -6,6 +6,7 @@ use App\Http\Controllers\siswaController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\tugasController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,12 @@ Route::get('/administrator', function () {
     return view('admin.dasboard');
 });
 
+Route::get(
+    'dashboard',
+    [DashboardController::class, 'index']
+);
+
+
 Route::get('/form', function () {
     return view('admin.form');
 });
@@ -75,7 +82,7 @@ Route::get('/form_tugas', function () {
 });
 
 Route::get('/form_jadwal', function () {
-    return view('jadwal.form_jadwal');
+    return view('tugas.form_jadwal');
 });
 Route::get('/kalender', function () {
     return view('admin.kalender');
