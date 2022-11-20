@@ -5,6 +5,8 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\mapelController;
+use App\Http\Controllers\DasboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,33 +50,32 @@ Route::get('/administrator', function () {
     return view('admin.dasboard');
 });
 
-Route::get('/form', function () {
-    return view('admin.form');
-});
+
 
 // Route::get('/guru', function () {
 //     return view('admin.guru');
 // });
 
 Route::get('/form_siswa', function () {
-    return view('admin.form_siswa');
+    return view('siswa.form_siswa');
 });
 Route::get('/form_guru', function () {
-    return view('admin.form_guru');
+    return view('guru.form_guru');
 });
 
 // Route::get('/siswa', function () {
 //     return view('admin.siswa');
 // });
 Route::get('/mapel', function () {
-    return view('admin.mapel');
+    return view('mapel.mapel');
 });
 Route::get('/form_mapel', function () {
-    return view('admin.form_mapel');
+    return view('mapel.form_mapel');
 });
 Route::get('/kalender', function () {
-    return view('admin.kalender');
+    return view('kalender_akademik.kalender');
 });
+
 
 Route::resource('staff', StaffController::class);
 
@@ -82,4 +83,14 @@ Route::resource('siswa', siswaController::class);
 
 Route::resource('guru', guruController::class);
 
+
+
 // Route::resource('mapel', mapelController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user', function () {
+    return view('Layout.user');
+});

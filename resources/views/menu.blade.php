@@ -66,7 +66,7 @@
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('form_guru')}}">Guru & Staff</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('/form_siswa')}}">Siswa</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_mapel')}}">Mapel</a></li>
 
           </ul>
@@ -88,14 +88,14 @@
           <i class="icon-grid menu-icon"></i>
         </a>
       </li>
-      @if (Auth::user()->role=='administrator')
+
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/register')}}">
+        <a class="nav-link" href="{{url('register')}}">
           <span class="menu-title">register</span>
           <i class="icon-grid menu-icon"></i>
         </a>
       </li>
-      @endif
+
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -107,6 +107,5 @@
           @csrf </form>
 
       </li>
-
     </ul>
   </nav>
