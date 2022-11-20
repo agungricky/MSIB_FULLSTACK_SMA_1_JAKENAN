@@ -1,3 +1,7 @@
+@php
+$arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+@endphp
+
 @extends('admin.index')
 @section('content')
 <div class="main-panel">
@@ -55,16 +59,14 @@
     
                            <div class="form-group two-div">
                                 <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control" value="{{$row->Hari}}">
-                                    <option selected >Hari</option>
-                                    <option value="Senin">Senin</option>
-                                    <option value="Senin">Selasa</option>
-                                    <option value="Senin">Rabu</option>
-                                    <option value="Senin">Kamis</option>
-                                    <option value="Senin">Jumat</option>
-                                    <option value="Senin">Sabtu</option>
-                                    <option value="Senin">Minggu</option>
-                                    
+                                <select name="hari" id="hari" class="form-select form-control" >
+                                    <option selected>Hari</option>
+                                    @foreach ($arr_hari as $hari)
+                                        @php
+                                            $sel1 = ($hari == $row->Hari) ? 'selected' : '';
+                                        @endphp
+                                            <option value="{{$hari}}" {{ $sel1 }}>{{ $hari }}</option>
+                                    @endforeach
                                 </select>
                             </div>
     

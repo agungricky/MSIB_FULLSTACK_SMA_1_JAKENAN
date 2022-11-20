@@ -1,5 +1,10 @@
 @extends('admin.index')
 @section('content')
+
+@php
+$arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+@endphp
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -45,15 +50,13 @@
     
                            <div class="form-group two-div">
                                 <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control" value={{$row->hari}}>
-                                    <option selected >Hari</option>
-                                    <option value="Senin">Senin</option>
-                                    <option value="Senin">Selasa</option>
-                                    <option value="Senin">Rabu</option>
-                                    <option value="Senin">Kamis</option>
-                                    <option value="Senin">Jumat</option>
-                                    <option value="Senin">Sabtu</option>
-                                    <option value="Senin">Minggu</option>
+                                <select name="hari" id="hari" class="form-select form-control">
+                                    @foreach ($arr_hari as $hari)
+                                        @php
+                                            $sel1 = ($hari == $row->hari) ? 'selected' : '';
+                                        @endphp
+                                            <option value="{{$hari}}" {{ $sel1 }}>{{ $hari }}</option>
+                                    @endforeach
                                 </select>
                             </div>
     
