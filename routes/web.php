@@ -8,6 +8,7 @@ use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\mapelController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\tugasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,3 +101,5 @@ Route::resource('tugas', tugasController::class);
 Route::resource('jadwal', jadwalController::class);
 
 Route::resource('tugas', tugasController::class);
+Route::get('generate-pdf', [guruController::class, 'generatePDF']);
+Route::get('guru-pdf', [guruController::class, 'guruPDF']);

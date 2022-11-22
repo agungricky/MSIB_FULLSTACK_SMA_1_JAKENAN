@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guru;
-
+use PDF;
 // use App\Models\Staff
 
 class guruController extends Controller
@@ -126,5 +126,33 @@ class guruController extends Controller
         Guru::where('id', $id)->delete();
         return redirect()->route('guru.index')
             ->with('success', 'Data Guru Berhasil Dihapus');
+    }
+
+    // public function generatePDF()
+    // {
+    //     // $users = User::get();
+    //     $data = [
+    //         'title' => 'Welcome to Generate PDF',
+    //         'date' => date('m/d/Y'),
+    //         // 'users' => $users
+    //     ];
+
+    //     $pdf = PDF::loadView('guru.myPDF', $data);
+    //     return $pdf->download('FilePDF.pdf');
+    // }
+
+    public function guruPDF()
+    {
+        $data = [
+            'title' => 'SMA 1 Jakenan',
+            'date' => date('m/d/Y'),
+            // 'users' => $users
+        ];
+
+
+        $ar_guru = DB::table('guru')->select('guru.*')->get();
+
+        $pdf = PDF::loadView('guru.myPDF', ['ar_guru' => $ar_guru], $data);
+        return $pdf->download('FilePDF.pdf');
     }
 }

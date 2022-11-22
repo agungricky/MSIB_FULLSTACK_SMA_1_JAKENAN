@@ -23,6 +23,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{url('dashboard')}}">
+        <a class="nav-link" href="{{url('/administrator')}}">
           <span class="menu-title">Dashboard</span>
           <i class="icon-screen-desktop menu-icon"></i>
         </a>
@@ -39,6 +40,7 @@
 
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="{{url('administrator')}}" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Tables</span>
           <i class="icon-layers menu-icon"></i>
         </a>
