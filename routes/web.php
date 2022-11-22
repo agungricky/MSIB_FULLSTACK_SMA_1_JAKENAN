@@ -8,7 +8,6 @@ use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\mapelController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\tugasController;
 
 /*
 |--------------------------------------------------------------------------
