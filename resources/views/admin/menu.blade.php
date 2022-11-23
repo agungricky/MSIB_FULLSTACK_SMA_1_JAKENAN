@@ -39,7 +39,6 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="{{url('administrator')}}" aria-expanded="false" aria-controls="ui-basic">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Tables</span>
           <i class="icon-layers menu-icon"></i>
