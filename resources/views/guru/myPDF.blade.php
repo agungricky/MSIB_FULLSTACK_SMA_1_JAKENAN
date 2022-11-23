@@ -7,7 +7,7 @@
 
     <table align="center" cellpadding="0" cellspacing="0">
         <tr>
-            <td rowspan="4"><img src="assets/img/logosma.png" alt="" width="150px"></td>
+            {{-- <td rowspan="4"><img src="assets/img/logosma.png" alt="" width="150px"></td> --}}
             <td>PEMERINTAH PROVINSI JAWA TENGAH</td>
         </tr>
         <tr>

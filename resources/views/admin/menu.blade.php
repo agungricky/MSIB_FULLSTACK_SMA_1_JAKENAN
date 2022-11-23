@@ -31,7 +31,7 @@
       <li class="nav-item nav-category"><span class="nav-link">Data</span></li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/form')}}">
+        <a class="nav-link" href="{{url('/laporan_akademik')}}">
           <span class="menu-title">Laporan Akademik</span>
           <i class="icon-globe menu-icon"></i>
         </a>
