@@ -1,6 +1,8 @@
 @extends('admin.index')
 @section('content')
 
+<div class="main-panel">
+  <div class="content-wrapper">
 <section class="section">
     <div class="row">
 
@@ -192,10 +194,10 @@ var jml = [@foreach($ar_jenis_kelamin as $g) {{ $g->jumlah }}, @endforeach];
 
 
           </div>
+        </section>
         </div>
       </div>
 
-    </div>
-  </section>
+
 
 @endsection

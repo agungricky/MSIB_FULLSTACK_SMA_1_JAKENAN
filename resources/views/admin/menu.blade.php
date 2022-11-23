@@ -23,7 +23,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{{url('dashboard')}}">
-        <a class="nav-link" href="{{url('/administrator')}}">
           <span class="menu-title">Dashboard</span>
           <i class="icon-screen-desktop menu-icon"></i>
         </a>
