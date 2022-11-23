@@ -92,7 +92,7 @@ class tugasController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('tugas') - where('$id', '=', $id)->get();
+        $data = DB::table('tugas')->where('$id', '=', $id)->get();
         return view('tugas.form_edit_tugas', compact('data'));
     }
 

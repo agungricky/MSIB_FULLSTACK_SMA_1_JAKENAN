@@ -12,17 +12,23 @@
           {{-- Nama User --}}
           <div class="text-wrapper">
             <p class="profile-name">User</p>
-            <p class="designation">Administrator</p>
+            <p class="designation">@if (empty(Auth::user()->name))
+              {{''}}
+              @else
+              {{Auth::user()->name}}
+              @endif
+            </p>
           </div>
         </a>
       </li>
 
       {{-- Menu dasboar --}}
+
       <li class="nav-item nav-category">
         <span class="nav-link">Dashboard</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('dashboard')}}">
+        <a class="nav-link" href="{{url('/administrator')}}">
           <span class="menu-title">Dashboard</span>
           <i class="icon-screen-desktop menu-icon"></i>
         </a>
@@ -46,8 +52,8 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('guru')}}">Guru & Staff</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('siswa')}}">Siswa</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('tugas')}}">Tugas</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('jadwal')}}">Jadwal</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('mapel')}}">Mata Pelajaran</a></li>
+
           </ul>
         </div>
       </li>
@@ -61,8 +67,7 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('form_guru')}}">Guru & Staff</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_mapel')}}">Mapel</a></li>
 
           </ul>
         </div>
@@ -82,6 +87,25 @@
           <span class="menu-title">Kalender Akademik</span>
           <i class="icon-grid menu-icon"></i>
         </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('register')}}">
+          <span class="menu-title">register</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+          {{ __('Logout') }} <i class="icon-grid menu-icon"></i>
+
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf </form>
+
       </li>
     </ul>
   </nav>
