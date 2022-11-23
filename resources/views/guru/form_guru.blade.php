@@ -1,5 +1,9 @@
 @extends('admin.index')
 @section('content')
+@php
+$ar_gender = ['L','P'];
+$ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
+@endphp
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -37,14 +41,15 @@
                             <input type="text" class="form-control" name="alamat" id="" placeholder="Alamat" required>
                         </div>
                         <div class="row">
-                            <div class="col form-group">
+                            <div class="col-8 form-group">
                                 <input type="date" name="tgl_lahir" class="form-control" id="" placeholder="Tanggal Lahir" required>
                             </div>
-                            <div class="form-group">
+                            <div class="col form-group">
                                 <select class="form-control form-control-lg countrylist" name="gender">
-                                    <option selected>----- Pilih -----</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
+                                    <option selected>----- Jenis Kelamin -----</option>
+                                    @foreach ($ar_gender as $g)
+                                        <option value="{{ $g }}">{{ $g }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -57,17 +62,15 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col form-group">
+                            <div class="col-8 form-group">
                                 <input type="text" name="email" class="form-control" id="" placeholder="email" required>
                             </div>
-                            <div class="form-group">
+                            <div class="col form-group">
                                 <select class="form-control form-control-lg countrylist" name="agama">
-                                    <option selected>----- Pilih -----</option>
-                                    <option value="Islam">Islam</option>
-                                    <option value="Hindu">Hindu</option>
-                                    <option value="Budha">Budha</option>
-                                    <option value="Kristen">Kristen</option>
-                                    <option value="Lainya">Lainya</option>
+                                    <option selected>----- Agama -----</option>
+                                    @foreach ($ar_agama as $agama)
+                                        <option value="{{ $agama }}">{{ $agama }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

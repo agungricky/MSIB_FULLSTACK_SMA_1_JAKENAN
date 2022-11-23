@@ -34,8 +34,9 @@ class guruController extends Controller
      */
     public function create()
     {
-        //arahkan ke form input data
-        return view('guru.form_guru');
+        $ar_gender = ['L', 'P'];
+        $ar_agama = ['Islam', 'Hindu', 'Budha', 'Kristen', 'Lainya'];
+        return view('guru.form_guru', compact('ar_gender', 'ar_agama'));
     }
 
     /**
@@ -98,7 +99,7 @@ class guruController extends Controller
     public function update(Request $request, $id)
     {
         // ============================= Ricky Update =========================
-        DB::table('guru')->update(
+        DB::table('guru')->where('id', '=', $id)->update(
             [
                 'nip' => $request->nip,
                 'nama' => $request->nama,
