@@ -12,7 +12,12 @@
           {{-- Nama User --}}
           <div class="text-wrapper">
             <p class="profile-name">User</p>
-            <p class="designation">Administrator</p>
+            <p class="designation">@if (empty(Auth::user()->name))
+              {{''}}
+              @else
+              {{Auth::user()->name}}
+              @endif
+            </p>
           </div>
         </a>
       </li>
@@ -22,7 +27,7 @@
         <span class="nav-link">Dashboard</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('dashboard')}}">
+        <a class="nav-link" href="{{url('/administrator')}}">
           <span class="menu-title">Dashboard</span>
           <i class="icon-screen-desktop menu-icon"></i>
         </a>

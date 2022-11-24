@@ -11,10 +11,9 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
     <div class="content-wrapper">
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
-                <div class="card card-secondary">
+                <div class="card card-secondary motivasi">
                     <span class="card-body d-lg-flex align-items-center">
-                        <p class="mb-lg-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more! </p>
-                        <a href="https://www.bootstrapdash.com/product/stellar-admin/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">Upgrade To Pro</a>
+                        <p class="mb-lg-0">"Belajar memang kadang membosankan tapi demi menggapai impianmu dan masa depan yang cerah, bersemangatlah dalam mencari ilmu." </p>
                         <button class="close popup-dismiss ml-2">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -23,93 +22,157 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
             </div>
         </div>
 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="admin/images/siswa/siswa.png" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
-                </div>
 
-                <div class="col-md-6">
-                    {{-- Novia --}}
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex align-items-center mb-4">
+                            <h4 class="card-title mb-sm-0">Tabel Siswa</h4>
+                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all document</a>
+                        </div>
+
+
+
+                        <section class="section">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Form Input Siswa</h5>
+                                            @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            @endif
+
+
+                                            <form method="POST" action="{{route('siswa.store')}}">
+                                                @csrf
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-2 col-form-label">NIS</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="NIS" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-2 col-form-label">Nama Siswa</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="nama_siswa" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-2 col-form-label">Tempat Lahir</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" name="tempat_lahir" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <fieldset class="row mb-3">
+                                                    <label class="col-sm-3 col-form-label">jenis kelamin</label>
+                                                    <div class="col-sm-9">
+                                                        <div class="col-sm-10">
+                                                            @foreach($ar_gender as $gender)
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="radio" name="jenis_kelamin" value="{{ $gender }}">
+                                                                <label class="form-check-label" for="gridRadios1">
+                                                                    {{ $gender }}
+                                                                </label>
+                                                            </div>
+
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+
+                                                </fieldset>
+
+                                                <div class="row mb-3">
+                                                    <label for="inputDate" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="date" name="tgl_lahir" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-2 col-form-label">agama</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-select" name="agama">
+                                                            <option selected>-- Pilih agama --</option>
+                                                            @foreach($ar_agama as $agama)
+                                                            <option value="{{ $agama }}">{{ $agama }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">Alamat</label>
+                                                    <div class="col-sm-10">
+                                                        <textarea class="form-control" name="alamat" style="height: 100px"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-2 col-form-label">status siswa</label>
+                                                    <div class="col-sm-10">
+                                                        <select class="form-select" name="status_siswa">
+                                                            <option selected>-- Pilih status --</option>
+                                                            @foreach($ar_status as $status)
+                                                            <option value="{{ $status }}">{{ $status }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
+                                                    <div class="col-sm-10">
+                                                        <input class="form-control" type="file" name="foto">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="row mb-3">
+                                                    <label class="col-sm-2 col-form-label"></label>
+                                                    <div class="col-sm-10 ">
+
+                                                        <a class="btn btn-info" title="Kembali" href=" {{ url('siswa') }}">
+                                                            <i class="bi bi-arrow-left-square"> Kembali</i>
+                                                        </a>
+                                                        &nbsp;
+                                                        <button type="submit" class="btn btn-primary" title="Simpan siswa"><i class="bi bi-save"></i> Simpan</button>
+                                                    </div>
+                                                </div>
+
+                                            </form><!-- End General Form Elements -->
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+
                     </div>
-                    @endif
-
-                    <form action="{{route('siswa.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row"> 
-                            <div class="col form-group">
-                                <input type="text" name="NIS" class="form-control" id="" placeholder="NIS" required>
-                            </div>
-                            <div class="col form-group">
-                                <input type="text" class="form-control" name="nama_siswa" id="" placeholder="Nama" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="tempat_lahir" id="" placeholder="Tempat Lahir" required>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-4">
-                                {{-- Ricky --}}
-                                 <select class="form-control form-control-lg countrylist" name="jenis_kelamin">
-                                    <option selected>----- jenis_kelamin -----</option>
-                                    @foreach($ar_gender as $gender)
-                                        <option value="{{ $gender }}">{{ $gender }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="col-8 form-group">
-                                <input type="date" name="tgl_lahir" class="form-control" id="" placeholder="Tanggal Lahir" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-4">
-                                <select class="form-control form-control-lg countrylist" name="agama">
-                                    <option selected>----- Agama -----</option>
-                                    @foreach($ar_agama as $agama)
-                                        <option value="{{ $agama }}">{{ $agama }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col form-group col-8">
-                                <input type="text" name="alamat" class="form-control" id="" placeholder="Alamat" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control form-control-lg countrylist" name="status_siswa">
-                                <option selected>----- Status Siswa -----</option>
-                                @foreach($ar_status as $status)
-                                    <option value="{{ $status }}">{{ $status }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="file" name="foto">
-                            </div>
-                        </div>
-
-                        <div class="my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center"><button type="submit">Simpan</button></div>
-                    </form>
                 </div>
             </div>
         </div>
-
     </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+        </div>
+    </footer>
+    <!-- partial -->
 </div>
-<!-- content-wrapper ends -->
-<!-- partial:partials/_footer.html -->
+</div>
+</div>
 @endsection

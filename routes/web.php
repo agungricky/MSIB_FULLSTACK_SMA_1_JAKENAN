@@ -8,6 +8,7 @@ use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\mapelController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,9 +86,20 @@ Route::get('/form_tugas', function () {
 Route::get('/form_jadwal', function () {
     return view('jadwal.form_jadwal');
 });
+// Route::get('/kalender', function () {
+//     return view('admin.kalender');
+// });
+
+// Route::get('/mapel', function () {
+//     return view('mapel.mapel');
+// });
+// Route::get('/form_mapel', function () {
+//     return view('mapel.form_mapel');
+// });
 Route::get('/kalender', function () {
-    return view('admin.kalender');
+    return view('kalender_akademik.kalender');
 });
+
 
 Route::resource('staff', StaffController::class);
 
@@ -102,3 +114,14 @@ Route::resource('jadwal', jadwalController::class);
 Route::resource('tugas', tugasController::class);
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);
+
+
+// Route::resource('mapel', mapelController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user', function () {
+    return view('Layout.user');
+});
