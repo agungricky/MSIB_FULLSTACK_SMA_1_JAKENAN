@@ -52,6 +52,11 @@ Route::get('/administrator', function () {
     return view('admin.dasboard');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+});
+
+
 Route::get(
     'dashboard',
     [DashboardController::class, 'index']
@@ -76,9 +81,9 @@ Route::get('/form_guru', function () {
 // Route::get('/siswa', function () {
 //     return view('admin.siswa');
 // });
-// Route::get('/tugas', function () {
-//     return view('tugas.index');
-// });
+Route::get('/tugas', function () {
+    return view('tugas.index');
+});
 Route::get('/form_tugas', function () {
     return view('tugas.form_tugas');
 });
@@ -111,7 +116,6 @@ Route::resource('tugas', tugasController::class);
 
 Route::resource('jadwal', jadwalController::class);
 
-Route::resource('tugas', tugasController::class);
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);
 
