@@ -21,11 +21,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0"> Tabel Guru &ensp;| &ensp; 
-                                <a href="{{url('/guru-pdf') }}"><button type="button" class="btn btn-danger btn-sm"> Pdf </button></a>
-                                <button type="button" class="btn btn-success btn-sm">Excell</button>
-                                <button type="button" class="btn btn-warning btn-sm">Chart</button>
-                            </h4>
+                            <h4 class="card-title mb-sm-0">Tabel Guru</h4>
                             <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
                         </div>
                         <div class="table-responsive border rounded p-1">
@@ -62,7 +58,10 @@
                                         <td>{{ $row->no_telp}}</td>
                                         <td>{{ $row->email }}</td>
                                         <td>{{ $row->agama }}</td>
-                                        <td>{{ $row->foto }}</td>
+                                        <!-- // ============================= Fergi : Menampilkan Foto Di Table Guru ========================= -->
+                                        <td>
+                                            <img src="{{asset('admin/images/guru') }}/{{ $row->foto }}" width="30%" />
+                                        </td>
                                         <td>
                                             <form method="POST" action="{{ route('guru.destroy',$row->id) }}">
                                                 @csrf

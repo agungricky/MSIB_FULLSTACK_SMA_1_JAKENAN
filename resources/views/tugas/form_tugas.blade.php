@@ -1,7 +1,3 @@
-@php
-$arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
-@endphp
-
 @extends('admin.index')
 @section('content')
 <div class="main-panel">
@@ -11,73 +7,65 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                 <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center">
                         <p class="mb-lg-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more! </p>
-                        <a href="https://www.bootstrapdash.com/product/stellar-admin/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">Upgrade To Pro</a>
-                        <button class="close popup-dismiss ml-2">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </span>
                 </div>
             </div>
         </div>
 
+        <!-- // ============================= Fergi : Membuat Form Input Tugas ========================= -->
+
         <div class="container-fluid">
             <div class="row">
-                {{-- <div class="col-md-6">
+                <div class="col-md-6">
                     <img src="admin/images/guru/guru.png" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
-                </div> --}}
+                </div>
 
-                <div class="col">
-                    <form action="{{route('tugas.store')}}" method="post" name="" >
+                <div class="col-md-6">
+                    <form action="{{route('tugas.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
-                        {{ method_field('POST')}}
-                        {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
-    
-                        <div class="row two-div">
-                            <div class="form-group two-div">
-                                <label for=""> Keterangan : &nbsp </label>
-                                <input name="keterangan" type="text" placeholder="Tugas" class="form-control"> 
-                            </div>
-                            
-                            <div class="form-group two-div">
-                                <label for=""> Tanggal : &nbsp </label>
-                                <input name="tanggal" type="date" placeholder="Tanggal" class="form-control">
-                            </div>
+                        
+                        <div class="form-group">
+                            <div class="mb-3">
+                                <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Keterangan"></textarea>
+                            </div>    
                         </div>
-    
-                        <div class="row two-div">
-    
-                           <div class="form-group two-div">
-                                <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control">
-                                    <option selected >Hari</option>
-                                    @foreach($arr_hari as $hari)
-                                        <option value="{{ $hari }}">{{ $hari }}</option>
-                                    @endforeach
-                                </select>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-4 form-group">
+                                    <select class="form-control form-control-lg countrylist" name="hari">
+                                        <option selected>----- Hari -----</option>
+                                        <option value="Senin">Senin</option>
+                                        <option value="Selasa">Selasa</option>
+                                        <option value="Rabu">Rabu</option>
+                                        <option value="Kamis">Kamis</option>
+                                        <option value="Jumat">Jumat</option>
+                                        <option value="Sabtu">Sabtu</option>
+                                        <option value="Minggu">Minggu</option>
+                                    </select>
+                                </div>
+                                <div class="col form-group">
+                                    <input type="date" name="tanggal" class="form-control" id="" placeholder="Tanggal" required>
+                                </div>
+                                <div class="col-3 form-group">    
+                                    <input type="time" class="form-control" name="jam" id="" placeholder="" required>
+                                </div>
                             </div>
-    
-                            
-                            <div class="form-group two-div">
-                                <label for=""> Jam &nbsp</label> 
-                                    <input name="jam" type="time"class="form-control">
-                            </div>
-                            {{-- <label for=""> Selesai &nbsp </label>
-                                <input type="time" class="form-control"> --}}
+                        
+                        <div class="form-group">
+                            <input type="text" name="perihal" class="form-control" id="" placeholder="Perihal" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="upload" id="" placeholder="Upload">                              
                         </div> 
-    
-                        <div class="form-group">
-                            <label for=""> Perihal : &nbsp </label>
-                            <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
+
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
-
-                        <div class="form-group">
-                            <input type="file" class="form-control" id="upload" name="upload">
-                        </div>
-
-                        <div>
-                            <input type="submit" name="inputMapel" class="form-control submit-btn">
-                        </div>   
-
+                        <div class="text-center"><button type="submit">Simpan</button></div>
                     </form>
                 </div>
             </div>

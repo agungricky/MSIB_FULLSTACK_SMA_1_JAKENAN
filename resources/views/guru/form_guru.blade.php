@@ -27,7 +27,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                 </div>
 
                 <div class="col-md-6">
-                    <form action="{{route('guru.store')}}" method="post" role="form" class="php-email-form">
+                    <form action="{{route('guru.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row"> 
                             <div class="col form-group">
