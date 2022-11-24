@@ -59,9 +59,11 @@
                                             <form method="POST" action="{{ route('siswa.destroy',$row->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('siswa.show', $row->id) }}" class="btn btn-info btn-sm">
+
+                                                {{-- ================ Ricky Siswa Tidak Butuh Detail ==================== --}}
+                                                {{-- <a href="{{ route('siswa.show', $row->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fa-solid fa-eye"></i>
-                                                </a>
+                                                </a> --}}
                                                 &nbsp;
                                                 <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
                                                     href=" {{ route('siswa.edit',$row->id) }}">

@@ -1,5 +1,0 @@
-@include('admin.header')
-@include('admin.navbar')
-@include('admin.menu')
-@yield('content')
-@include('admin.footer')

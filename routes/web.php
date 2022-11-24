@@ -57,8 +57,8 @@ Route::get(
 );
 
 
-Route::get('/form', function () {
-    return view('admin.form');
+Route::get('/laporan_akademik', function () {
+    return view('admin.laporan_akademik');
 });
 
 // Route::get('/guru', function () {
@@ -83,7 +83,7 @@ Route::get('/form_tugas', function () {
 });
 
 Route::get('/form_jadwal', function () {
-    return view('tugas.form_jadwal');
+    return view('jadwal.form_jadwal');
 });
 Route::get('/kalender', function () {
     return view('admin.kalender');
@@ -100,3 +100,5 @@ Route::resource('tugas', tugasController::class);
 Route::resource('jadwal', jadwalController::class);
 
 Route::resource('tugas', tugasController::class);
+Route::get('generate-pdf', [guruController::class, 'generatePDF']);
+Route::get('guru-pdf', [guruController::class, 'guruPDF']);

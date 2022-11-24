@@ -20,8 +20,12 @@
     <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('admin/css/styleku.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('admin/images/favicon.png')}}" />
+    {{-- style buatan sendiri --}}
+    <link rel="stylesheet" href="{{url('admin/css/styleku.css')}}">
+
+    {{-- Bosstrap Ori --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> --}}
   </head>
   <body>

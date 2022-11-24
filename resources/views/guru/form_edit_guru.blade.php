@@ -1,5 +1,9 @@
 @extends('admin.index')
 @section('content')
+@php
+$ar_gender = ['L','P'];
+$ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
+@endphp
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -24,7 +28,7 @@
 
                 <div class="col-md-6">
                     @foreach ($data as $rs)
-                        <form action="{{route('guru.store')}}" method="post" role="form" class="php-email-form">
+                        <form action="{{route('guru.update', $rs->id)}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
                         {{-- ========== Ricky Update : Yang di Rubah method put =============== --}}
                         @method('put')
@@ -45,9 +49,14 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-control form-control-lg countrylist" name="gender">
-                                    <option selected>----- Pilih -----</option>
-                                    <option value="L">Laki-laki</option>
-                                    <option value="P">Perempuan</option>
+                                    <option selected>----- jenis_kelamin -----</option>
+                                    @foreach($ar_gender as $gender)
+                                    {{-- Ricky edit --}}
+                                    @php
+                                        $sel1 = ($gender == $rs->gender) ? 'selected' : '';
+                                    @endphp
+                                        <option value="{{$gender}}" {{ $sel1 }}>{{ $gender }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -66,13 +75,22 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-control form-control-lg countrylist" name="agama">
-                                    <option selected>----- Pilih -----</option>
-                                    <option value="Islam">Islam</option>
-                                    <option value="Hindu">Hindu</option>
-                                    <option value="Budha">Budha</option>
-                                    <option value="Kristen">Kristen</option>
-                                    <option value="Lainya">Lainya</option>
+                                    <option selected>----- Agama -----</option>
+                                    @foreach($ar_agama as $agama)
+                                    @php
+                                        $sel2 = ($agama == $rs->agama) ? 'selected' : '';
+                                    @endphp
+                                        <option value="{{ $agama }}" {{ $sel2 }}>{{ $agama }}</option>
+                                    @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 form-group">
+                                <img src="{{asset('admin/images/guru/') }}/{{ $rs->foto }}" width="100%" />
+                            </div>
+                            <div class="col form-group">
+                                <input type="text" name="foto" class="form-control" id="" value="{{ $rs->foto }}">
                             </div>
                         </div>
                         <div class="form-group">

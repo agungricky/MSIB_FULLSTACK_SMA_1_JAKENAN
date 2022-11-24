@@ -1,5 +1,0 @@
-@include('landingpage.header')
-@include('landingpage.topbar')
-@include('landingpage.navigasi')
-@yield('content')
-@include('landingpage.footer')
