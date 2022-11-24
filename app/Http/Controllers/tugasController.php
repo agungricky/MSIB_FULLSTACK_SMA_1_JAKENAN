@@ -58,7 +58,6 @@ class tugasController extends Controller
             ]
         );
 
-        
         // return redirect('/tugas');
         return redirect()->route('tugas.store')
             ->with('success', 'Data Tugas Berhasil Disimpan');
@@ -84,7 +83,8 @@ class tugasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('tugas')->where('$id', '=', $id)->get();
+        return view('tugas.form_edit_tugas', compact('data'));
     }
 
     /**

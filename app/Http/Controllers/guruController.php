@@ -70,7 +70,6 @@ class guruController extends Controller
             ]
         );
 
-        
         // return redirect('/guru');
         return redirect()->route('guru.store')
             ->with('success', 'Data Guru Berhasil Disimpan');
