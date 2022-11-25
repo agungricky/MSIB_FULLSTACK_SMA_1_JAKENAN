@@ -10,5 +10,5 @@ class Jadwal extends Model
     use HasFactory;
     protected $table = 'jadwal';
     //memanggil ke kolom field
-    protected $fillabel = ['Hari', 'Jam', 'Kelas', 'Mapel'];
+    protected $fillabel = ['hari', 'jam', 'kelas', 'mapel'];
 }

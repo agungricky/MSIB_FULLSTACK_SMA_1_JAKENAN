@@ -74,13 +74,6 @@
       </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" href="{{url('#')}}">
-          <span class="menu-title">Charts</span>
-          <i class="icon-chart menu-icon"></i>
-        </a>
-      </li>
-
       <li class="nav-item nav-category"><span class="nav-link">Information</span></li>
       <li class="nav-item">
         <a class="nav-link" href="{{url('kalender')}}">
@@ -88,5 +81,25 @@
           <i class="icon-grid menu-icon"></i>
         </a>
       </li>
+      @if (Auth::user()->role=='administrator')
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/register')}}">
+          <span class="menu-title">register</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+      </li>
+      @endif
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+          {{ __('Logout') }} <i class="icon-grid menu-icon"></i>
+
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf </form>
+
+      </li>
+
     </ul>
   </nav>

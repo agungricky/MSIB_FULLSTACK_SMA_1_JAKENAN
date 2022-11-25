@@ -60,12 +60,12 @@
                             <input type="file" class="form-control" name="upload" id="" placeholder="Upload">                              
                         </div> 
 
-                        <div class="my-3">
+                        {{-- <div class="my-3">
                             <div class="loading">Loading</div>
                             <div class="error-message"></div>
                             <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center"><button type="submit">Simpan</button></div>
+                        </div> --}}
+                        <div class="text-center"><button type="submit" class="form-control submit-btn">Simpan</button></div>
                     </form>
                 </div>
             </div>
