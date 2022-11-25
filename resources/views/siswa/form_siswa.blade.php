@@ -141,11 +141,7 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                                     <label class="col-sm-2 col-form-label"></label>
                                                     <div class="col-sm-10 ">
 
-                                                        <a class="btn btn-info" title="Kembali" href=" {{ url('siswa') }}">
-                                                            <i class="bi bi-arrow-left-square"> Kembali</i>
-                                                        </a>
-                                                        &nbsp;
-                                                        <button type="submit" class="btn btn-primary" title="Simpan siswa"><i class="bi bi-save"></i> Simpan</button>
+                                                        <button type="submit" class="form-control submit-btn" title="Simpan siswa"><i class="bi bi-save"></i> Simpan</button>
                                                     </div>
                                                 </div>
 
