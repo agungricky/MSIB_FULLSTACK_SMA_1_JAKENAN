@@ -119,6 +119,8 @@ Route::resource('jadwal', jadwalController::class);
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);
 
+Route::get('exportguru', [guruController::class, 'guruExcel']);
+
 
 // Route::resource('mapel', mapelController::class);
 

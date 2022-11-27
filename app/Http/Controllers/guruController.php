@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guru;
 use PDF;
+use App\Exports\guruExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 // use App\Models\Staff
 
 class guruController extends Controller
@@ -154,5 +157,10 @@ class guruController extends Controller
 
         $pdf = PDF::loadView('guru.myPDF', ['ar_guru' => $ar_guru], $data);
         return $pdf->download('FilePDF.pdf');
+    }
+
+    public function guruExcel()
+    {
+        return Excel::download(new guruExport, 'daftar_guru.xlsx');
     }
 }
