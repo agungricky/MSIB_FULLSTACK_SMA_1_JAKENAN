@@ -13,6 +13,8 @@
     <!-- Plugin css for this page -->
     <link rel="stylesheet" href="{{asset('admin/vendors/daterangepicker/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{asset('admin/vendors/chartist/chartist.min.css')}}">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -20,6 +22,10 @@
     <link rel="stylesheet" href="{{asset('admin/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('admin/images/favicon.png')}}" />
+    {{-- style buatan sendiri --}}
     <link rel="stylesheet" href="{{url('admin/css/styleku.css')}}">
+
+    {{-- Bosstrap Ori --}}
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> --}}
   </head>
   <body>

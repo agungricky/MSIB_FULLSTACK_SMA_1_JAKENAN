@@ -23,12 +23,11 @@
       </li>
 
       {{-- Menu dasboar --}}
-
       <li class="nav-item nav-category">
         <span class="nav-link">Dashboard</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/administrator')}}">
+        <a class="nav-link" href="{{url('/dashboard')}}">
           <span class="menu-title">Dashboard</span>
           <i class="icon-screen-desktop menu-icon"></i>
         </a>
@@ -37,7 +36,7 @@
       <li class="nav-item nav-category"><span class="nav-link">Data</span></li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/form')}}">
+        <a class="nav-link" href="{{url('/laporan_akademik')}}">
           <span class="menu-title">Laporan Akademik</span>
           <i class="icon-globe menu-icon"></i>
         </a>
@@ -52,8 +51,8 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('guru')}}">Guru & Staff</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('siswa')}}">Siswa</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('mapel')}}">Mata Pelajaran</a></li>
-
+            <li class="nav-item"> <a class="nav-link" href="{{url('tugas')}}">Tugas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('jadwal')}}">Jadwal</a></li>
           </ul>
         </div>
       </li>
@@ -66,20 +65,14 @@
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('form_guru')}}">Guru & Staff</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('/form_siswa')}}">Siswa</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('form_mapel')}}">Mapel</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
 
           </ul>
         </div>
       </li>
 
-
-      <li class="nav-item">
-        <a class="nav-link" href="{{url('#')}}">
-          <span class="menu-title">Charts</span>
-          <i class="icon-chart menu-icon"></i>
-        </a>
-      </li>
 
       <li class="nav-item nav-category"><span class="nav-link">Information</span></li>
       <li class="nav-item">

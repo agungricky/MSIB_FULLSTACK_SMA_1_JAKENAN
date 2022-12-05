@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\guruController;
+use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\mapelController;
-use App\Http\Controllers\DasboardController;
+use App\Http\Controllers\tugasController;
+use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -50,7 +52,20 @@ Route::get('/administrator', function () {
     return view('admin.dasboard');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+});
 
+
+Route::get(
+    'dashboard',
+    [DashboardController::class, 'index']
+);
+
+
+Route::get('/laporan_akademik', function () {
+    return view('admin.laporan_akademik');
+});
 
 // Route::get('/guru', function () {
 //     return view('admin.guru');
@@ -66,12 +81,26 @@ Route::get('/form_guru', function () {
 // Route::get('/siswa', function () {
 //     return view('admin.siswa');
 // });
-Route::get('/mapel', function () {
-    return view('mapel.mapel');
+Route::get('/tugas', function () {
+    return view('tugas.index');
 });
-Route::get('/form_mapel', function () {
-    return view('mapel.form_mapel');
+Route::get('/form_tugas', function () {
+    return view('tugas.form_tugas');
 });
+
+Route::get('/form_jadwal', function () {
+    return view('jadwal.form_jadwal');
+});
+// Route::get('/kalender', function () {
+//     return view('admin.kalender');
+// });
+
+// Route::get('/mapel', function () {
+//     return view('mapel.mapel');
+// });
+// Route::get('/form_mapel', function () {
+//     return view('mapel.form_mapel');
+// });
 Route::get('/kalender', function () {
     return view('kalender_akademik.kalender');
 });
@@ -83,6 +112,12 @@ Route::resource('siswa', siswaController::class);
 
 Route::resource('guru', guruController::class);
 
+Route::resource('tugas', tugasController::class);
+
+Route::resource('jadwal', jadwalController::class);
+
+Route::get('generate-pdf', [guruController::class, 'generatePDF']);
+Route::get('guru-pdf', [guruController::class, 'guruPDF']);
 
 
 // Route::resource('mapel', mapelController::class);

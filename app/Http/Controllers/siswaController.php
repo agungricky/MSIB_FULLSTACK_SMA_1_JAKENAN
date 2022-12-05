@@ -17,7 +17,7 @@ class siswaController extends Controller
     {
         // menampilkan seluruh data siswa
         $siswa = Siswa::all();
-        return view('siswa.siswa', compact('siswa'));
+        return view('siswa.index', compact('siswa'));
     }
 
     /**
@@ -43,7 +43,6 @@ class siswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'NIS' => 'required|unique:siswa|max:11',
             'nama_siswa' => 'required',
@@ -53,13 +52,14 @@ class siswaController extends Controller
             'agama' => 'required',
             'alamat' => 'nullable|string|min:10',
             'status_siswa' => 'required',
-            'foto' => 'nullable|string',
+            'foto' => 'required',
         ]);
         //------------apakah user  ingin upload foto-----------
-        if (!empty($request->foto)) {
-            $fileName = 'foto-' . $request->NIS . '.' . $request->foto->extension();
+        //yang diedit fiki new
+        if (!empty($request->file('foto'))) {
+            $fileName = 'foto-' . $request->NIS . '.' . $request->file('foto')->extension();
             //$fileName = $request->foto->getClientOriginalName();
-            $request->foto->move(public_path('admin/images'), $fileName);
+            $request->file('foto')->move(public_path('admin/images/siswa'), $fileName);
         } else {
             $fileName = '';
         }
@@ -94,7 +94,6 @@ class siswaController extends Controller
     public function show($id)
     {
         //
-
     }
 
     /**
@@ -103,9 +102,13 @@ class siswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //=================================  Ricky Update =======================================
     public function edit($id)
     {
         //
+        $data = DB::table('siswa')->where('id', '=', $id)->get();
+        return view('siswa.form_edit_siswa', compact('data'));
     }
 
     /**
@@ -115,9 +118,24 @@ class siswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //======================================== Ricky Update ==================================
     public function update(Request $request, $id)
     {
-        //
+        DB::table('siswa')->where('id', '=', $id)->update(
+            [
+                'NIS' => $request->NIS,
+                'nama_siswa' => $request->nama_siswa,
+                'tempat_lahir' => $request->tempat_lahir,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tgl_lahir' => $request->tgl_lahir,
+                'agama' => $request->agama,
+                'alamat' => $request->alamat,
+                'status_siswa' => $request->status_siswa,
+                'foto' => $request->foto,
+                'created_at' => now()
+            ]
+        );
+        return redirect('/siswa');
     }
 
     /**
@@ -128,6 +146,9 @@ class siswaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = Siswa::find($id);
+        Siswa::where('id', $id)->delete();
+        return redirect()->route('siswa.index')
+            ->with('success', 'Data Siswa Berhasil Dihapus');
     }
 }

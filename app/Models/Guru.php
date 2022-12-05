@@ -11,5 +11,12 @@ class Guru extends Model
     // memanggil table
     protected $table = 'guru';
     // memanggil colom"table guru
-    protected $fillabel = ['nip', 'nama', 'nik', 'jabatan', 'bidang', 'alamat', 'tgl_lahir', 'gender', 'tempat_lahir', 'status_pegawai', 'status', 'no_telp', 'email', 'agama', 'foto'];
+    protected $fillabel = ['nip', 'nama', 'alamat', 'tgl_lahir', 'gender', 'tempat_lahir', 'no_telp', 'email', 'agama', 'foto'];
+
+
+    //relasi one two many
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class);
+    }
 }

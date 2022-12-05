@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Guru;
-
+use PDF;
+// use App\Models\Staff
 
 class guruController extends Controller
 {
@@ -15,8 +17,13 @@ class guruController extends Controller
      */
     public function index()
     {
+        //Query Mengambil Select guru *
         $guru = Guru::all();
-        return view('guru.guru', compact('guru'));
+        // Melempar data melalui compact $guru ke guru.index
+        return view('guru.index', compact('guru'));
+
+        // $ar_guru = DB::table('guru')->select('guru.*')->get();
+        // return view('guru.index', compact('ar_guru'));
     }
 
     /**
@@ -26,7 +33,9 @@ class guruController extends Controller
      */
     public function create()
     {
-        //
+        $ar_gender = ['L', 'P'];
+        $ar_agama = ['Islam', 'Hindu', 'Budha', 'Kristen', 'Lainya'];
+        return view('guru.form_guru', compact('ar_gender', 'ar_agama'));
     }
 
     /**
@@ -37,7 +46,33 @@ class guruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // ============================= Fergi : Upload foto =========================
+        if (!empty($request->file('foto'))) {
+            $nameFoto = 'guru-' . $request->nip . '.' . $request->file('foto')->extension();
+            //$nameFoto = $request->foto->getClientOriginalName();
+            $request->file('foto')->move(public_path('admin/images/guru'), $nameFoto);
+        } else {
+            $nameFoto = '';
+        }
+
+        DB::table('guru')->insert(
+            [
+                'nip' => $request->nip,
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'tgl_lahir' => $request->tgl_lahir,
+                'gender' => $request->gender,
+                'tempat_lahir' => $request->tempat_lahir,
+                'no_telp' => $request->no_telp,
+                'email' => $request->email,
+                'agama' => $request->agama,
+                'foto' => $nameFoto
+            ]
+        );
+
+        // return redirect('/guru');
+        return redirect()->route('guru.store')
+            ->with('success', 'Data Guru Berhasil Disimpan');
     }
 
     /**
@@ -49,7 +84,7 @@ class guruController extends Controller
     public function show($id)
     {
         $row = Guru::find($id);
-        return view('admin.ditail_guru', compact('row'));
+        return view('guru.ditail_guru', compact('row'));
     }
 
     /**
@@ -60,7 +95,9 @@ class guruController extends Controller
      */
     public function edit($id)
     {
-        //
+        // ============================= Ricky Update =========================
+        $data = DB::table('guru')->where('id', '=', $id)->get();
+        return view('guru.form_edit_guru', compact('data'));
     }
 
     /**
@@ -72,7 +109,22 @@ class guruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // ============================= Ricky Update =========================
+        DB::table('guru')->where('id', '=', $id)->update(
+            [
+                'nip' => $request->nip,
+                'nama' => $request->nama,
+                'alamat' => $request->alamat,
+                'tgl_lahir' => $request->tgl_lahir,
+                'gender' => $request->gender,
+                'tempat_lahir' => $request->tempat_lahir,
+                'no_telp' => $request->no_telp,
+                'email' => $request->email,
+                'agama' => $request->agama,
+                'foto' => $request->foto,
+            ]
+        );
+        return redirect('/guru');
     }
 
     /**
@@ -83,6 +135,24 @@ class guruController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = Guru::find($id);
+        Guru::where('id', $id)->delete();
+        return redirect()->route('guru.index')
+            ->with('success', 'Data Guru Berhasil Dihapus');
+    }
+
+    public function guruPDF()
+    {
+        $data = [
+            'title' => 'SMA 1 Jakenan',
+            'date' => date('m/d/Y'),
+            // 'users' => $users
+        ];
+
+
+        $ar_guru = DB::table('guru')->select('guru.*')->get();
+
+        $pdf = PDF::loadView('guru.myPDF', ['ar_guru' => $ar_guru], $data);
+        return $pdf->download('FilePDF.pdf');
     }
 }

@@ -1,5 +1,9 @@
 @extends('admin.index')
 @section('content')
+@php
+$ar_gender = ['L','P'];
+$ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
+@endphp
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -16,67 +20,77 @@
             </div>
         </div>
 
-
-        <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-                <div class="col-lg-6 ">
-                    <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="admin/images/guru/guru.png" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
                 </div>
 
-                <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                    <div class="row">
-                        <div class="col form-group">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                <div class="col-md-6">
+                    <form action="{{route('guru.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row"> 
+                            <div class="col form-group">
+                                <input type="text" name="nip" class="form-control" id="" placeholder="NIP" required>
+                            </div>
+                            <div class="col form-group">
+                                <input type="text" class="form-control" name="nama" id="" placeholder="Nama" required>
+                            </div>
                         </div>
-                        <div class="col form-group">
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="alamat" id="" placeholder="Alamat" required>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                    </div>
-                    <div class="my-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
-                    </div>
-                    <div class="text-center"><button type="submit">Send Message</button></div>
-                </form>
+                        <div class="row">
+                            <div class="col-8 form-group">
+                                <input type="date" name="tgl_lahir" class="form-control" id="" placeholder="Tanggal Lahir" required>
+                            </div>
+                            <div class="col form-group">
+                                <select class="form-control form-control-lg countrylist" name="gender">
+                                    <option selected>----- Jenis Kelamin -----</option>
+                                    @foreach ($ar_gender as $g)
+                                        <option value="{{ $g }}">{{ $g }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col form-group">
+                                <input type="text" name="tempat_lahir" class="form-control" id="" placeholder="Tempat Lahir" required>
+                            </div>
+                            <div class="col form-group">
+                                <input type="text" class="form-control" name="no_telp" id="" placeholder="Nomer Telp" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8 form-group">
+                                <input type="text" name="email" class="form-control" id="" placeholder="email" required>
+                            </div>
+                            <div class="col form-group">
+                                <select class="form-control form-control-lg countrylist" name="agama">
+                                    <option selected>----- Agama -----</option>
+                                    @foreach ($ar_agama as $agama)
+                                        <option value="{{ $agama }}">{{ $agama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="foto" id="" placeholder="Foto">                              
+                        </div> 
 
-
+                        <div class="my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+                        <div class="text-center"><button type="submit">Simpan</button></div>
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="d-flex mt-4 flex-wrap">
-            <p class="text-muted">Showing 1 to 10 of 57 entries</p>
-            <nav class="ml-auto">
-                <ul class="pagination separated pagination-info">
-                    <li class="page-item"><a href="#" class="page-link"><i class="icon-arrow-left"></i></a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link"><i class="icon-arrow-right"></i></a></li>
-                </ul>
-            </nav>
-        </div>
+
     </div>
-</div>
-</div>
-</div>
 </div>
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
-<footer class="footer">
-    <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
-    </div>
-</footer>
-<!-- partial -->
-</div>
-</div>
-</div>
 @endsection
