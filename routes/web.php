@@ -5,7 +5,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\jadwalController;
-use App\Http\Controllers\mapelController;
+use App\Http\Controllers\kelasController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -45,6 +45,14 @@ Route::get('/portofolio', function () {
 
 Route::get('/contact', function () {
     return view('landingpage.contact');
+});
+
+Route::get('/prestasi', function () {
+    return view('landingpage.prestasi');
+});
+
+Route::get('/siswabaru', function () {
+    return view('landingpage.siswabaru');
 });
 
 // ------------- Routing Admin Page ------------
@@ -105,6 +113,10 @@ Route::get('/kalender', function () {
     return view('kalender_akademik.kalender');
 });
 
+Route::get('/form_kelas', function () {
+    return view('kelas.form_kelas');
+});
+
 
 Route::resource('staff', StaffController::class);
 
@@ -119,8 +131,9 @@ Route::resource('jadwal', jadwalController::class);
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);
 
+Route::get('exportguru', [guruController::class, 'guruExcel']);
 
-// Route::resource('mapel', mapelController::class);
+Route::resource('kelas', kelasController::class);
 
 Auth::routes();
 

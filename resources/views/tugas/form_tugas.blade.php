@@ -22,17 +22,10 @@
 
                 <div class="col-md-6">
                     <form action="{{route('tugas.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
-                        @csrf
-                        
-                        <div class="form-group">
-                            <div class="mb-3">
-                                <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Keterangan"></textarea>
-                            </div>    
-                        </div>
+                        @csrf 
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-4 form-group">
+                        <div class="row">
+                                <div class="col-3 form-group">
                                     <select class="form-control form-control-lg countrylist" name="hari">
                                         <option selected>----- Hari -----</option>
                                         <option value="Senin">Senin</option>
@@ -42,19 +35,34 @@
                                         <option value="Jumat">Jumat</option>
                                         <option value="Sabtu">Sabtu</option>
                                         <option value="Minggu">Minggu</option>
-                                    </select>
+                                    </select>      
                                 </div>
-                                <div class="col form-group">
+
+                                <div class="col-5 form-group">    
+                                    <input type="text" class="form-control" name="jam" id="" placeholder="Jam" required>
+                                </div>
+                                
+                                <div class="col-4 form-group">    
                                     <input type="date" name="tanggal" class="form-control" id="" placeholder="Tanggal" required>
                                 </div>
-                                <div class="col-3 form-group">    
-                                    <input type="time" class="form-control" name="jam" id="" placeholder="" required>
-                                </div>
-                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control form-control-lg countrylist" name="perihal">
+                                <option selected>----- Perihal -----</option>
+                                <option value="Quis">Quis</option>
+                                <option value="Tugas Harian">Tugas Harian</option>
+                                <option value="UTS">UTS</option>
+                                <option value="UAS">UAS</option>
+                                <option value="Lainya">Lainya</option>
+                            </select>   
+                        </div>
                         
                         <div class="form-group">
-                            <input type="text" name="perihal" class="form-control" id="" placeholder="Perihal" required>
-                        </div>
+                            <div class="">
+                                <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Keterangan"></textarea>
+                            </div>    
+                        </div>  
                         
                         <div class="form-group">
                             <input type="file" class="form-control" name="upload" id="" placeholder="Upload">                              

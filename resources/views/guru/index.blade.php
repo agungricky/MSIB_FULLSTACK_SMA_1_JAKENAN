@@ -22,8 +22,8 @@
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
                             <h4 class="card-title mb-sm-0">Tabel Guru | &ensp;</h4>
-                            <a href="{{url('/guru-pdf') }}"><button type="button" class="btn btn-danger btn-sm"> Pdf </button></a>
-                            <button type="button" class="btn btn-success btn-sm">Excell</button>
+                            <a href="{{url('/guru-pdf') }}"><button type="button" class="btn btn-danger btn-sm"> Pdf </button></a> &nbsp;
+                            <a href="{{url('/exportguru') }}"><button type="button" class="btn btn-success btn-sm"> Excell </button></a> &nbsp;
                             <button type="button" class="btn btn-warning btn-sm">Chart</button>
                         </div>
                         <div class="table-responsive border rounded p-1">

@@ -2,7 +2,7 @@
     <!--navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex">
-        <img src="{{asset('admin/images/logosma.png')}}" alt="logo" class="logo-dark"/> SMA 1 Jakenan
+        <img src="{{url('admin/images/logosma.png')}}" alt="logo" class="logo-dark"/>
 
         {{-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a> --}}
       </div>
