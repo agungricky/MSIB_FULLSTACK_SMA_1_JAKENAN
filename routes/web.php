@@ -142,3 +142,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/user', function () {
     return view('Layout.user');
 });
+
+Route::get('/api-guru', [guruController::class, 'apiGuru']);
+Route::get('/api-guru/{id}', [guruController::class, 'apiGuruDetail']);
+
+Route::get('/api-kelas', [kelasController::class, 'apiKelas']);

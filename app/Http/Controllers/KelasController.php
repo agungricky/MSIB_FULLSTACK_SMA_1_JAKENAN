@@ -19,6 +19,19 @@ class KelasController extends Controller
         //
     }
 
+    public function apiKelas()
+    {
+        $guru = Kelas::all();
+        return response()->json(
+            [
+                'success' => true,
+                'massage' => 'Data kelas',
+                'data' => $guru,
+            ],
+            200
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *
