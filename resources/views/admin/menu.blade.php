@@ -68,7 +68,8 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
-
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_kelas')}}">Kelas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
           </ul>
         </div>
       </li>

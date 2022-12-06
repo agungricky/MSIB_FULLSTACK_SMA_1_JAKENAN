@@ -29,6 +29,42 @@ class guruController extends Controller
         // return view('guru.index', compact('ar_guru'));
     }
 
+    public function apiGuru()
+    {
+        $guru = Guru::all();
+        return response()->json(
+            [
+                'success' => true,
+                'massage' => 'Data Guru',
+                'data' => $guru,
+            ],
+            200
+        );
+    }
+
+    public function apiGuruDetail($id)
+    {
+        $guru = Guru::find($id);
+        if ($guru) {
+            return response()->json(
+                [
+                    'success' => true,
+                    'massage' => 'Detail Guru',
+                    'data' => $guru,
+                ],
+                200
+            );
+        } else {
+            return response()->json(
+                [
+                    'success' => false,
+                    'massage' => 'Detail Guru Tidak di Temukan',
+                ],
+                404
+            );
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +123,7 @@ class guruController extends Controller
     public function show($id)
     {
         $row = Guru::find($id);
-        return view('guru.ditail_guru', compact('row'));
+        return view('guru.ditail_guru1', compact('row'));
     }
 
     /**

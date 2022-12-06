@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BizLand Bootstrap Template - Index</title>
+  <title>SMAN 1 Jakenan</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -26,6 +26,11 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/css/style_landingpage.css')}}" rel="stylesheet">
+
+
+  {{-- pgenation --}}
+  {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> --}}
 </head>
 
 <body>
