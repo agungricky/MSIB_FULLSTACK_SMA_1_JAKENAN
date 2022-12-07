@@ -199,4 +199,19 @@ class guruController extends Controller
     {
         return Excel::download(new guruExport, 'daftar_guru.xlsx');
     }
+
+    // public function search(Request $request)
+    // {
+    //     if ($request->has('search')) {
+    //         // $guru = Guru::where('nama', 'LIKE', '%' . $request->search . '%')->get();
+    //         $guru = DB::table('guru')
+    //             ->select('*')->where('nama')->get();
+    //         // return view('siswa.index', compact('siswa'));
+    //     } else {
+    //         $guru = Guru::all();
+    //     }
+
+    //     // return view('guru.index', ['guru' => $nama_guru]);
+    //     return view('guru.index', compact('guru'));
+    // }
 }

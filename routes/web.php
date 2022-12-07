@@ -8,6 +8,7 @@ use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\eventController;
 use App\Http\Controllers\nilaiController;
 use App\Http\Controllers\sppController;
 use App\Http\Controllers\userController;
@@ -126,6 +127,7 @@ Route::get('/form_kelas', function () {
 Route::resource('siswa', siswaController::class);
 
 Route::resource('guru', guruController::class);
+// Route::get('/guru/search', [guruController::class, 'search']);
 
 Route::resource('/nilai', nilaiController::class);
 
@@ -143,6 +145,8 @@ Route::get('guru-pdf', [guruController::class, 'guruPDF']);
 Route::get('exportguru', [guruController::class, 'guruExcel']);
 
 Route::resource('kelas', kelasController::class);
+
+Route::resource('event', eventController::class);
 
 Auth::routes();
 
