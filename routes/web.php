@@ -35,10 +35,6 @@ Route::get('/', function () {
     return view('landingpage.home');
 });
 
-Route::get('/home', function () {
-    return view('landingpage.home');
-});
-
 Route::get('/about', function () {
     return view('landingpage.about');
 });
@@ -127,7 +123,7 @@ Route::get('/form_kelas', function () {
 Route::resource('siswa', siswaController::class);
 
 Route::resource('guru', guruController::class);
-// Route::get('/guru/search', [guruController::class, 'search']);
+Route::get('/search', [guruController::class, 'search'])->name('search');
 
 Route::resource('/nilai', nilaiController::class);
 

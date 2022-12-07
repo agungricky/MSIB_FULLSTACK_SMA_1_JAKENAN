@@ -22,14 +22,13 @@
                             <a href="{{url('/guru-pdf') }}"><button type="button" class="btn btn-danger btn-sm"> <i class="fa-solid fa-file-pdf"></i> Pdf </button></a> &nbsp;
                             <a href="{{url('/exportguru') }}"><button type="button" class="btn btn-success btn-sm"><i class="fa-sharp fa-solid fa-file-excel"></i> Excel </button></a> &nbsp;
                             
-                            
-                            <div class="input-group input-group-sm ml-auto col-4">
-                            {{-- <form action="/guru/search" method="GET"> --}}
+                            <form action="{{ route('search') }}" method="GET" class="ml-auto col-4">
+                            <div class="input-group input-group-sm">
                                 <input type="search" name="search" class="form-control" placeholder="Cari" aria-label='Recipients username' aria-describedby="button-addon2">
-                                <button class="btn btn-primary" type="button" id="button-addon2">Button</button>
-                            {{-- </form> --}}
-
+                                <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
                               </div>
+                            </form>
+                            
                             
                               
                               
