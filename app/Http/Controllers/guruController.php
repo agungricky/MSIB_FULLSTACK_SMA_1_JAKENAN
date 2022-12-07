@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Guru;
+use File;
 use PDF;
 use App\Exports\guruExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 // use App\Models\Staff
 
 class guruController extends Controller
@@ -85,6 +87,19 @@ class guruController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $validateDate = $request->validate([
+        //     'nip' => 'required|max:11',
+        //     'nama' => 'required',
+        //     'alamat' => 'required',
+        //     'tgl_lahir' => 'required',
+        //     'geder' => 'required',
+        //     'tempat_lahir' => 'required',
+        //     'no_telp' => 'required',
+        //     'email' => 'required',
+        //     'agama' => 'required',
+        //     'foto' => 'image|file'
+        // ]);
         // ============================= Fergi : Upload foto =========================
         if (!empty($request->file('foto'))) {
             $nameFoto = 'guru-' . $request->nip . '.' . $request->file('foto')->extension();
@@ -148,6 +163,52 @@ class guruController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $rules = [
+            'nip' => 'required|unique:guru|max:11',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'tgl_lahir' => 'required',
+            'geder' => 'required',
+            'tempat_lahir' => 'required',
+            'no_telp' => 'required',
+            'email' => 'required',
+            'agama' => 'required',
+            'foto' => 'image|file'
+        ];
+
+        // $validateData = $request->validate($rules);
+
+        // if (!empty($request->file('foto'))) {
+        //     $nameFoto = 'guru-' . $request->nip . '.' . $request->file('foto')->extension();
+        //     //$nameFoto = $request->foto->getClientOriginalName();
+        //     $request->file('foto')->move(public_path('admin/images/guru'), $nameFoto);
+        // } else {
+        //     $nameFoto = '';
+        // }
+
+        // $guru = Guru::where('id', $id)->get();
+        if ($request->file('foto')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $nameFoto = 'guru-' . $request->nip . '.' . $request->file('foto')->extension();
+            //$nameFoto = $request->foto->getClientOriginalName();
+            $request->file('foto')->move(public_path('admin/images/guru'), $nameFoto);
+            $validateData['foto'] = $request->file('foto')->store('urlfoto');
+        }
+
+        // $validateData = ['id'] = auth()->guru()->id;
+
+        // $guru = Guru::where('id', $id)->get();
+        // if ($request->foto) {
+        //     Storage::delete($guru->foto);
+        //     $foto = $request->file('foto')->store("urlfoto");
+        // } else {
+        //     $foto = $guru->foto;
+        // }
+        // $guru->nip = $request->input('nip');
+        // $guru->foto = $foto;
+        // $guru->save();
         // ============================= Ricky Update =========================
         DB::table('guru')->where('id', '=', $id)->update(
             [
@@ -160,7 +221,7 @@ class guruController extends Controller
                 'no_telp' => $request->no_telp,
                 'email' => $request->email,
                 'agama' => $request->agama,
-                'foto' => $request->foto,
+                'foto' => $request->foto
             ]
         );
         return redirect('/guru');
@@ -172,6 +233,19 @@ class guruController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //  Belum terpakai
+    public function deleteImg($id)
+    {
+        // hapus file
+        $foto = Guru::where('id', $id)->first();
+        File::delete('admin/images/guru/' . $foto->file);
+
+        // hapus data
+        guru::where('id', $id)->delete('foto');
+        return redirect()->back();
+    }
+
     public function destroy($id)
     {
         $row = Guru::find($id);
@@ -187,7 +261,6 @@ class guruController extends Controller
             'date' => date('m/d/Y'),
             // 'users' => $users
         ];
-
 
         $ar_guru = DB::table('guru')->select('guru.*')->get();
 

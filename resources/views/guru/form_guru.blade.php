@@ -75,7 +75,11 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="file" class="form-control" name="foto" id="" placeholder="Foto">                              
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
                         </div> 
 
                         <div class="my-3">
@@ -93,4 +97,20 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
 </div>
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
+<script>
+    function previewImage(){
+        const image = document.querySelector('#image')
+        const imgPreview = document.querySelector('.img-preview')
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent){
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
 @endsection
+
