@@ -29,25 +29,25 @@
                                     <tr>
                                         <th class="font-weight-bold">No</th>
                                         <th class="font-weight-bold">Perihal</th>
-                                        <th class="font-weight-bold">Hari</th>
-                                        <th class="font-weight-bold">Tanggak</th>
-                                        <th class="font-weight-bold">Jam</th>
-                                        <th class=" font-weight-bold">Keterangan</th>
-                                        <th class=" font-weight-bold">Upload</th>
+                                        <th class="font-weight-bold">Guru</th>
+                                        <th class="font-weight-bold">Tugas</th>
+                                        <th class="font-weight-bold">Siswa</th>
+                                        <th class=" font-weight-bold">Nilai</th>
+                                        {{-- <th class=" font-weight-bold">Upload</th> --}}
                                         <th class=" font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($tugas as $row)
+                                    @foreach ($nilai as $row)
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $row->perihal }}</td>
-                                            <td>{{ $row->hari }}</td>
-                                            <td>{{ $row->tanggal }}</td>
-                                            <td>{{ $row->jam }}</td>
-                                            <td>{{ $row->keterangan }}</td>
-                                            <td>{{ $row->upload }}</td>
+                                            <td>{{ $row->guru }}</td>
+                                            <td>{{ $row->tugas }}</td>
+                                            <td>{{ $row->siswa }}</td>
+                                            <td>{{ $row->nilai }}</td>
+                                            {{-- <td>{{ $row->upload }}</td> --}}
                                             <td>
                                                 <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                     @csrf

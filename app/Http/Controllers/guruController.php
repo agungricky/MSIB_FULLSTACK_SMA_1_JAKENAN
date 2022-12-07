@@ -123,7 +123,7 @@ class guruController extends Controller
     public function show($id)
     {
         $row = Guru::find($id);
-        return view('guru.ditail_guru1', compact('row'));
+        return view('guru.ditail_guru', compact('row'));
     }
 
     /**

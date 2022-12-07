@@ -8,6 +8,9 @@ use App\Http\Controllers\jadwalController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\nilaiController;
+use App\Http\Controllers\sppController;
+use App\Http\Controllers\userController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -118,15 +121,21 @@ Route::get('/form_kelas', function () {
 });
 
 
-Route::resource('staff', StaffController::class);
+// Route::resource('staff', StaffController::class);
 
 Route::resource('siswa', siswaController::class);
 
 Route::resource('guru', guruController::class);
 
+Route::resource('/nilai', nilaiController::class);
+
+Route::resource('/user', userController::class);
+
 Route::resource('tugas', tugasController::class);
 
 Route::resource('jadwal', jadwalController::class);
+
+Route::resource('spp', sppController::class);
 
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);
@@ -139,9 +148,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/user', function () {
-    return view('Layout.user');
-});
+// Route::get('/user', function () {
+//     return view('Layout.user');
+// });
 
 Route::get('/api-guru', [guruController::class, 'apiGuru']);
 Route::get('/api-guru/{id}', [guruController::class, 'apiGuruDetail']);

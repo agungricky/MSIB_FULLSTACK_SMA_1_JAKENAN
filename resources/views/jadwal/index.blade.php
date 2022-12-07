@@ -30,8 +30,9 @@
                                         <th class="font-weight-bold">No</th>
                                         <th class="font-weight-bold">Hari</th>
                                         <th class="font-weight-bold">Jam</th>
-                                        <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Mapel</th>
+                                        <th class="font-weight-bold">Guru</th>
+                                        <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
@@ -40,10 +41,11 @@
                                     @foreach ($jadwal as $row)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $row->hari}}</td>
-                                            <td>{{ $row->jam}}</td>
+                                            <td>{{ $row->Hari}}</td>
+                                            <td>{{ $row->Jam}}</td>
+                                            <td>{{ $row->Mapel}}</td>
+                                            <td>{{ $row->guru}}</td>
                                             <td>{{ $row->kelas}}</td>
-                                            <td>{{ $row->mapel}}</td>
                                             <td>
                                                 <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">
                                                     @csrf

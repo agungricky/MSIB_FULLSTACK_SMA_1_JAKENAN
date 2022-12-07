@@ -37,6 +37,7 @@
                                         <th class="font-weight-bold">Agama</th>
                                         <th class="font-weight-bold">Alamat</th>
                                         <th class="font-weight-bold">Status Siswa</th>
+                                        <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Foto</th>
                                         <th class="font-weight-bold">Aksi</th>
                                     </tr>
@@ -54,6 +55,7 @@
                                         <td>{{ $row->agama }}</td>
                                         <td>{{ $row->alamat }}</td>
                                         <td>{{ $row->status_siswa }}</td>
+                                        <td>{{ $row->kelas }}</td>
                                         <td>{{ $row->foto }}</td>
                                         <td>
                                             <form method="POST" action="{{ route('siswa.destroy',$row->id) }}">

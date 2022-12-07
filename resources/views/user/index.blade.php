@@ -28,26 +28,22 @@
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold">No</th>
-                                        <th class="font-weight-bold">Perihal</th>
-                                        <th class="font-weight-bold">Hari</th>
-                                        <th class="font-weight-bold">Tanggak</th>
-                                        <th class="font-weight-bold">Jam</th>
-                                        <th class=" font-weight-bold">Keterangan</th>
-                                        <th class=" font-weight-bold">Upload</th>
+                                        <th class="font-weight-bold">Nama</th>
+                                        <th class="font-weight-bold">Email</th>
+                                        <th class="font-weight-bold">Password</th>
+                                        <th class="font-weight-bold">Role</th>
                                         <th class=" font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($tugas as $row)
+                                    @foreach ($user as $row)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $row->perihal }}</td>
-                                            <td>{{ $row->hari }}</td>
-                                            <td>{{ $row->tanggal }}</td>
-                                            <td>{{ $row->jam }}</td>
-                                            <td>{{ $row->keterangan }}</td>
-                                            <td>{{ $row->upload }}</td>
+                                            <td>{{ $row->name }}</td>
+                                            <td>{{ $row->email }}</td>
+                                            <td>{{ $row->password }}</td>
+                                            <td>{{ $row->role }}</td>
                                             <td>
                                                 <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                     @csrf

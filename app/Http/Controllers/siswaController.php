@@ -16,7 +16,9 @@ class siswaController extends Controller
     public function index()
     {
         // menampilkan seluruh data siswa
-        $siswa = Siswa::all();
+        $siswa = DB::table('siswa')
+            ->join('kelas', 'kelas.id', '=', 'siswa.id')
+            ->select('siswa.*', 'kelas.kelas')->get();
         return view('siswa.index', compact('siswa'));
     }
 
