@@ -160,3 +160,4 @@ Route::get('/api-guru', [guruController::class, 'apiGuru']);
 Route::get('/api-guru/{id}', [guruController::class, 'apiGuruDetail']);
 
 Route::get('/api-kelas', [kelasController::class, 'apiKelas']);
+Route::get('/admin/image/guru', [guruController::class . 'deleteImg']);
