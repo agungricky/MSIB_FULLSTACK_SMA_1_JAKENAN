@@ -21,18 +21,23 @@
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
                             <h4 class="card-title mb-sm-0">Tabel Tugas</h4>
-                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                            <form action="{{ route('search_tugas') }}" method="GET" class="ml-auto col-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Perihal Tugas" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold">No</th>
-                                        <th class="font-weight-bold">Jam</th>
+                                        <th class="font-weight-bold">Perihal</th>
                                         <th class="font-weight-bold">Hari</th>
-                                        <th class="font-weight-bold">Tanggal</th>
-                                        <th class="font-weight-bold">Keterangan</th>
-                                        <th class=" font-weight-bold">Perihal</th>
+                                        <th class="font-weight-bold">Tanggak</th>
+                                        <th class="font-weight-bold">Jam</th>
+                                        <th class=" font-weight-bold">Keterangan</th>
                                         <th class=" font-weight-bold">Upload</th>
                                         <th class=" font-weight-bold">Aksi</th>
                                     </tr>
@@ -42,11 +47,11 @@
                                     @foreach ($tugas as $row)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $row->jam }}</td>
+                                            <td>{{ $row->perihal }}</td>
                                             <td>{{ $row->hari }}</td>
                                             <td>{{ $row->tanggal }}</td>
+                                            <td>{{ $row->jam }}</td>
                                             <td>{{ $row->keterangan }}</td>
-                                            <td>{{ $row->perihal }}</td>
                                             <td>{{ $row->upload }}</td>
                                             <td>
                                                 <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
