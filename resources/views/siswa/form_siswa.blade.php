@@ -7,6 +7,7 @@ $ar_agama = ['Islam','Hindu','Khatolik','Budha','Kristen','Lainya'];
 $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
 @endphp
 
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -53,6 +54,7 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
 
                                             <form method="POST" action="{{route('siswa.store')}}">
                                                 @csrf
+                                                
                                                 <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label">NIS</label>
                                                     <div class="col-sm-10">
@@ -117,9 +119,19 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                                 </div>
 
                                                 <div class="row mb-3">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">Kelas</label>
+                                                    <select class="form-select" name="kelas_id" required>
+                                                        <option selected>-- Pilih Kelas --</option>
+                                                        @foreach($kelas as $k)
+                                                        <option value="{{ $k->id }}">{{ $k->kelas }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label">status siswa</label>
                                                     <div class="col-sm-10">
-                                                        <select class="form-select" name="status_siswa">
+                                                        <select class="form-select" name="status_siswa" required>
                                                             <option selected>-- Pilih status --</option>
                                                             @foreach($ar_status as $status)
                                                             <option value="{{ $status }}">{{ $status }}</option>

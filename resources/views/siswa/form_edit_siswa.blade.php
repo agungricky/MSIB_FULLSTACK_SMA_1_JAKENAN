@@ -1,11 +1,7 @@
 @extends('admin.index')
 @section('content')
 {{-- Novia --}}
-@php
-$ar_gender = ['L','P'];
-$ar_agama = ['Islam','Hindu','Khatolik','Budha','Kristen','Lainya'];
-$ar_status = ['Lulus','Aktif','Pindah','Keluar'];
-@endphp
+
 
 <div class="main-panel">
     <div class="content-wrapper">
@@ -55,6 +51,7 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                 value="{{ $rs->nama_siswa }}" required>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <input type="text" class="form-control" name="tempat_lahir" id="" 
                             value="{{ $rs->tempat_lahir }}" required>
@@ -106,13 +103,17 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                 @endforeach
                             </select>
                         </div>
-                        <div class="row mb-3">
-                            <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="file" name="foto" 
-                                value="{{$rs->foto }}">
-                            </div>
-                        </div>
+                        <div class="row">
+                            <input type="hidden" name="oldImage" value="{{$rs->foto}}">
+                            @if($rs->foto)
+                            <img src="{{asset('admin/images/siswa/'.$rs->foto)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" >
+                            @else
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                            @endif
+                        </div> 
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
+                        </div> 
 
                         <div class="my-3">
                             <div class="loading">Loading</div>
