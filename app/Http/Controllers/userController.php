@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -58,7 +61,9 @@ class userController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = ['administrator', 'staff', 'guru', 'siswa'];
+        $data = DB::table('users')->where('id', '=', $id)->get();
+        return view('user.user_edit', compact('data', 'role'));
     }
 
     /**
@@ -70,7 +75,24 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'Required',
+            'email' => 'Required',
+            'role' => 'Required',
+            'password' => 'Required'
+        ]);
+
+        DB::table('users')->where('id', '=', $id)->dd();
+
+        // DB::table('users')->where('id', '=', $id)->update(
+        //     [
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'role' => $request->role,
+        //         'password' => Hash::make($request['password'])
+        //     ]
+        // );
+        // return redirect('/user');
     }
 
     /**

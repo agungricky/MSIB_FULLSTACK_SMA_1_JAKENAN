@@ -73,7 +73,7 @@ class siswaController extends Controller
         if (!empty($request->file('foto'))) {
             $nameFoto = $request->nama_siswa . '-' . $request->nip . '.' . $request->file('foto')->extension();
             //$nameFoto = $request->foto->getClientOriginalName();
-            $request->file('foto')->move(public_path('admin/images/siswa/'), $nameFoto);
+            $request->file('foto')->move(public_path('admin/images/siswa'), $nameFoto);
         } else {
             $nameFoto = '';
         }
