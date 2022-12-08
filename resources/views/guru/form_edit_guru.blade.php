@@ -109,7 +109,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
 
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
-<script>
+{{-- <script>
     function previewImage(){
         const image = document.querySelector('#image')
         const imgPreview = document.querySelector('.img-preview')
@@ -123,7 +123,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
             imgPreview.src = oFREvent.target.result;
         }
     }
-</script>
+</script> --}}
 
 
 @endsection

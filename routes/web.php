@@ -82,9 +82,13 @@ Route::get('/laporan_akademik', function () {
 Route::get('/form_siswa', function () {
     return view('siswa.form_siswa');
 });
+Route::get('/form_siswa', [App\Http\Controllers\siswaController::class, 'create']);
+
 Route::get('/form_guru', function () {
     return view('guru.form_guru');
 });
+
+// Route::get('/form_siswa', 'siswaController::class');
 
 // Route::get('/siswa', function () {
 //     return view('admin.siswa');
