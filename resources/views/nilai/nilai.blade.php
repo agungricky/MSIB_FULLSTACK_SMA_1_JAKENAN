@@ -4,9 +4,9 @@
     <div class="content-wrapper">
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
-                <div class="card card-secondary">
-                    <span class="card-body d-lg-flex align-items-center motivasi">
-                        <p class="mb-lg-0">Semangat dan Tekunlah Menimba Ilmu demi Masedepanmu yang Cemerlang</p>
+                <div class="card card-secondary motivasi">
+                    <span class="card-body d-lg-flex align-items-center">
+                        <p class="mb-lg-0">"Belajar memang kadang membosankan tapi demi menggapai impianmu dan masa depan yang cerah, bersemangatlah dalam mencari ilmu." </p>
                         <button class="close popup-dismiss ml-2">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -15,49 +15,51 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Nilai</h4>
-                            <form action="{{ route('search_nilai') }}" method="GET" class="ml-auto col-4">
-                                <div class="input-group input-group-sm">
-                                    <input type="search" name="search" class="form-control" placeholder="Cari Nama Siswa" aria-label='Recipients username' aria-describedby="button-addon2">
-                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
-                                </div>
-                            </form>
+                            <h4 class="card-title mb-sm-0">Tabel nilai</h4>
+                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold">No</th>
+                                        <th class="font-weight-bold">Nilai</th>
                                         <th class="font-weight-bold">Perihal</th>
                                         <th class="font-weight-bold">Guru</th>
-                                        <th class="font-weight-bold">Tugas</th>
-                                        <th class="font-weight-bold">Siswa</th>
-                                        <th class=" font-weight-bold">Nilai</th>
-                                        <!-- {{-- <th class=" font-weight-bold">Upload</th> --}} -->
-                                        <th class=" font-weight-bold">Aksi</th>
+                                        <th class=" font-weight-bold">tugas</th>
+                                        <th class=" font-weight-bold">siswa</th>
+                                        <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php $no = 1; @endphp
+                                    @php
+                                    $no=1;
+                                    @endphp
                                     @foreach ($nilai as $row)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $row->perihal }}</td>
-                                        <td>{{ $row->guru }}</td>
-                                        <td>{{ $row->tugas }}</td>
-                                        <td>{{ $row->siswa }}</td>
                                         <td>{{ $row->nilai }}</td>
-                                        <!-- {{-- <td>{{ $row->upload }}</td> --}} -->
+                                        <td>{{ $row->perihal }}</td>
+                                        <td>{{ $row->guru_id }}</td>
+                                        <td>{{ $row->tugas_id }}</td>
+                                        <td>{{ $row->siswa_id }}</td>
                                         <td>
-                                            <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
+                                            <form method="POST" action="{{ route('nilai.destroy',$row->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn btn-warning btn-sm" title="Ubah Pegawai" href=" {{ route('tugas.edit',$row->id) }}">
+
+                                                {{-- ================ novia nilai Tidak Butuh Detail ==================== --}}
+                                                {{-- <a href="{{ route('nilai.show', $row->id) }}" class="btn btn-info btn-sm">
+                                                <i class="fa-solid fa-eye"></i>
+                                                </a> --}}
+                                                &nbsp;
+                                                <a class="btn btn-warning btn-sm" title="Ubah siswa" href=" {{ route('nilai.edit',$row->id) }}">
                                                     <i class="fa-solid fa-pencil"></i>
                                                 </a>
                                                 &nbsp;
@@ -98,5 +100,7 @@
         </div>
     </footer>
     <!-- partial -->
+</div>
+</div>
 </div>
 @endsection
