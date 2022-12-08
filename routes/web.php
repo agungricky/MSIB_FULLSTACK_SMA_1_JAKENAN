@@ -5,6 +5,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\jadwalController;
+use App\Http\Controllers\SppController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
@@ -99,9 +100,19 @@ Route::get('/form_tugas', function () {
 Route::get('/form_jadwal', function () {
     return view('jadwal.form_jadwal');
 });
-// Route::get('/kalender', function () {
-//     return view('admin.kalender');
-// });
+
+Route::get('/jadwal', function () {
+    return view('jadwal.index');
+});
+
+Route::get('/spp', function () {
+     return view('spp.index');
+});
+
+
+Route::get('/form_spp', function () {
+    return view('spp.form_spp');
+});
 
 // Route::get('/mapel', function () {
 //     return view('mapel.mapel');
@@ -127,6 +138,8 @@ Route::resource('guru', guruController::class);
 Route::resource('tugas', tugasController::class);
 
 Route::resource('jadwal', jadwalController::class);
+
+Route::resource('spp', SppController::class);
 
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);

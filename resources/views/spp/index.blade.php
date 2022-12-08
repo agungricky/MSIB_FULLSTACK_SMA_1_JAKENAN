@@ -20,48 +20,46 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Jadwal</h4>
-                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                            <h4 class="card-title mb-sm-0">Tabel SPP</h4>
+                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View All</a>
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold">No</th>
-                                        <th class="font-weight-bold">Hari</th>
-                                        <th class="font-weight-bold">Jam</th>
-                                        <th class="font-weight-bold">Kelas</th>
-                                        <th class="font-weight-bold">Mapel</th>
+                                        <th class="font-weight-bold">Tanggal</th>
+                                        <th class="font-weight-bold">Total</th>
+                                        <th class="font-weight-bold">Kurang</th>
+                                        <th class="font-weight-bold">Siswa</th>
                                         <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($jadwal as $row)
-                                        <tr>
-                                            <td>{{ $no++ }}</td>
-                                            <td>{{ $row->Hari}}</td>
-                                            <td>{{ $row->Jam}}</td>
-                                            <td>{{ $row->kelas_id}}</td>
-                                            <td>{{ $row->Mapel}}</td>
-                                            <td>
-                                                <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                
-                                                    &nbsp;
-                                                    <a class="btn btn-warning btn-sm" title="Ubah Jadwal"
-                                                        href=" {{ route('jadwal.edit',$row->id) }}">
-                                                        <i class="fa-solid fa-pencil"></i>
-                                                    </a>
-                                                    &nbsp;
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jadwal"
-                                                        onclick="return confirm('Anda Yakin Data akan diHapus?')">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                    @foreach ($spp as $row)
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $row->tanggal}}</td>
+                                        <td>{{ $row->total}}</td>
+                                        <td>{{ $row->kurang}}</td>
+                                        <td>{{ $row->siswa_id}}</td>
+                                        <td>
+                                            <form method="POST" action="{{ route('spp.destroy',$row->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                &nbsp;
+                                                <a class="btn btn-warning btn-sm" title="Ubah spp" href=" {{ route('spp.edit',$row->id) }}">
+                                                    <i class="fa-solid fa-pencil"></i>
+                                                </a>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus spp" onclick="return confirm('Anda Yakin Data akan diHapus?')">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>

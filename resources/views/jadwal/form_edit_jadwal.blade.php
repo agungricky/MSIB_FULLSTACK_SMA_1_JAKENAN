@@ -39,7 +39,7 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
         
                             <div class="form-group two-div">
                                 <label for=""> Kelas : &nbsp </label>
-                                <input name="kodeKelas" type="text" placeholder="Kode Kelas" class="form-control" value="{{$row->Kelas}}"> 
+                                <input name="kodeKelas" type="text" placeholder="Kode Kelas" class="form-control" value="{{$row->kelas_id}}"> 
                             </div>
                         </div>
     

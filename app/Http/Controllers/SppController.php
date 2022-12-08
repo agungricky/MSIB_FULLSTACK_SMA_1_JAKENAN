@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jadwal;
+use App\Models\Spp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class jadwalController extends Controller
+class SppController extends Controller
 {
-    /**
+    //
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $jadwal = Jadwal::all();
-        return view('jadwal.index', compact('jadwal'));
+        $spp = Spp::all();
+        return view('spp.index', compact('spp'));
     }
 
     /**
@@ -26,8 +27,8 @@ class jadwalController extends Controller
      */
     public function create()
     {
-        $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
-        return view('jadwal.form_jadwal', compact('arr_hari'));
+        
+        return view('spp.form_spp');
     }
 
     /**
@@ -39,26 +40,17 @@ class jadwalController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate(
-        //     [
-        //         'Hari' => 'required',
-        //         'Jam' => 'required',
-        //         'Kelas' => 'required',
-        //         'Mapel' => 'required'
-        //     ]
-        // );
 
-        DB::table('jadwal')->insert(
+        DB::table('spp')->insert(
             [
-                'Hari' => $request->hari,
-                'Jam' => $request->jam,
-                'kelas_id' => $request->kodeKelas,
-                'Mapel' => $request->mapel,
-                'guru_id' => $request -> guru
+                'tanggal' => $request->tanggal,
+                'total' => $request->total,
+                'kurang' => $request->kurang,
+                'siswa_id' => $request ->siswa
             ]
         );
-        return redirect()->route('jadwal.store')
-            ->with('success', 'Data Jadwal Baru Berhasil Disimpan');
+        return redirect()->route('spp.store')
+            ->with('success', 'Data Spp Baru Berhasil Disimpan');
     }
 
     /**
@@ -70,7 +62,6 @@ class jadwalController extends Controller
     public function show($id)
     {
         //
-
     }
 
     /**
@@ -81,8 +72,8 @@ class jadwalController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('jadwal')->where('id', '=', $id)->get();
-        return view('jadwal.form_edit_jadwal', compact('data'));
+        $data = DB::table('spp')->where('id', '=', $id)->get();
+        return view('spp.form_edit_spp', compact('data'));
     }
 
     /**
@@ -94,16 +85,16 @@ class jadwalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        DB::table('jadwal')->where('id', '=', $id)->update(
+        DB::table('spp')->where('id', '=', $id)->update(
             [
-                'Hari' => $request->hari,
-                'Jam' => $request->jam,
-                'kelas_id' => $request->kodeKelas,
-                'Mapel' => $request->mapel,
+                'tanggal' => $request->tanggal,
+                'total' => $request->total,
+                'kurang' => $request->kurang,
+                'siswa_id' => $request ->siswa
             ]
 
         );
-        return redirect('/jadwal');
+        return redirect('/spp');
     }
 
     /**
@@ -114,9 +105,9 @@ class jadwalController extends Controller
      */
     public function destroy($id)
     {
-        $row = Jadwal::find($id);
-        Jadwal::where('id', $id)->delete();
-        return redirect()->route('jadwal.index')
+        $row = Spp::find($id);
+        Spp::where('id', $id)->delete();
+        return redirect()->route('spp.index')
             ->with('success', 'Data Siswa Berhasil Dihapus');
     }
 }
