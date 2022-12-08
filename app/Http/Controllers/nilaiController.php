@@ -87,4 +87,15 @@ class nilaiController extends Controller
     {
         //
     }
+
+    public function search_nilai(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $nilai = DB::table('nilai')
+            ->join('guru', 'guru.id', '=', 'nilai.id')
+            ->join('tugas', 'tugas.id', '=', 'nilai.id')
+            ->join('siswa', 'siswa.id', '=', 'nilai.id')
+            ->select('nilai.*', 'guru.nama AS guru', 'tugas.perihal AS tugas', 'siswa.nama_siswa AS siswa')->where('siswa.nama_siswa', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('nilai.index', compact('nilai'))->with('i', (request()->input('page', 1) - 1) * 25);
+    }
 }

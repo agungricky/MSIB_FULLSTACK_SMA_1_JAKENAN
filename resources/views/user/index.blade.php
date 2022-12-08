@@ -2,26 +2,19 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper">
-        <div class="row purchace-popup">
-            <div class="col-12 stretch-card grid-margin">
-                <div class="card card-secondary">
-                    <span class="card-body d-lg-flex align-items-center motivasi">
-                        <p class="mb-lg-0">Semangat dan Tekunlah Menimba Ilmu demi Masedepanmu yang Cemerlang</p>
-                        <button class="close popup-dismiss ml-2">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Tugas</h4>
-                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                            <h4 class="card-title mb-sm-0">Tabel User</h4>
+                            <form action="{{ route('search_user') }}" method="GET" class="ml-auto col-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Nama user" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                </div>
+                            </form>
+    
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
@@ -48,10 +41,6 @@
                                                 <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('tugas.show', $row->id) }}" class="btn btn-info btn-sm">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </a>
-                                                    &nbsp;
                                                     <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
                                                         href=" {{ route('tugas.edit',$row->id) }}">
                                                         <i class="fa-solid fa-pencil"></i>

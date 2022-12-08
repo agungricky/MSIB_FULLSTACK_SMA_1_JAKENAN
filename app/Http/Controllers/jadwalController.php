@@ -120,4 +120,15 @@ class jadwalController extends Controller
         return redirect()->route('tugas.index')
             ->with('success', 'Data Siswa Berhasil Dihapus');
     }
+
+    public function search_jadwal(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $jadwal = DB::table('jadwal')
+            ->join('guru', 'guru.id', '=', 'jadwal.id')
+            ->join('kelas', 'kelas.id', '=', 'jadwal.id')
+            ->select('jadwal.*', 'guru.nama AS guru', 'kelas.kelas AS kelas')->where('Mapel', 'like', "%" . $keyword . "%")->paginate(25);;
+
+        return view('jadwal.index', compact('jadwal'))->with('i', (request()->input('page', 1) - 1) * 25);
+    }
 }

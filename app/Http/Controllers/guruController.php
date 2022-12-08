@@ -274,9 +274,9 @@ class guruController extends Controller
     }
 
     public function search(Request $request)
-    {
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
         $keyword = $request->search;
-        $guru = Guru::where('nama', 'like', "%" . $keyword . "%")->paginate(5);
-        return view('guru.index', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $guru = Guru::where('nama', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('guru.index', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 25);
     }
 }

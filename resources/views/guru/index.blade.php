@@ -24,13 +24,10 @@
                             
                             <form action="{{ route('search') }}" method="GET" class="ml-auto col-4">
                             <div class="input-group input-group-sm">
-                                <input type="search" name="search" class="form-control" placeholder="Cari" aria-label='Recipients username' aria-describedby="button-addon2">
+                                <input type="search" name="search" class="form-control" placeholder="Cari Nama Guru" aria-label='Recipients username' aria-describedby="button-addon2">
                                 <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
                               </div>
                             </form>
-                            
-                            
-                              
                               
                         </div>
                         <div class="table-responsive border rounded p-1">

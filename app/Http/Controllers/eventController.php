@@ -83,4 +83,11 @@ class eventController extends Controller
     {
         //
     }
+
+    public function search_event(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $event = DB::table('event')->select('*')->where('nama', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('event.index', compact('event'))->with('i', (request()->input('page', 1) - 1) * 25);
+    }
 }

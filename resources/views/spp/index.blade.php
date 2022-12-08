@@ -7,8 +7,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Siswa</h4>
-                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                            <h4 class="card-title mb-sm-0">Tabel Spp</h4>
+                            <form action="{{ route('search_spp') }}" method="GET" class="ml-auto col-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Nama Siswa" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">

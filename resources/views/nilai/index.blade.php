@@ -20,8 +20,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Tugas</h4>
-                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                            <h4 class="card-title mb-sm-0">Tabel Nilai</h4>
+                            <form action="{{ route('search_nilai') }}" method="GET" class="ml-auto col-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Nama Siswa" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                  </div>
+                                </form>
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
@@ -52,10 +57,6 @@
                                                 <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('tugas.show', $row->id) }}" class="btn btn-info btn-sm">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </a>
-                                                    &nbsp;
                                                     <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
                                                         href=" {{ route('tugas.edit',$row->id) }}">
                                                         <i class="fa-solid fa-pencil"></i>

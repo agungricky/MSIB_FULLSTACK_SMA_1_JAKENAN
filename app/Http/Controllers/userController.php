@@ -83,4 +83,11 @@ class userController extends Controller
     {
         //
     }
+
+    public function search_user(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $user = DB::table('users')->select('*')->where('name', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('user.index', compact('user'))->with('i', (request()->input('page', 1) - 1) * 25);
+    }
 }

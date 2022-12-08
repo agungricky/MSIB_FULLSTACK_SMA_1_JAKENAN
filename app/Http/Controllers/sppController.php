@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Spp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -84,5 +85,14 @@ class sppController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search_spp(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $spp = DB::table('spp')
+            ->join('siswa', 'siswa.id', '=', 'spp.id')
+            ->select('spp.*', 'siswa.NIS', 'siswa.nama_siswa AS nama')->where('nama_siswa', 'like', "%" . $keyword . "%")->orderBy('tanggal', 'DESC')->paginate(25);
+        return view('spp.index', compact('spp'))->with('i', (request()->input('page', 1) - 1) * 25);
     }
 }
