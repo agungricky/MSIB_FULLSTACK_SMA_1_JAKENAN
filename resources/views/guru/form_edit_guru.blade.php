@@ -85,15 +85,15 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                                 </select>
                             </div>
                         </div>
-                        {{-- <div class="row">
+                        {{-- {{-- <div class="row">
                             <div class="col-4 form-group">
-                                <img src="{{asset('admin/images/guru/') }}/{{ $rs->foto }}" width="100%" />
+                                <img src="{{asset('admin/images/guru') }}/{{ $rs->foto }}" width="100%" />
                             </div>
                             <div class="col form-group">
                                 <input type="text" name="foto" class="form-control" id="" value="{{ $rs->foto }}">
                             </div>
                         </div> --}}
-
+                        
                         <div class="row">
                             <input type="hidden" name="oldImage" value="{{$rs->foto}}">
                             @if($rs->foto)
@@ -101,7 +101,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                             @else
                             <img class="img-preview img-fluid mb-3 col-sm-5">
                             @endif
-                        </div>
+                        </div> 
                         <div class="form-group">
                             <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
                         </div> 
@@ -117,12 +117,12 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
+
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
-
 <script>
     function previewImage(){
         const image = document.querySelector('#image')
@@ -138,9 +138,6 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
         }
     }
 </script>
+
+
 @endsection
-
-
-
-
-
