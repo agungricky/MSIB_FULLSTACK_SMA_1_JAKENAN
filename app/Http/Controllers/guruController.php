@@ -11,7 +11,7 @@ use App\Exports\guruExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-// use App\Models\Staff
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Search;
 
 class guruController extends Controller
 {
@@ -138,7 +138,7 @@ class guruController extends Controller
     public function show($id)
     {
         $row = Guru::find($id);
-        return view('guru.ditail_guru1', compact('row'));
+        return view('guru.ditail_guru', compact('row'));
     }
 
     /**
@@ -264,5 +264,12 @@ class guruController extends Controller
     public function guruExcel()
     {
         return Excel::download(new guruExport, 'daftar_guru.xlsx');
+    }
+
+    public function search(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $guru = Guru::where('nama', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('guru.index', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 25);
     }
 }

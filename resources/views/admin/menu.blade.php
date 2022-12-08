@@ -53,6 +53,11 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('siswa')}}">Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('jadwal')}}">Jadwal</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">Spp</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('event')}}">Event</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li>
+
           </ul>
         </div>
       </li>

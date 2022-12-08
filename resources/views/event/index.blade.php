@@ -20,52 +20,47 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Jadwal</h4>
-                            <form action="{{ route('search_jadwal') }}" method="GET" class="ml-auto col-4">
+                            <h4 class="card-title mb-sm-0">Tabel Event</h4>
+                            <form action="{{ route('search_event') }}" method="GET" class="ml-auto col-4">
                                 <div class="input-group input-group-sm">
-                                    <input type="search" name="search" class="form-control" placeholder="Cari MataPelajaran" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Nama Event" aria-label='Recipients username' aria-describedby="button-addon2">
                                     <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
                                 </div>
                             </form>
-
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold">No</th>
-                                        <th class="font-weight-bold">Hari</th>
-                                        <th class="font-weight-bold">Jam</th>
-                                        <th class="font-weight-bold">Mapel</th>
-                                        <th class="font-weight-bold">Guru</th>
-                                        <th class="font-weight-bold">Kelas</th>
-                                        <th class="font-weight-bold">Aksi</th>
+                                        <th class="font-weight-bold">Nama</th>
+                                        <th class="font-weight-bold">Tanggal Acara</th>
+                                        <th class="font-weight-bold">Deskripsi Acara</th>
+                                        <th class=" font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($jadwal as $row)
+                                    @foreach ($event as $row)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $row->Hari}}</td>
-                                            <td>{{ $row->Jam}}</td>
-                                            <td>{{ $row->Mapel}}</td>
-                                            <td>{{ $row->guru}}</td>
-                                            <td>{{ $row->kelas}}</td>
+                                            <td>{{ $row->nama }}</td>
+                                            <td>{{ $row->tgl }}</td>
+                                            <td>{{ $row->deskripsi }}</td>
                                             <td>
-                                                <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">
+                                                <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    {{-- <a href="{{ route('guru.show', $row->id) }}" class="btn btn-info btn-sm">
+                                                    <a href="{{ route('tugas.show', $row->id) }}" class="btn btn-info btn-sm">
                                                         <i class="fa-solid fa-eye"></i>
-                                                    </a> --}}
+                                                    </a>
                                                     &nbsp;
-                                                    <a class="btn btn-warning btn-sm" title="Ubah Jadwal"
-                                                        href=" {{ route('jadwal.edit',$row->id) }}">
+                                                    <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
+                                                        href=" {{ route('tugas.edit',$row->id) }}">
                                                         <i class="fa-solid fa-pencil"></i>
                                                     </a>
                                                     &nbsp;
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Jadwal"
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pegawai"
                                                         onclick="return confirm('Anda Yakin Data akan diHapus?')">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>

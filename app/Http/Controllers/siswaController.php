@@ -18,7 +18,9 @@ class siswaController extends Controller
     public function index()
     {
         // menampilkan seluruh data siswa
-        $siswa = Siswa::all();
+        $siswa = DB::table('siswa')
+            ->join('kelas', 'kelas.id', '=', 'siswa.id')
+            ->select('siswa.*', 'kelas.kelas')->get();
         return view('siswa.index', compact('siswa'));
     }
 
@@ -152,5 +154,14 @@ class siswaController extends Controller
         Siswa::where('id', $id)->delete();
         return redirect()->route('siswa.index')
             ->with('success', 'Data Siswa Berhasil Dihapus');
+    }
+
+    public function search_siswa(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $siswa = DB::table('siswa')
+            ->join('kelas', 'kelas.id', '=', 'siswa.id')
+            ->select('siswa.*', 'kelas.kelas')->where('nama_siswa', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('siswa.index', compact('siswa'))->with('i', (request()->input('page', 1) - 1) * 25);
     }
 }

@@ -2,82 +2,54 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper">
-        <div class="row purchace-popup">
-            <div class="col-12 stretch-card grid-margin">
-                <div class="card card-secondary">
-                    <span class="card-body d-lg-flex align-items-center motivasi">
-                        <p class="mb-lg-0">"Guru itu bukan buruh, guru adalah ujung tombak pendidikan bangsa. Hargai gurumu, jayalah generasi bangsamu." </p>
-                    </span>
-                </div>
-            </div>
-        </div>
-
-
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-sm-flex align-items-center mb-3">
-                            <h4 class="card-title mb-sm-0">Tabel Guru | &ensp;</h4>
-                            <a href="{{url('/guru-pdf') }}"><button type="button" class="btn btn-danger btn-sm"> <i class="fa-solid fa-file-pdf"></i> Pdf </button></a> &nbsp;
-                            <a href="{{url('/exportguru') }}"><button type="button" class="btn btn-success btn-sm"><i class="fa-sharp fa-solid fa-file-excel"></i> Excel </button></a> &nbsp;
-                            
-                            <form action="{{ route('search') }}" method="GET" class="ml-auto col-4">
-                            <div class="input-group input-group-sm">
-                                <input type="search" name="search" class="form-control" placeholder="Cari Nama Guru" aria-label='Recipients username' aria-describedby="button-addon2">
-                                <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
-                              </div>
+                        <div class="d-sm-flex align-items-center mb-4">
+                            <h4 class="card-title mb-sm-0">Tabel Spp</h4>
+                            <form action="{{ route('search_spp') }}" method="GET" class="ml-auto col-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Nama Siswa" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                </div>
                             </form>
-                              
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold">No</th>
-                                        <th class="font-weight-bold">NIP</th>
+                                        <th class="font-weight-bold">Nis</th>
                                         <th class="font-weight-bold">Nama</th>
-                                        <th class="font-weight-bold">Alamat</th>
-                                        <th class="font-weight-bold">Tanggal Lahir</th>
-                                        <th class="font-weight-bold">Gender</th>
-                                        <th class="font-weight-bold">Tempat Lahir</th>
-                                        <th class="font-weight-bold">No Telp</th>
-                                        <th class="font-weight-bold">Email</th>
-                                        <th class="font-weight-bold">Agama</th>
-                                        <th class="font-weight-bold">Foto</th>
+                                        <th class="font-weight-bold">Tanggal Bayar</th>
+                                        <th class=" font-weight-bold">Total</th>
+                                        <th class=" font-weight-bold">Kurang</th>
                                         <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php 
-                                    $no = 1; 
-                                    @endphp
-                                    @foreach ($guru as $row)
+                                    @php $no=1; @endphp
+                                    @foreach ($spp as $row)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $row->nip}}</td>
-                                        <td>{{ $row->nama }}</td>
-                                        <td>{{ $row->alamat }}</td>
-                                        <td>{{ $row->tgl_lahir }}</td>
-                                        <td>{{ $row->gender }}</td>
-                                        <td>{{ $row->tempat_lahir }}</td>
-                                        <td>{{ $row->no_telp}}</td>
-                                        <td>{{ $row->email }}</td>
-                                        <td>{{ $row->agama }}</td>
-                                        <!-- // ============================= Fergi : Menampilkan Foto Di Table Guru ========================= -->
+                                        <td>{{ $row->NIS }}</td>
+                                        <td>{{ $row->nama}}</td>
+                                        <td>{{ $row->tanggal }}</td>
+                                        <td>{{ $row->total }}</td>
+                                        <td>{{ $row->kurang }}</td>
                                         <td>
-                                            <img src="{{asset('admin/images/guru') }}/{{ $row->foto }}" width="30%" />
-                                        </td>
-                                        <td>
-                                            <form method="POST" action="{{ route('guru.destroy',$row->id) }}">
+                                            <form method="POST" action="{{ route('siswa.destroy',$row->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('guru.show', $row->id) }}" class="btn btn-info btn-sm">
+
+                                                {{-- ================ Ricky Siswa Tidak Butuh Detail ==================== --}}
+                                                {{-- <a href="{{ route('siswa.show', $row->id) }}" class="btn btn-info btn-sm">
                                                     <i class="fa-solid fa-eye"></i>
-                                                </a>
+                                                </a> --}}
                                                 &nbsp;
                                                 <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
-                                                    href=" {{ route('guru.edit',$row->id) }}">
+                                                    href=" {{ route('siswa.edit',$row->id) }}">
                                                     <i class="fa-solid fa-pencil"></i>
                                                 </a>
                                                 &nbsp;
@@ -87,7 +59,6 @@
                                                 </button>
                                             </form>
                                         </td>
-
                                     </tr>
                                     @endforeach
                                 </tbody>

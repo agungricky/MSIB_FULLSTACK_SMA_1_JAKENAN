@@ -22,7 +22,12 @@
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
                             <h4 class="card-title mb-sm-0">Tabel Siswa</h4>
-                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                            <form action="{{route('search_siswa')}}" method="GET" class="ml-auto col-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari Nama Siswa" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+                                  </div>
+                                </form>
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
@@ -37,6 +42,7 @@
                                         <th class="font-weight-bold">Agama</th>
                                         <th class="font-weight-bold">Alamat</th>
                                         <th class="font-weight-bold">Status Siswa</th>
+                                        <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Foto</th>
                                         <th class="font-weight-bold">Aksi</th>
                                     </tr>
@@ -54,6 +60,7 @@
                                         <td>{{ $row->agama }}</td>
                                         <td>{{ $row->alamat }}</td>
                                         <td>{{ $row->status_siswa }}</td>
+                                        <td>{{ $row->kelas }}</td>
                                         <td>{{ $row->foto }}</td>
                                         <td>
                                             <form method="POST" action="{{ route('siswa.destroy',$row->id) }}">
