@@ -42,7 +42,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                                     <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
-                                                        href=" {{ route('tugas.edit',$row->id) }}">
+                                                        href=" {{ route('user.edit',$row->id) }}">
                                                         <i class="fa-solid fa-pencil"></i>
                                                     </a>
                                                     &nbsp;

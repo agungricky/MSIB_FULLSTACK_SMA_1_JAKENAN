@@ -43,11 +43,11 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Tables</span>
           <i class="icon-layers menu-icon"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="tables">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('guru')}}">Guru & Staff</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('siswa')}}">Siswa</a></li>
@@ -57,17 +57,16 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('event')}}">Event</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li>
-
           </ul>
         </div>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Form</span>
           <i class="icon-book-open menu-icon"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="forms">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('form_guru')}}">Guru & Staff</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
