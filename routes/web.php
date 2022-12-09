@@ -121,7 +121,9 @@ Route::get('/form_kelas', function () {
     return view('kelas.form_kelas');
 });
 
-
+Route::get('/form_nilai', function () {
+    return view('nilai.form_nilai');
+});
 // Route::resource('staff', StaffController::class);
 
 Route::resource('siswa', siswaController::class);

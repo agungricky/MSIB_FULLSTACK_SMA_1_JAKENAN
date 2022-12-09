@@ -25,7 +25,7 @@ class eventController extends Controller
      */
     public function create()
     {
-        //
+        return view('event.index');
     }
 
     /**
@@ -36,8 +36,18 @@ class eventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        DB::table('event')->insert(
+            [
+                'nama' => $request->nama,
+                'tgl' => $request->tgl,
+                'deskripsi' => $request->deskripsi,
+            ]
+        );
+        return redirect()->route('event.store')
+            ->with('success', 'Data event Baru Berhasil Disimpan');
     }
+
 
     /**
      * Display the specified resource.
