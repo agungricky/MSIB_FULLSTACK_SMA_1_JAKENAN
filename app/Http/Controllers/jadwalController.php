@@ -53,10 +53,11 @@ class jadwalController extends Controller
 
         DB::table('jadwal')->insert(
             [
-                'hari' => $request->hari,
+                'Hari' => $request->hari,
                 'Jam' => $request->jam,
-                'Kelas' => $request->kodeKelas,
+                'kelas_id' => $request->kodeKelas,
                 'Mapel' => $request->mapel,
+                'guru_id' => $request -> guru
             ]
         );
         return redirect()->route('jadwal.store')
@@ -72,6 +73,7 @@ class jadwalController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -99,7 +101,7 @@ class jadwalController extends Controller
             [
                 'Hari' => $request->hari,
                 'Jam' => $request->jam,
-                'Kelas' => $request->kodeKelas,
+                'kelas_id' => $request->kodeKelas,
                 'Mapel' => $request->mapel,
             ]
 
@@ -117,7 +119,7 @@ class jadwalController extends Controller
     {
         $row = Jadwal::find($id);
         Jadwal::where('id', $id)->delete();
-        return redirect()->route('tugas.index')
+        return redirect()->route('jadwal.index')
             ->with('success', 'Data Siswa Berhasil Dihapus');
     }
 

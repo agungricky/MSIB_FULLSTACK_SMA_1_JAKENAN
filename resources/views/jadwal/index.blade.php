@@ -49,16 +49,19 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $row->Hari}}</td>
                                             <td>{{ $row->Jam}}</td>
+
+                                            <td>{{ $row->kelas_id}}</td>
                                             <td>{{ $row->Mapel}}</td>
-                                            <td>{{ $row->guru}}</td>
-                                            <td>{{ $row->kelas}}</td>
+
+                                           // <td>{{ $row->Mapel}}</td>
+                                           // <td>{{ $row->guru}}</td>
+                                           // <td>{{ $row->kelas}}</td>
+
                                             <td>
                                                 <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    {{-- <a href="{{ route('guru.show', $row->id) }}" class="btn btn-info btn-sm">
-                                                        <i class="fa-solid fa-eye"></i>
-                                                    </a> --}}
+                
                                                     &nbsp;
                                                     <a class="btn btn-warning btn-sm" title="Ubah Jadwal"
                                                         href=" {{ route('jadwal.edit',$row->id) }}">

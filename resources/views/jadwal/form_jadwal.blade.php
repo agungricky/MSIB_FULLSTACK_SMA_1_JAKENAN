@@ -29,10 +29,17 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                     @csrf
                     @method('post')
                     {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
-                    <div class="row two-div">
-                        <div class="form-group two-div">
+                    <div class="row">
+                        <div class="form-group">
                             <label for=""> Mata Pelajaran : &nbsp </label>
                             <input name="mapel" type="text" placeholder="Mata Pelajaran" class="form-control"> 
+                        </div>
+                    </div>
+                    
+                    <div class="row two-div">
+                        <div class="form-group two-div">
+                            <label for=""> Kode Guru : &nbsp </label>
+                            <input name="guru" type="text" placeholder="Kode Guru" class="form-control"> 
                         </div>
     
                         <div class="form-group two-div">

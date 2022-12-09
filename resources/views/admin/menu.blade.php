@@ -58,9 +58,13 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('siswa')}}">Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('jadwal')}}">Jadwal</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">Spp</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li>
+
+            <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">SPP</a></li>
+
+           // <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">Spp</a></li>
+           // <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
+           // <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li>
+
           </ul>
         </div>
       </li>
@@ -80,6 +84,9 @@
             @endif
             <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
 
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_kelas')}}">Kelas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_spp')}}">SPP</a></li>
           </ul>
         </div>
       </li>
