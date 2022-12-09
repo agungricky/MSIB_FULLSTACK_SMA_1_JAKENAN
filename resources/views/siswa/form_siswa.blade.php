@@ -85,7 +85,6 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                                                     {{ $gender }}
                                                                 </label>
                                                             </div>
-
                                                             @endforeach
                                                         </div>
                                                     </div>
