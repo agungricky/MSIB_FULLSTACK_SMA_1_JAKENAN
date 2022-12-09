@@ -6,18 +6,17 @@ use App\Models\Spp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class sppController extends Controller
+class SppController extends Controller
 {
-    /**
+    //
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $spp = DB::table('spp')
-            ->join('siswa', 'siswa.id', '=', 'spp.id')
-            ->select('spp.*', 'siswa.NIS', 'siswa.nama_siswa AS nama')->get();
+        $spp = Spp::all();
         return view('spp.index', compact('spp'));
     }
 
@@ -28,7 +27,8 @@ class sppController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('spp.form_spp');
     }
 
     /**
@@ -39,7 +39,18 @@ class sppController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        DB::table('spp')->insert(
+            [
+                'tanggal' => $request->tanggal,
+                'total' => $request->total,
+                'kurang' => $request->kurang,
+                'siswa_id' => $request ->siswa
+            ]
+        );
+        return redirect()->route('spp.store')
+            ->with('success', 'Data Spp Baru Berhasil Disimpan');
     }
 
     /**
@@ -61,7 +72,8 @@ class sppController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('spp')->where('id', '=', $id)->get();
+        return view('spp.form_edit_spp', compact('data'));
     }
 
     /**
@@ -73,7 +85,16 @@ class sppController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('spp')->where('id', '=', $id)->update(
+            [
+                'tanggal' => $request->tanggal,
+                'total' => $request->total,
+                'kurang' => $request->kurang,
+                'siswa_id' => $request ->siswa
+            ]
+
+        );
+        return redirect('/spp');
     }
 
     /**
@@ -84,15 +105,9 @@ class sppController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function search_spp(Request $request)
-    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
-        $keyword = $request->search;
-        $spp = DB::table('spp')
-            ->join('siswa', 'siswa.id', '=', 'spp.id')
-            ->select('spp.*', 'siswa.NIS', 'siswa.nama_siswa AS nama')->where('nama_siswa', 'like', "%" . $keyword . "%")->orderBy('tanggal', 'DESC')->paginate(25);
-        return view('spp.index', compact('spp'))->with('i', (request()->input('page', 1) - 1) * 25);
+        $row = Spp::find($id);
+        Spp::where('id', $id)->delete();
+        return redirect()->route('spp.index')
+            ->with('success', 'Data Siswa Berhasil Dihapus');
     }
 }
