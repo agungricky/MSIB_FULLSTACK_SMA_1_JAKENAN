@@ -5,7 +5,6 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\jadwalController;
-use App\Http\Controllers\SppController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
@@ -110,7 +109,7 @@ Route::get('/jadwal', function () {
 });
 
 Route::get('/spp', function () {
-     return view('spp.index');
+    return view('spp.index');
 });
 
 
