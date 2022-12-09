@@ -8,10 +8,11 @@ use App\Models\Guru;
 use File;
 use PDF;
 use App\Exports\guruExport;
+use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Search;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
-// use App\Models\Staff
+
 
 class guruController extends Controller
 {
@@ -138,7 +139,7 @@ class guruController extends Controller
     public function show($id)
     {
         $row = Guru::find($id);
-        return view('guru.ditail_guru1', compact('row'));
+        return view('guru.ditail_guru', compact('row'));
     }
 
     /**
@@ -175,40 +176,33 @@ class guruController extends Controller
             'agama' => 'required',
             'foto' => 'image|file'
         ];
-
-        // $validateData = $request->validate($rules);
-
-        // if (!empty($request->file('foto'))) {
-        //     $nameFoto = 'guru-' . $request->nip . '.' . $request->file('foto')->extension();
-        //     //$nameFoto = $request->foto->getClientOriginalName();
-        //     $request->file('foto')->move(public_path('admin/images/guru'), $nameFoto);
-        // } else {
-        //     $nameFoto = '';
-        // }
-
-        // $guru = Guru::where('id', $id)->get();
-        if ($request->file('foto')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+        // Wes Beres no error masseh
+        //proses upload,dicek ketika edit data ada upload file/tidak
+        if (!empty($request->foto)) {
+            //ambil isi kolom foto lalu hapus file fotonya di folder images
+            $foto = DB::table('guru')->select('foto')
+                ->where('id', '=', $id)->get();
+            foreach ($foto as $f) {
+                $namaFile = $f->foto;
             }
-            $nameFoto = 'guru-' . $request->nip . '.' . $request->file('foto')->extension();
-            //$nameFoto = $request->foto->getClientOriginalName();
-            $request->file('foto')->move(public_path('admin/images/guru'), $nameFoto);
-            $validateData['foto'] = $request->file('foto')->store('urlfoto');
+            File::delete(public_path('admin/images/guru/' . $namaFile));
+            //proses upload file baru 
+            $request->validate([
+                'foto' => 'image|mimes:jpg,jpeg,png,giff|max:2048',
+            ]);
+            $fileName = $request->nama . '.' . $request->foto->extension();
+            //$fileName = $request->nama.'.jpg'; 
+            $request->foto->move(public_path('admin/images/guru/'), $fileName);
+        } else {
+            //ambil isi kolom foto lalu hapus file fotonya di folder images
+            $foto = DB::table('guru')->select('foto')
+                ->where('id', '=', $id)->get();
+            foreach ($foto as $f) {
+                $namaFile = $f->foto;
+            }
+            $fileName = $namaFile;
         }
 
-        // $validateData = ['id'] = auth()->guru()->id;
-
-        // $guru = Guru::where('id', $id)->get();
-        // if ($request->foto) {
-        //     Storage::delete($guru->foto);
-        //     $foto = $request->file('foto')->store("urlfoto");
-        // } else {
-        //     $foto = $guru->foto;
-        // }
-        // $guru->nip = $request->input('nip');
-        // $guru->foto = $foto;
-        // $guru->save();
         // ============================= Ricky Update =========================
         DB::table('guru')->where('id', '=', $id)->update(
             [
@@ -221,7 +215,7 @@ class guruController extends Controller
                 'no_telp' => $request->no_telp,
                 'email' => $request->email,
                 'agama' => $request->agama,
-                'foto' => $request->foto
+                'foto' => $fileName,
             ]
         );
         return redirect('/guru');
@@ -271,5 +265,12 @@ class guruController extends Controller
     public function guruExcel()
     {
         return Excel::download(new guruExport, 'daftar_guru.xlsx');
+    }
+
+    public function search(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $guru = Guru::where('nama', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('guru.index', compact('guru'))->with('i', (request()->input('page', 1) - 1) * 25);
     }
 }

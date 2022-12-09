@@ -7,9 +7,6 @@
                 <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center motivasi">
                         <p class="mb-lg-0">"Guru itu bukan buruh, guru adalah ujung tombak pendidikan bangsa. Hargai gurumu, jayalah generasi bangsamu." </p>
-                        <button class="close popup-dismiss ml-2">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </span>
                 </div>
             </div>
@@ -20,11 +17,18 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="d-sm-flex align-items-center mb-4">
+                        <div class="d-sm-flex align-items-center mb-3">
                             <h4 class="card-title mb-sm-0">Tabel Guru | &ensp;</h4>
-                            <a href="{{url('/guru-pdf') }}"><button type="button" class="btn btn-danger btn-sm"> Pdf </button></a> &nbsp;
-                            <a href="{{url('/exportguru') }}"><button type="button" class="btn btn-success btn-sm"> Excell </button></a> &nbsp;
-                            <button type="button" class="btn btn-warning btn-sm">Chart</button>
+                            <a href="{{url('/guru-pdf') }}"><button type="button" class="btn btn-danger btn-sm"> <i class="fa-solid fa-file-pdf"></i> Pdf </button></a> &nbsp;
+                            <a href="{{url('/exportguru') }}"><button type="button" class="btn btn-success btn-sm"><i class="fa-sharp fa-solid fa-file-excel"></i> Excel </button></a> &nbsp;
+                            
+                            <form action="{{ route('search') }}" method="GET" class="ml-auto col-4">
+                            <div class="input-group input-group-sm">
+                                <input type="search" name="search" class="form-control" placeholder="Cari Nama Guru" aria-label='Recipients username' aria-describedby="button-addon2">
+                                <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                              </div>
+                            </form>
+                              
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">

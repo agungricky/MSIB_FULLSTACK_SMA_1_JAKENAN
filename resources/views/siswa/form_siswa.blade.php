@@ -7,6 +7,7 @@ $ar_agama = ['Islam','Hindu','Khatolik','Budha','Kristen','Lainya'];
 $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
 @endphp
 
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -53,6 +54,7 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
 
                                             <form method="POST" action="{{route('siswa.store')}}">
                                                 @csrf
+                                                
                                                 <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label">NIS</label>
                                                     <div class="col-sm-10">
@@ -83,7 +85,6 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                                                     {{ $gender }}
                                                                 </label>
                                                             </div>
-
                                                             @endforeach
                                                         </div>
                                                     </div>
@@ -117,9 +118,19 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                                 </div>
 
                                                 <div class="row mb-3">
+                                                    <label for="inputPassword" class="col-sm-2 col-form-label">Kelas</label>
+                                                    <select class="form-select" name="kelas_id" required>
+                                                        <option selected>-- Pilih Kelas --</option>
+                                                        @foreach($kelas as $k)
+                                                        <option value="{{ $k->id }}">{{ $k->kelas }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+
+                                                <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label">status siswa</label>
                                                     <div class="col-sm-10">
-                                                        <select class="form-select" name="status_siswa">
+                                                        <select class="form-select" name="status_siswa" required>
                                                             <option selected>-- Pilih status --</option>
                                                             @foreach($ar_status as $status)
                                                             <option value="{{ $status }}">{{ $status }}</option>
@@ -131,16 +142,17 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                                                 <div class="row mb-3">
                                                     <label for="inputNumber" class="col-sm-2 col-form-label">Foto</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" type="file" name="foto">
+                                                        <img class="img-preview img-fluid mb-3 col-sm-5">
                                                     </div>
+                            
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
+                                                    </div> 
                                                 </div>
-
-
 
                                                 <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label"></label>
                                                     <div class="col-sm-10 ">
-
                                                         <button type="submit" class="form-control submit-btn" title="Simpan siswa"><i class="bi bi-save"></i> Simpan</button>
                                                     </div>
                                                 </div>

@@ -31,6 +31,7 @@
                                         <th class="font-weight-bold">No</th>
                                         <th class="font-weight-bold">Nis</th>
                                         <th class="font-weight-bold">Nama</th>
+                                        <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Tempat Lahir</th>
                                         <th class=" font-weight-bold">Jenis Kelamin</th>
                                         <th class=" font-weight-bold">Tanggal Lahir</th>
@@ -47,6 +48,7 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $row->NIS }}</td>
                                         <td>{{ $row->nama_siswa }}</td>
+                                        <td>{{$row->kelas}} </td>
                                         <td>{{ $row->tempat_lahir }}</td>
                                         <td>{{ $row->jenis_kelamin }}</td>
                                         <td>{{ $row->tgl_lahir }}</td>

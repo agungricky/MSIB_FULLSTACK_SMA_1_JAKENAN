@@ -112,4 +112,11 @@ class tugasController extends Controller
         return redirect()->route('tugas.index')
             ->with('success', 'Data Siswa Berhasil Dihapus');
     }
+
+    public function search_tugas(Request $request)
+    {   //paginate Mengatur berapa data Yang tampil Pada Halaman
+        $keyword = $request->search;
+        $tugas = Tugas::where('perihal', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('tugas.index', compact('tugas'))->with('i', (request()->input('page', 1) - 1) * 25);
+    }
 }

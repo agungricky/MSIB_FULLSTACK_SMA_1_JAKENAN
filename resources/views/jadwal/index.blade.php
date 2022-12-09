@@ -21,7 +21,13 @@
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
                             <h4 class="card-title mb-sm-0">Tabel Jadwal</h4>
-                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
+                            <form action="{{ route('search_jadwal') }}" method="GET" class="ml-auto col-4">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="search" class="form-control" placeholder="Cari MataPelajaran" aria-label='Recipients username' aria-describedby="button-addon2">
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                </div>
+                            </form>
+
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
@@ -30,8 +36,9 @@
                                         <th class="font-weight-bold">No</th>
                                         <th class="font-weight-bold">Hari</th>
                                         <th class="font-weight-bold">Jam</th>
-                                        <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Mapel</th>
+                                        <th class="font-weight-bold">Guru</th>
+                                        <th class="font-weight-bold">Kelas</th>
                                         <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
@@ -42,8 +49,14 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $row->Hari}}</td>
                                             <td>{{ $row->Jam}}</td>
+
                                             <td>{{ $row->kelas_id}}</td>
                                             <td>{{ $row->Mapel}}</td>
+
+                                           // <td>{{ $row->Mapel}}</td>
+                                           // <td>{{ $row->guru}}</td>
+                                           // <td>{{ $row->kelas}}</td>
+
                                             <td>
                                                 <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">
                                                     @csrf

@@ -2,6 +2,7 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper">
+
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary">
@@ -15,27 +16,47 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
+
                             <h4 class="card-title mb-sm-0">Tabel SPP</h4>
                             <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View All</a>
+
+                           //<h4 class="card-title mb-sm-0">Tabel Spp</h4>
+                           //<form action="{{ route('search_spp') }}" method="GET" class="ml-auto col-4">
+                           //     <div class="input-group input-group-sm">
+                           //         <input type="search" name="search" class="form-control" placeholder="Cari Nama Siswa" aria-label='Recipients username' aria-describedby="button-addon2">
+                           //         <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                           //    </div>
+                           // </form>
+
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th class="font-weight-bold">No</th>
+
                                         <th class="font-weight-bold">Tanggal</th>
                                         <th class="font-weight-bold">Total</th>
                                         <th class="font-weight-bold">Kurang</th>
                                         <th class="font-weight-bold">Siswa</th>
+
+//                                        <th class="font-weight-bold">Nis</th>
+//                                        <th class="font-weight-bold">Nama</th>
+//                                        <th class="font-weight-bold">Tanggal Bayar</th>
+//                                        <th class=" font-weight-bold">Total</th>
+//                                        <th class=" font-weight-bold">Kurang</th>
+
                                         <th class="font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     @php $no = 1; @endphp
                                     @foreach ($spp as $row)
                                     <tr>
@@ -55,6 +76,7 @@
                                                 </a>
                                                 &nbsp;
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Hapus spp" onclick="return confirm('Anda Yakin Data akan diHapus?')">
+
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </form>
@@ -92,4 +114,8 @@
     </footer>
     <!-- partial -->
 </div>
+
+</div>
+</div>
+
 @endsection

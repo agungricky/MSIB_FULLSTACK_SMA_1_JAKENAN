@@ -9,6 +9,10 @@ use App\Http\Controllers\SppController;
 use App\Http\Controllers\kelasController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\eventController;
+use App\Http\Controllers\nilaiController;
+use App\Http\Controllers\sppController;
+use App\Http\Controllers\userController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -29,10 +33,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // ------------- Routing LandingPage ------------
 Route::get('/', function () {
-    return view('landingpage.home');
-});
-
-Route::get('/home', function () {
     return view('landingpage.home');
 });
 
@@ -83,9 +83,13 @@ Route::get('/laporan_akademik', function () {
 Route::get('/form_siswa', function () {
     return view('siswa.form_siswa');
 });
+Route::get('/form_siswa', [App\Http\Controllers\siswaController::class, 'create']);
+
 Route::get('/form_guru', function () {
     return view('guru.form_guru');
 });
+
+// Route::get('/form_siswa', 'siswaController::class');
 
 // Route::get('/siswa', function () {
 //     return view('admin.siswa');
@@ -128,16 +132,32 @@ Route::get('/form_kelas', function () {
     return view('kelas.form_kelas');
 });
 
-
-Route::resource('staff', StaffController::class);
+Route::get('/form_nilai', function () {
+    return view('nilai.form_nilai');
+});
+// Route::resource('staff', StaffController::class);
 
 Route::resource('siswa', siswaController::class);
+Route::get('/search_siswa', [siswaController::class, 'search_siswa'])->name('search_siswa');
 
 Route::resource('guru', guruController::class);
+Route::get('/search', [guruController::class, 'search'])->name('search');
+
+Route::resource('/nilai', nilaiController::class);
+Route::get('/search_nilai', [nilaiController::class, 'search_nilai'])->name('search_nilai');
+
+Route::resource('/user', userController::class);
+Route::get('/search_user', [userController::class, 'search_user'])->name('search_user');
+
 
 Route::resource('tugas', tugasController::class);
+Route::get('/search_tugas', [tugasController::class, 'search_tugas'])->name('search_tugas');
 
 Route::resource('jadwal', jadwalController::class);
+Route::get('/search_jadwal', [jadwalController::class, 'search_jadwal'])->name('search_jadwal');
+
+Route::resource('spp', sppController::class);
+Route::get('/search_spp', [sppController::class, 'search_spp'])->name('search_spp');
 
 Route::resource('spp', SppController::class);
 
@@ -148,13 +168,13 @@ Route::get('exportguru', [guruController::class, 'guruExcel']);
 
 Route::resource('kelas', kelasController::class);
 
+Route::resource('event', eventController::class);
+Route::get('/search_event', [eventController::class, 'search_event'])->name('search_event');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/user', function () {
-    return view('Layout.user');
-});
 
 Route::get('/api-guru', [guruController::class, 'apiGuru']);
 Route::get('/api-guru/{id}', [guruController::class, 'apiGuruDetail']);
