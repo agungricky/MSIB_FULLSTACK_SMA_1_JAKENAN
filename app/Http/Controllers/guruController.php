@@ -121,7 +121,7 @@ class guruController extends Controller
                 'no_telp' => $request->no_telp,
                 'email' => $request->email,
                 'agama' => $request->agama,
-                'foto' => $request->foto
+                'foto' => $nameFoto
             ]
         );
 
