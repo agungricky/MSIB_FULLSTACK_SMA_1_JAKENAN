@@ -1,5 +1,10 @@
 @extends('admin.index')
 @section('content')
+
+@php
+$arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+@endphp
+
 <div class="main-panel">
 
     <div class="content-wrapper">
@@ -22,7 +27,7 @@
             <div class="col-md-12 wrapper">
                 <form action="{{route('jadwal.store')}}" method="post" name="mapelForm" >
                     @csrf
-                    {{ method_field('POST')}}
+                    @method('post')
                     {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
                     <div class="row two-div">
                         <div class="form-group two-div">
@@ -54,13 +59,9 @@
                             <label for=""> Hari : &nbsp</label>
                             <select name="hari" id="hari" class="form-select form-control">
                                 <option selected >Hari</option>
-                                <option value="Senin">Senin</option>
-                                <option value="Senin">Selasa</option>
-                                <option value="Senin">Rabu</option>
-                                <option value="Senin">Kamis</option>
-                                <option value="Senin">Jumat</option>
-                                <option value="Senin">Sabtu</option>
-                                <option value="Senin">Minggu</option>
+                                @foreach($arr_hari as $hari)
+                                    <option value="{{ $hari }}">{{ $hari }}</option>
+                                @endforeach
                             </select>
                         </div>
 

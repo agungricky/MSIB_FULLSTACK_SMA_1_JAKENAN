@@ -1,25 +1,25 @@
 <div class="container-scroller">
     <!--navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="navbar-brand-wrapper d-flex align-items-center">
-        <a class="navbar-brand brand-logo" href="index.html">
-          <img src="{{asset('admin/images/logo.svg')}}" alt="logo" class="logo-dark" />
-        </a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a>
+      <div class="navbar-brand-wrapper d-flex">
+        <img src="{{url('admin/images/logosma.png')}}" alt="logo" class="logo-dark"/>
+
+        {{-- <a class="navbar-brand brand-logo-mini" href="index.html"><img src="images/logo-mini.svg" alt="logo" /></a> --}}
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
-        <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome stallar dashboard!</h5>
+        <h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome to dashboard!</h5>
         <ul class="navbar-nav navbar-nav-right ml-auto">
           <form class="search-form d-none d-md-block" action="#">
             <i class="icon-magnifier"></i>
             <input type="search" class="form-control" placeholder="Search Here" title="Search here">
           </form>
-          <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
-          <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li>
+          {{-- <li class="nav-item"><a href="#" class="nav-link"><i class="icon-basket-loaded"></i></a></li>
+          <li class="nav-item"><a href="#" class="nav-link"><i class="icon-chart"></i></a></li> --}}
+          
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator message-dropdown" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <i class="icon-speech"></i>
-              <span class="count">7</span>
+              <span class="count">2</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
               <a class="dropdown-item py-3">
@@ -56,12 +56,13 @@
               </a>
             </div>
           </li>
+
           <li class="nav-item dropdown language-dropdown d-none d-sm-flex align-items-center">
             <a class="nav-link d-flex align-items-center dropdown-toggle" id="LanguageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
               <div class="d-inline-flex mr-3">
-                <i class="flag-icon flag-icon-us"></i>
+                <img src="admin/images/indonesia.png" alt="">
               </div>
-              <span class="profile-text font-weight-normal">English</span>
+              <span class="profile-text font-weight-normal">Indonesia</span>
             </a>
             <div class="dropdown-menu dropdown-menu-left navbar-dropdown py-2" aria-labelledby="LanguageDropdown">
               <a class="dropdown-item">
@@ -74,12 +75,13 @@
                 <i class="flag-icon flag-icon-ru"></i> Russian </a>
             </div>
           </li>
+
           <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-              <img class="img-xs rounded-circle ml-2" src="images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> Henry Klein </span></a>
+              <img class="img-xs rounded-circle ml-2" src="admin/images/faces/face8.jpg" alt=""> <span class="font-weight-normal"> Henry Klein </span></a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
               <div class="dropdown-header text-center">
-                <img class="img-md rounded-circle" src="images/faces/face8.jpg" alt="Profile image">
+                <img class="img-md rounded-circle" src="{{ url('admin/images/faces/face8.jpg') }}" alt="">
                 <p class="mb-1 mt-3">Allen Moreno</p>
                 <p class="font-weight-light text-muted mb-0">allenmoreno@gmail.com</p>
               </div>

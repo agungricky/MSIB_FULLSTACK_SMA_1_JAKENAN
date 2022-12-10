@@ -12,7 +12,12 @@
           {{-- Nama User --}}
           <div class="text-wrapper">
             <p class="profile-name">User</p>
-            <p class="designation">Administrator</p>
+            <p class="designation">@if (empty(Auth::user()->name))
+              {{''}}
+              @else
+              {{Auth::user()->name}}
+              @endif
+            </p>
           </div>
         </a>
       </li>
@@ -22,7 +27,7 @@
         <span class="nav-link">Dashboard</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('dashboard')}}">
+        <a class="nav-link" href="{{url('/dashboard')}}">
           <span class="menu-title">Dashboard</span>
           <i class="icon-screen-desktop menu-icon"></i>
         </a>
@@ -31,14 +36,14 @@
       <li class="nav-item nav-category"><span class="nav-link">Data</span></li>
 
       <li class="nav-item">
-        <a class="nav-link" href="{{url('/form')}}">
+        <a class="nav-link" href="{{url('/laporan_akademik')}}">
           <span class="menu-title">Laporan Akademik</span>
           <i class="icon-globe menu-icon"></i>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="{{url('administrator')}}" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Tables</span>
           <i class="icon-layers menu-icon"></i>
         </a>
@@ -63,18 +68,12 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
-
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_kelas')}}">Kelas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
           </ul>
         </div>
       </li>
 
-
-      <li class="nav-item">
-        <a class="nav-link" href="{{url('#')}}">
-          <span class="menu-title">Charts</span>
-          <i class="icon-chart menu-icon"></i>
-        </a>
-      </li>
 
       <li class="nav-item nav-category"><span class="nav-link">Information</span></li>
       <li class="nav-item">
@@ -83,5 +82,25 @@
           <i class="icon-grid menu-icon"></i>
         </a>
       </li>
+      @if (Auth::user()->role=='administrator')
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/register')}}">
+          <span class="menu-title">register</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+      </li>
+      @endif
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+          {{ __('Logout') }} <i class="icon-grid menu-icon"></i>
+
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf </form>
+
+      </li>
+
     </ul>
   </nav>

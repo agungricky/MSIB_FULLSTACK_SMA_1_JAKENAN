@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tugas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Tugas;
 
 class tugasController extends Controller
 {
@@ -26,7 +27,7 @@ class tugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('tugas.form_tugas');
     }
 
     /**
@@ -37,6 +38,15 @@ class tugasController extends Controller
      */
     public function store(Request $request)
     {
+        // ============================= Fergi : Upload Tugas =========================
+        if (!empty($request->file('upload'))) {
+            $nameTugas = 'tugas-' . $request->perihal . '.' . $request->file('upload')->extension();
+            //$nameTugas = $request->foto->getClientOriginalName();
+            $request->file('upload')->move(public_path('admin/images/tugas'), $nameTugas);
+        } else {
+            $nameTugas = '';
+        }
+
         DB::table('tugas')->insert(
             [
                 'keterangan' => $request->keterangan,
@@ -44,10 +54,13 @@ class tugasController extends Controller
                 'hari' => $request->hari,
                 'tanggal' => $request->tanggal,
                 'perihal' => $request->perihal,
-                'upload' => $request->upload,
+                'upload' => $nameTugas
             ]
         );
-        return redirect('/tugas');
+
+        // return redirect('/tugas');
+        return redirect()->route('tugas.store')
+            ->with('success', 'Data Tugas Berhasil Disimpan');
     }
 
     /**
@@ -58,7 +71,8 @@ class tugasController extends Controller
      */
     public function show($id)
     {
-        //
+        $row = Tugas::find($id);
+        return view('tugas.detail_tugas', compact('row'));
     }
 
     /**
@@ -69,7 +83,7 @@ class tugasController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('tugas') - where('$id', '=', $id)->get();
+        $data = DB::table('tugas')->where('id', '=', $id)->get();
         return view('tugas.form_edit_tugas', compact('data'));
     }
 

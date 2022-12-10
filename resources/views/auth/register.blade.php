@@ -1,6 +1,8 @@
 @extends('admin.index')
 
 @section('content')
+@if (Auth::user()->role =='administrator')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -32,6 +34,20 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('role') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="role" type="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role">
+
+                                @error('role')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -74,4 +90,7 @@
         </div>
     </div>
 </div>
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection

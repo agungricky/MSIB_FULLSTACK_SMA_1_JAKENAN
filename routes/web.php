@@ -5,9 +5,10 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\guruController;
 use App\Http\Controllers\jadwalController;
-use App\Http\Controllers\mapelController;
+use App\Http\Controllers\kelasController;
 use App\Http\Controllers\tugasController;
 use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,17 +47,32 @@ Route::get('/contact', function () {
     return view('landingpage.contact');
 });
 
+Route::get('/prestasi', function () {
+    return view('landingpage.prestasi');
+});
+
+Route::get('/siswabaru', function () {
+    return view('landingpage.siswabaru');
+});
+
 // ------------- Routing Admin Page ------------
 Route::get('/administrator', function () {
     return view('admin.dasboard');
 });
 
-Route::get('dashboard', 
-[DashboardController::class,'index']);
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+});
 
 
-Route::get('/form', function () {
-    return view('admin.form');
+Route::get(
+    'dashboard',
+    [DashboardController::class, 'index']
+);
+
+
+Route::get('/laporan_akademik', function () {
+    return view('admin.laporan_akademik');
 });
 
 // Route::get('/guru', function () {
@@ -73,19 +89,34 @@ Route::get('/form_guru', function () {
 // Route::get('/siswa', function () {
 //     return view('admin.siswa');
 // });
-// Route::get('/tugas', function () {
-//     return view('tugas.index');
-// });
+Route::get('/tugas', function () {
+    return view('tugas.index');
+});
 Route::get('/form_tugas', function () {
     return view('tugas.form_tugas');
 });
 
 Route::get('/form_jadwal', function () {
-    return view('tugas.form_jadwal');
+    return view('jadwal.form_jadwal');
 });
+// Route::get('/kalender', function () {
+//     return view('admin.kalender');
+// });
+
+// Route::get('/mapel', function () {
+//     return view('mapel.mapel');
+// });
+// Route::get('/form_mapel', function () {
+//     return view('mapel.form_mapel');
+// });
 Route::get('/kalender', function () {
-    return view('admin.kalender');
+    return view('kalender_akademik.kalender');
 });
+
+Route::get('/form_kelas', function () {
+    return view('kelas.form_kelas');
+});
+
 
 Route::resource('staff', StaffController::class);
 
@@ -97,4 +128,23 @@ Route::resource('tugas', tugasController::class);
 
 Route::resource('jadwal', jadwalController::class);
 
-Route::resource('tugas', jadwalController::class);
+Route::get('generate-pdf', [guruController::class, 'generatePDF']);
+Route::get('guru-pdf', [guruController::class, 'guruPDF']);
+
+Route::get('exportguru', [guruController::class, 'guruExcel']);
+
+Route::resource('kelas', kelasController::class);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user', function () {
+    return view('Layout.user');
+});
+
+Route::get('/api-guru', [guruController::class, 'apiGuru']);
+Route::get('/api-guru/{id}', [guruController::class, 'apiGuruDetail']);
+
+Route::get('/api-kelas', [kelasController::class, 'apiKelas']);
+Route::get('/admin/image/guru', [guruController::class . 'deleteImg']);

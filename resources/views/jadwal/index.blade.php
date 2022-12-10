@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center mb-4">
-                            <h4 class="card-title mb-sm-0">Tabel Tugas</h4>
+                            <h4 class="card-title mb-sm-0">Tabel Jadwal</h4>
                             <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all Products</a>
                         </div>
                         <div class="table-responsive border rounded p-1">
@@ -40,10 +40,10 @@
                                     @foreach ($jadwal as $row)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $row->Hari }}</td>
-                                            <td>{{ $row->Jam }}</td>
-                                            <td>{{ $row->Kelas }}</td>
-                                            <td>{{ $row->Mapel }}</td>
+                                            <td>{{ $row->hari}}</td>
+                                            <td>{{ $row->jam}}</td>
+                                            <td>{{ $row->kelas}}</td>
+                                            <td>{{ $row->mapel}}</td>
                                             <td>
                                                 <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">
                                                     @csrf

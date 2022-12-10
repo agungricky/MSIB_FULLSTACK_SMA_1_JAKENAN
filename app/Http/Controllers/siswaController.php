@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\DB;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class siswaController extends Controller
 {
@@ -57,11 +59,11 @@ class siswaController extends Controller
         //------------apakah user  ingin upload foto-----------
         //yang diedit fiki new
         if (!empty($request->file('foto'))) {
-            $fileName = 'foto-' . $request->NIS . '.' . $request->file('foto')->extension();
-            //$fileName = $request->foto->getClientOriginalName();
-            $request->file('foto')->move(public_path('admin/images'), $fileName);
+            $nameFoto = 'siswa-' . $request->nip . '.' . $request->file('foto')->extension();
+            //$nameFoto = $request->foto->getClientOriginalName();
+            $request->file('foto')->move(public_path('admin/images/siswa'), $nameFoto);
         } else {
-            $fileName = '';
+            $nameFoto = '';
         }
 
         //lakukan insert data dari request form
@@ -75,7 +77,7 @@ class siswaController extends Controller
                 'agama' => $request->agama,
                 'alamat' => $request->alamat,
                 'status_siswa' => $request->status_siswa,
-                'foto' => $fileName,
+                'foto' => $request->foto,
                 'created_at' => now()
 
             ]
