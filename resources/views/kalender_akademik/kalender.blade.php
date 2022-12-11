@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <div class="main-panel">
+
     <div class="container mt-4">
         <div class="row">
             <div class="col-lg-4">
@@ -46,6 +48,8 @@
             </div>
         </div>
     </div>
+</div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

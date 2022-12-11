@@ -127,7 +127,6 @@ Route::get('/kalender', function () {
     return view('kalender_akademik.kalender');
 });
 
-});
 // Route::get('/kalender', function () {
 //     return view('admin.kalender');
 // });
