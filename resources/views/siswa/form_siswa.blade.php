@@ -13,7 +13,9 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary motivasi">
+                <div class="card card-secondary motivasi">
                     <span class="card-body d-lg-flex align-items-center">
+                        <p class="mb-lg-0">"Belajar memang kadang membosankan tapi demi menggapai impianmu dan masa depan yang cerah, bersemangatlah dalam mencari ilmu." </p>
                         <p class="mb-lg-0">"Belajar memang kadang membosankan tapi demi menggapai impianmu dan masa depan yang cerah, bersemangatlah dalam mencari ilmu." </p>
                         <button class="close popup-dismiss ml-2">
                             <span aria-hidden="true">&times;</span>
@@ -23,6 +25,15 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
             </div>
         </div>
 
+
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex align-items-center mb-4">
+                            <h4 class="card-title mb-sm-0">Tabel Siswa</h4>
+                            <a href="#" class="text-dark ml-auto mb-3 mb-sm-0"> View all document</a>
+                        </div>
 
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">

@@ -139,7 +139,8 @@ class guruController extends Controller
     public function show($id)
     {
         $row = Guru::find($id);
-        return view('guru.ditail_guru', compact('row'));
+        // return view('guru.ditail_guru', compact('row'));
+        return view('guru.ditail_guru1', compact('row'));
     }
 
     /**
@@ -216,6 +217,7 @@ class guruController extends Controller
                 'email' => $request->email,
                 'agama' => $request->agama,
                 'foto' => $fileName,
+                // 'foto' => $request->foto
             ]
         );
         return redirect('/guru');

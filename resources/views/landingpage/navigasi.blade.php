@@ -8,7 +8,7 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto active" href="{{url('/')}}">Home</a></li>
+            <li><a class="nav-link scrollto active" href="{{url('/home')}}">Home</a></li>
             <li><a class="nav-link scrollto" href="{{url('/about')}}">About</a></li>
             <li><a class="nav-link scrollto " href="{{url('/portofolio')}}">Portfolio</a></li>
             <li class="dropdown"><a href="#"><span>Info</span> <i class="bi bi-chevron-down"></i></a>
