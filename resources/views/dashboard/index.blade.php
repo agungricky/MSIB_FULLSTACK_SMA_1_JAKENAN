@@ -1,59 +1,40 @@
 @extends('admin.index')
 @section('content')
 
-<div class="main-panel">
-  <div class="content-wrapper">
 <section class="section">
     <div class="row">
 
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Maaf masih proses, database masih kosong</h5>
+            <h5 class="card-title">Grafik Perbandingan Agama Siswa</h5>
 
-            <!-- Bar Chart -->
-            <canvas id="barChart" style="max-height: 400px;"></canvas>
+            <!-- Doughnut Chart -->
+            <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
             <script>
+              //ambil data gender dan jumlah gendernya dari DashboardController di fungsi index
+              var lblas = [@foreach($ar_agama as $g) '{{ $g->agama }}', @endforeach];
+              var agamasiswa = [@foreach($ar_agama as $g) {{ $g->agamasiswa }}, @endforeach];
               document.addEventListener("DOMContentLoaded", () => {
-                new Chart(document.querySelector('#barChart'), {
-                  type: 'bar',
+                new Chart(document.querySelector('#doughnutChart'), {
+                  type: 'doughnut',
                   data: {
-                    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                    labels: lblas,
                     datasets: [{
-                      label: 'Bar Chart',
-                      data: [65, 59, 80, 81, 56, 55, 40],
+                      label: 'Agama Siswa',
+                      data: agamasiswa,
                       backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(255, 159, 64, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(201, 203, 207, 0.2)'
-                      ],
-                      borderColor: [
                         'rgb(255, 99, 132)',
-                        'rgb(255, 159, 64)',
-                        'rgb(255, 205, 86)',
-                        'rgb(75, 192, 192)',
                         'rgb(54, 162, 235)',
-                        'rgb(153, 102, 255)',
-                        'rgb(201, 203, 207)'
+                        'rgb(255, 205, 86)'
                       ],
-                      borderWidth: 1
+                      hoverOffset: 4
                     }]
-                  },
-                  options: {
-                    scales: {
-                      y: {
-                        beginAtZero: true
-                      }
-                    }
                   }
                 });
               });
             </script>
-            <!-- End Bar CHart -->
+            <!-- End Doughnut CHart -->
 
           </div>
         </div>
@@ -75,7 +56,7 @@ var jml = [@foreach($ar_jenis_kelamin as $g) {{ $g->jumlah }}, @endforeach];
                     data: {
                       labels: lbl2,
                       datasets: [{
-                        label: 'My First Dataset',
+                        label: 'Jenis Kelamin',
                         //data: [300, 50, 100],
                         data: jml,
 
@@ -99,35 +80,38 @@ var jml = [@foreach($ar_jenis_kelamin as $g) {{ $g->jumlah }}, @endforeach];
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Maaf masih proses, database masih kosong</h5>
+            <h5 class="card-title">Grafik Perbandingan Perolehan Nilai</h5>
 
-            <!-- Doughnut Chart -->
-            <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
-            <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                new Chart(document.querySelector('#doughnutChart'), {
-                  type: 'doughnut',
-                  data: {
-                    labels: [
-                      'Red',
-                      'Blue',
-                      'Yellow'
-                    ],
-                    datasets: [{
-                      label: 'My First Dataset',
-                      data: [300, 50, 100],
-                      backgroundColor: [
-                        'rgb(255, 99, 132)',
-                        'rgb(54, 162, 235)',
-                        'rgb(255, 205, 86)'
-                      ],
-                      hoverOffset: 4
-                    }]
-                  }
+              <!-- Line Chart -->
+              <canvas id="lineChart" style="max-height: 400px;"></canvas>
+              <script>
+              //ambil data gender dan jumlah gendernya dari DashboardController di fungsi index
+              var lblagg = [@foreach($ar_nilai as $g) '{{ $g->nilai }}', @endforeach];
+              var hasilnilai = [@foreach($ar_nilai as $g) {{ $g->nilai }}, @endforeach];
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#lineChart'), {
+                    type: 'line',
+                    data: {
+                      labels: lblagg,
+                      datasets: [{
+                        label: 'Hasil Nilai Siswa',
+                        data: hasilnilai,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
+                        }
+                      }
+                    }
+                  });
                 });
-              });
-            </script>
-            <!-- End Doughnut CHart -->
+              </script>
+              <!-- End Line CHart -->
 
           </div>
         </div>
@@ -136,68 +120,45 @@ var jml = [@foreach($ar_jenis_kelamin as $g) {{ $g->jumlah }}, @endforeach];
       <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Maaf masih proses, database masih kosong</h5>
+            <h5 class="card-title">Grafik Perbandingan Gender Guru</h5>
 
-            <!-- Radar Chart -->
-            <canvas id="radarChart" style="max-height: 400px;"></canvas>
-            <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                new Chart(document.querySelector('#radarChart'), {
-                  type: 'radar',
-                  data: {
-                    labels: [
-                      'Eating',
-                      'Drinking',
-                      'Sleeping',
-                      'Designing',
-                      'Coding',
-                      'Cycling',
-                      'Running'
-                    ],
-                    datasets: [{
-                      label: 'First Dataset',
-                      data: [65, 59, 90, 81, 56, 55, 40],
-                      fill: true,
-                      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                      borderColor: 'rgb(255, 99, 132)',
-                      pointBackgroundColor: 'rgb(255, 99, 132)',
-                      pointBorderColor: '#fff',
-                      pointHoverBackgroundColor: '#fff',
-                      pointHoverBorderColor: 'rgb(255, 99, 132)'
-                    }, {
-                      label: 'Second Dataset',
-                      data: [28, 48, 40, 19, 96, 27, 100],
-                      fill: true,
-                      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                      borderColor: 'rgb(54, 162, 235)',
-                      pointBackgroundColor: 'rgb(54, 162, 235)',
-                      pointBorderColor: '#fff',
-                      pointHoverBackgroundColor: '#fff',
-                      pointHoverBorderColor: 'rgb(54, 162, 235)'
-                    }]
-                  },
-                  options: {
-                    elements: {
-                      line: {
-                        borderWidth: 3
-                      }
+              <!-- Polar Area Chart -->
+              <canvas id="polarAreaChart" style="max-height: 400px;"></canvas>
+              <script>
+                //ambil data gender dan jumlah gendernya dari DashboardController di fungsi index
+        var lblag = [@foreach($ar_gender as $g) '{{ $g->gender }}', @endforeach];
+        var genderguru = [@foreach($ar_gender as $g) {{ $g->genderguru }}, @endforeach];
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#polarAreaChart'), {
+                    type: 'polarArea',
+                    data: {
+                      labels: lblag,
+                      datasets: [{
+                        label: 'Jenis Kelamin',
+                        data: genderguru,
+                        backgroundColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(75, 192, 192)',
+                          'rgb(255, 205, 86)',
+                          'rgb(201, 203, 207)',
+                          'rgb(54, 162, 235)'
+                        ]
+                      }]
                     }
-                  }
+                  });
                 });
-              });
-            </script>
-            <!-- End Radar CHart -->
-
+              </script>
+              <!-- End Polar Area Chart -->
           </div>
         </div>
       </div>
 
 
           </div>
-        </section>
         </div>
       </div>
 
-
+    </div>
+  </section>
 
 @endsection

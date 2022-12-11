@@ -53,11 +53,11 @@ class jadwalController extends Controller
 
         DB::table('jadwal')->insert(
             [
-                'Hari' => $request->hari,
+                'hari' => $request->hari,
                 'Jam' => $request->jam,
                 'kelas_id' => $request->kodeKelas,
                 'Mapel' => $request->mapel,
-                'guru_id' => $request -> guru
+                'guru_id' => $request->guru
             ]
         );
         return redirect()->route('jadwal.store')
@@ -101,7 +101,8 @@ class jadwalController extends Controller
             [
                 'Hari' => $request->hari,
                 'Jam' => $request->jam,
-                'kelas_id' => $request->kodeKelas,
+                // 'kelas_id' => $request->kodeKelas,
+                'Kelas' => $request->kodeKelas,
                 'Mapel' => $request->mapel,
             ]
 
