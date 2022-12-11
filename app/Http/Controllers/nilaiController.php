@@ -13,6 +13,7 @@ use Ramsey\Uuid\Type\Integer;
 
 class nilaiController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -70,12 +71,12 @@ class nilaiController extends Controller
                 'guru_id' => $request->guru_id,
                 'tugas_id' => $request->tugas_id,
                 'siswa_id' => $request->siswa_id,
-                'created_at' => now()
+                // 'created_at' => now() ini gak ada di db
 
             ]
         );
 
-        return redirect()->route('nilai')
+        return redirect()->route('/nilai')
             ->with('success', 'Data nilai Baru Berhasil Disimpan');
     }
 
