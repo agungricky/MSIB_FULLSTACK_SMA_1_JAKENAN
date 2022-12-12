@@ -1,11 +1,12 @@
 @extends('admin.index')
 @section('content')
+@if (Auth::user()->role =='administrator')
 
 <div class="main-panel">
 
     <div class="content-wrapper">
 
-        <div class="row purchace-popup" >
+        <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin headForm">
                 <div class="card card-secondary ">
                     <span class="card-body d-lg-flex align-items-center motivasi cardCenter">
@@ -21,33 +22,33 @@
         {{-- Form --}}
         <div class="row form-panel">
             <div class="col-md-12 wrapper">
-                <form action="{{route('spp.store')}}" method="post" name="mapelForm" >
+                <form action="{{route('spp.store')}}" method="post" name="mapelForm">
                     @csrf
                     @method('post')
                     {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
-                    
+
                     <div class="row two-div">
-                    <div class="form-group two-div">
+                        <div class="form-group two-div">
                             <label for=""> Tanggal : &nbsp </label>
                             <input name="tanggal" type="date" placeholder="Tanggal" class="form-control">
                         </div>
 
                         <div class="form-group two-div">
                             <label for=""> Total : &nbsp </label>
-                            <input name="total" type="text" placeholder="Total" class="form-control"> 
+                            <input name="total" type="text" placeholder="Total" class="form-control">
                         </div>
                     </div>
 
                     <div class="row two-div">
                         <div class="form-group two-div">
                             <label for=""> Kurang : &nbsp </label>
-                            <input name="kurang" type="text" placeholder="Kurang" class="form-control"> 
+                            <input name="kurang" type="text" placeholder="Kurang" class="form-control">
                         </div>
 
                         <div class="form-group two-div">
                             <label for=""> Siswa : &nbsp </label>
-                            <input name="siswa" type="text" placeholder="Siswa" class="form-control"> 
-                        </div>    
+                            <input name="siswa" type="text" placeholder="Siswa" class="form-control">
+                        </div>
                     </div>
 
 
@@ -80,4 +81,7 @@
 </div>
 </div>
 </div>
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection

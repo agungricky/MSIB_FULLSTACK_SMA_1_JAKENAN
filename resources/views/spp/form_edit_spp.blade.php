@@ -1,11 +1,12 @@
 @extends('admin.index')
 @section('content')
+@if (Auth::user()->role =='administrator')
 
 <div class="main-panel">
 
     <div class="content-wrapper">
 
-        <div class="row purchace-popup" >
+        <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin headForm">
                 <div class="card card-secondary ">
                     <span class="card-body d-lg-flex align-items-center motivasi cardCenter">
@@ -22,32 +23,32 @@
         <div class="row form-panel">
             <div class="col-md-12 wrapper">
                 @foreach ($data as $row)
-                <form action="{{route('spp.update', $row->id)}}" method="post" name="mapelForm" >
+                <form action="{{route('spp.update', $row->id)}}" method="post" name="mapelForm">
                     @csrf
                     @method('put')
-                    
+
                     <div class="row two-div">
-                    <div class="form-group two-div">
+                        <div class="form-group two-div">
                             <label for=""> Tanggal : &nbsp </label>
                             <input name="tanggal" type="date" placeholder="Tanggal" class="form-control" value="{{$row->tanggal}}">
                         </div>
 
                         <div class="form-group two-div">
                             <label for=""> Total : &nbsp </label>
-                            <input name="total" type="text" placeholder="Total" class="form-control" value="{{$row->total}}"> 
+                            <input name="total" type="text" placeholder="Total" class="form-control" value="{{$row->total}}">
                         </div>
                     </div>
 
                     <div class="row two-div">
                         <div class="form-group two-div">
                             <label for=""> Kurang : &nbsp </label>
-                            <input name="kurang" type="text" placeholder="Kurang" class="form-control" value="{{$row->kurang}}"> 
+                            <input name="kurang" type="text" placeholder="Kurang" class="form-control" value="{{$row->kurang}}">
                         </div>
 
                         <div class="form-group two-div">
                             <label for=""> Siswa : &nbsp </label>
-                            <input name="siswa" type="text" placeholder="Siswa" class="form-control" value="{{$row->siswa_id}}"> 
-                        </div>    
+                            <input name="siswa" type="text" placeholder="Siswa" class="form-control" value="{{$row->siswa_id}}">
+                        </div>
                     </div>
 
 
@@ -60,7 +61,7 @@
                         <input type="submit" name="inputSpp" class="form-control submit-btn">
                     </div>
                 </form>
-             @endforeach
+                @endforeach
             </div>
         </div>
 
@@ -81,4 +82,7 @@
 </div>
 </div>
 </div>
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection

@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+@if (Auth::user()->role =='administrator')
 
 @php
 $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
@@ -29,28 +30,28 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
                 <div class="col">
                     @foreach ($data as $row)
-                    <form action="{{route('user.update', $row->id)}}" method="post" >
+                    <form action="{{route('user.update', $row->id)}}" method="post">
                         @csrf
                         @method('put')
                         {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
-    
+
                         <div class="row two-div">
                             <div class="form-group two-div">
                                 <label for="" class=" col-form-label"> Nama : &nbsp </label>
-                                <input name="name" type="text" placeholder="Nama Lengkap" class="form-control" value={{$row->name}} required> 
+                                <input name="name" type="text" placeholder="Nama Lengkap" class="form-control" value={{$row->name}} required>
                             </div>
-                            
+
                             <div class="form-group two-div">
                                 <label for="" class=" col-form-label"> Email : &nbsp </label>
                                 <input name="tanggal" type="email" placeholder="Email" class="form-control" value={{$row->email}} required>
                             </div>
                         </div>
-    
+
                         <div class="row">
                             <div class="col">
                                 <label for="" class=" col-form-label"> Password : &nbsp </label>
                                 <input type="text" name="password" class="form-control" value="{{$row->password}}">
-                            </div>  
+                            </div>
                         </div>
 
                         <div class="row mb-3">
@@ -64,21 +65,24 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                                 </select>
                             </div>
                         </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <input type="submit" name="inputMapel" class="form-control submit-btn">
-                            </div>
-                        </div>   
-                        @endforeach
-                    </form>
                 </div>
+
+                <div class="row">
+                    <div class="col">
+                        <input type="submit" name="inputMapel" class="form-control submit-btn">
+                    </div>
+                </div>
+                @endforeach
+                </form>
             </div>
         </div>
-
     </div>
+
+</div>
 </div>
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection

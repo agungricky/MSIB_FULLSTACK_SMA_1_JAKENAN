@@ -1,5 +1,7 @@
 @extends('admin.index')
 @section('content')
+@if (Auth::user()->role =='administrator')
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -22,7 +24,7 @@
 
                 <div class="col-md-6">
                     <form action="{{route('kelas.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
-                        @csrf 
+                        @csrf
 
                         <div class="form-group">
                             <input type="text" name="kelas" class="form-control" id="" placeholder="Masukan Kelas" required>
@@ -36,4 +38,7 @@
 
     </div>
 </div>
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection
