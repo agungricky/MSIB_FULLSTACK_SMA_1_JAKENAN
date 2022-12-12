@@ -71,8 +71,8 @@ class tugasController extends Controller
      */
     public function show($id)
     {
-        $row = Tugas::find($id);
-        return view('tugas.detail_tugas', compact('row'));
+        // $row = Tugas::find($id);
+        // return view('tugas.detail_tugas', compact('row'));
     }
 
     /**
@@ -96,7 +96,51 @@ class tugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'perihal' => 'required|max:11',
+            'jam' => 'required',
+            'hari' => 'required',
+            'tanggal' => 'required',
+            'keterangan' => 'required',
+            'upload' => 'file',
+        ];
+        // Wes Beres no error masseh
+        //proses upload,dicek ketika edit data ada upload file/tidak
+        if (!empty($request->upload)) {
+            //ambil isi kolom foto lalu hapus file fotonya di folder images
+            $upload = DB::table('tugas')->select('upload')
+                ->where('id', '=', $id)->get();
+            foreach ($upload as $u) {
+                $namaFile = $u->upload;
+            }
+            File::delete(public_path('admin/images/tugas' . $namaFile));
+            //proses upload file baru 
+            $request->validate([
+                'upload' => 'file|mimes:word,pptx,pdf,jpg,png|max:5024',
+            ]);
+            $fileName = $request->perihal . '.' . $request->upload->extension();
+            $request->upload->move(public_path('admin/images/tugas/'), $fileName);
+        } else {
+            //ambil isi kolom foto lalu hapus file fotonya di folder images
+            $upload = DB::table('tugas')->select('upload')
+                ->where('id', '=', $id)->get();
+            foreach ($upload as $u) {
+                $namaFile = $u->upload;
+            }
+            $fileName = $namaFile;
+        }
+
+        DB::table('tugas')->where('id', '=', $id)->update(
+            [
+                'perihal' => $request->perihal,
+                'jam' => $request->jam,
+                'hari' => $request->hari,
+                'tanggal' => $request->tanggal,
+                'keterangan' => $request->keterangan,
+                // 'tugas' => $fileName,
+            ]
+        );
+        return redirect('/tugas');
     }
 
     /**

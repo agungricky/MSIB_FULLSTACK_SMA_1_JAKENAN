@@ -49,13 +49,9 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $row->Hari}}</td>
                                             <td>{{ $row->Jam}}</td>
-
-                                            <td>{{ $row->kelas_id}}</td>
                                             <td>{{ $row->Mapel}}</td>
-
-                                           // <td>{{ $row->Mapel}}</td>
-                                           // <td>{{ $row->guru}}</td>
-                                           // <td>{{ $row->kelas}}</td>
+                                            <td>{{ $row->guru}}</td>
+                                            <td>{{ $row->kelas}}</td>
 
                                             <td>
                                                 <form method="POST" action="{{ route('jadwal.destroy',$row->id) }}">

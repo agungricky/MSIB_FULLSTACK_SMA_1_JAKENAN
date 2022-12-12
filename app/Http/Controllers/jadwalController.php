@@ -16,9 +16,11 @@ class jadwalController extends Controller
     public function index()
     {
         $jadwal = DB::table('jadwal')
-            ->join('guru', 'guru.id', '=', 'jadwal.id')
-            ->join('kelas', 'kelas.id', '=', 'jadwal.id')
-            ->select('jadwal.*', 'guru.nama AS guru', 'kelas.kelas AS kelas')->get();
+            ->join('guru', 'jadwal.guru_id', '=', 'guru.id')
+            ->join('kelas', 'jadwal.kelas_id', '=', 'kelas.id')
+            ->select('jadwal.*', 'guru.nama AS guru', 'kelas.kelas AS kelas')
+            ->orderBy('kelas', 'ASC')
+            ->orderBy('Jam', 'ASC')->get();
         return view('jadwal.index', compact('jadwal'));
     }
 
@@ -41,23 +43,13 @@ class jadwalController extends Controller
      */
     public function store(Request $request)
     {
-
-        // $request->validate(
-        //     [
-        //         'Hari' => 'required',
-        //         'Jam' => 'required',
-        //         'Kelas' => 'required',
-        //         'Mapel' => 'required'
-        //     ]
-        // );
-
         DB::table('jadwal')->insert(
             [
                 'Hari' => $request->hari,
-                'Jam' => $request->jam,
-                'kelas_id' => $request->kodeKelas,
+                'Jam' => $request->Jam,
+                'kelas_id' => $request->kelas,
                 'Mapel' => $request->mapel,
-                'guru_id' => $request -> guru
+                'guru_id' => $request->guru
             ]
         );
         return redirect()->route('jadwal.store')
@@ -84,7 +76,11 @@ class jadwalController extends Controller
      */
     public function edit($id)
     {
-        $data = DB::table('jadwal')->where('id', '=', $id)->get();
+        $data = DB::table('jadwal')
+            ->join('guru', 'jadwal.guru_id', '=', 'guru.id')
+            ->join('kelas', 'jadwal.kelas_id', '=', 'kelas.id')
+            ->select('jadwal.*', 'guru.nama AS guru', 'kelas.kelas AS kelas')
+            ->where('jadwal.id', '=', $id)->get();
         return view('jadwal.form_edit_jadwal', compact('data'));
     }
 
@@ -100,9 +96,10 @@ class jadwalController extends Controller
         DB::table('jadwal')->where('id', '=', $id)->update(
             [
                 'Hari' => $request->hari,
-                'Jam' => $request->jam,
-                'kelas_id' => $request->kodeKelas,
-                'Mapel' => $request->mapel,
+                'Jam' => $request->Jam,
+                'mapel' => $request->Mapel,
+                'guru' => $request->guru,
+                'kelas' => $request->kelas,
             ]
 
         );
@@ -126,10 +123,14 @@ class jadwalController extends Controller
     public function search_jadwal(Request $request)
     {   //paginate Mengatur berapa data Yang tampil Pada Halaman
         $keyword = $request->search;
+
         $jadwal = DB::table('jadwal')
-            ->join('guru', 'guru.id', '=', 'jadwal.id')
-            ->join('kelas', 'kelas.id', '=', 'jadwal.id')
-            ->select('jadwal.*', 'guru.nama AS guru', 'kelas.kelas AS kelas')->where('Mapel', 'like', "%" . $keyword . "%")->paginate(25);;
+            ->join('guru', 'jadwal.guru_id', '=', 'guru.id')
+            ->join('kelas', 'jadwal.kelas_id', '=', 'kelas.id')
+            ->select('jadwal.*', 'guru.nama AS guru', 'kelas.kelas AS kelas')
+            ->orderBy('kelas', 'ASC')
+            ->orderBy('Jam', 'ASC')->where('Mapel', 'like', "%" . $keyword . "%")->paginate(25);
+        return view('jadwal.index', compact('jadwal'));
 
         return view('jadwal.index', compact('jadwal'))->with('i', (request()->input('page', 1) - 1) * 25);
     }

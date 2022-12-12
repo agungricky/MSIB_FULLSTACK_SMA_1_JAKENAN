@@ -80,7 +80,7 @@ Route::get('/laporan_akademik', function () {
 // });
 
 Route::get('/form_siswa', function () {
-    return view('siswa.form_siswa');
+    return view('siswa.form_siswa1');
 });
 Route::get('/form_siswa', [App\Http\Controllers\siswaController::class, 'create']);
 
@@ -157,8 +157,6 @@ Route::get('/search_jadwal', [jadwalController::class, 'search_jadwal'])->name('
 
 Route::resource('spp', sppController::class);
 Route::get('/search_spp', [sppController::class, 'search_spp'])->name('search_spp');
-
-Route::resource('spp', SppController::class);
 
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);

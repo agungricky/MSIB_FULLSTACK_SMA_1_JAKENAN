@@ -33,50 +33,52 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                         @csrf
                         @method('put')
                         {{-- Upload img : https://www.w3schools.com/php/php_file_upload.asp --}}
-    
+                        
+                        <div class="form-group">
+                            <label for=""> Perihal : &nbsp </label>
+                            <input name="perihal" type="text" placeholder="Tugas" class="form-control" value="{{$row->perihal}}"> 
+                        </div>
+
+                        <div class="form-group two-div">
+                            <label for=""> Hari : &nbsp</label>
+                            <select name="hari" id="hari" class="form-select form-control">
+                                @foreach ($arr_hari as $hari)
+                                    @php
+                                        $sel1 = ($hari == $row->hari) ? 'selected' : '';
+                                    @endphp
+                                        <option value="{{$hari}}" {{ $sel1 }}>{{ $hari }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="row two-div">
-                            <div class="form-group two-div">
-                                <label for=""> Keterangan : &nbsp </label>
-                                <input name="keterangan" type="text" placeholder="Tugas" class="form-control" value={{$row->keterangan}}> 
-                            </div>
-                            
                             <div class="form-group two-div">
                                 <label for=""> Tanggal : &nbsp </label>
                                 <input name="tanggal" type="date" placeholder="Tanggal" class="form-control" value={{$row->tanggal}}>
                             </div>
-                        </div>
-    
-                        <div class="row two-div">
-    
-                           <div class="form-group two-div">
-                                <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control">
-                                    @foreach ($arr_hari as $hari)
-                                        @php
-                                            $sel1 = ($hari == $row->hari) ? 'selected' : '';
-                                        @endphp
-                                            <option value="{{$hari}}" {{ $sel1 }}>{{ $hari }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-    
-                            
+
                             <div class="form-group two-div">
                                 <label for=""> Jam &nbsp</label> 
-                                    <input name="jam" type="time"class="form-control" value={{$row->jam}}>
+                                    <input name="jam" type="text"class="form-control" value="{{$row->jam}}">
                             </div>
+                        </div>
+
+                        <div class="form-group two-div">
+                            <label for=""> Keterangan : &nbsp </label>
+                            <input name="keterangan" type="text" placeholder="Tugas" class="form-control" value="{{$row->keterangan}}"> 
+                        </div>
+                            
                             {{-- <label for=""> Selesai &nbsp </label>
                                 <input type="time" class="form-control"> --}}
                         </div> 
-    
-                        <div class="form-group">
-                            <label for=""> Perihal : &nbsp </label>
-                            <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal" value={{$row->perihal}}></textarea>
-                        </div>
+
+                        {{-- <div class="form-group">
+                            <input type="file" name="tugas" class="form-control" id="upload value={{$row->upload}}">
+                        </div> --}}
 
                         <div class="form-group">
-                            <input type="file" class="form-control" id="upload value={{$row->upload}}">
-                        </div>
+                            <input type="file" class="form-control" name="tugas" id="image" placeholder="Upload" onchange="previewImage()">                              
+                        </div> 
 
                         <div>
                             <input type="submit" name="inputMapel" class="form-control submit-btn">
