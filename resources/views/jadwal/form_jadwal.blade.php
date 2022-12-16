@@ -3,6 +3,11 @@
 
 @php
 $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+
+use App\Models\Guru;
+use App\Models\Kelas;
+$guru = Guru::all();
+$kelas = Kelas::all();
 @endphp
 
 <div class="main-panel">
@@ -10,7 +15,7 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
         <div class="row">
             <div class="col-md-6">
                 <br><br>
-                <img src="admin\images\carousel\guru.png" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
+                <img src="{{url('admin\images\carousel\jadwal.png')}}" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
             </div>
 
             <div class="col-md-6">
@@ -26,7 +31,7 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                                 <div class="row two-div">        
                                     <div class="form-group two-div">
                                          <label for=""> Hari : &nbsp</label>
-                                         <select name="hari" id="hari" class="form-select form-control">
+                                         <select name="Hari" id="Hari" class="form-select form-control">
                                              <option selected >Hari</option>
                                              @foreach($arr_hari as $hari)
                                                  <option value="{{ $hari }}">{{ $hari }}</option>
@@ -36,25 +41,35 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                                      
                                      <div class="form-group two-div">
                                          <label for=""> Jam &nbsp</label> 
-                                             <input name="jam" type="text"class="form-control">
+                                             <input name="Jam" type="text"class="form-control">
                                      </div>
                                  </div> 
 
                                 <div class="form-group">
                                     <label for=""> Mata Pelajaran : &nbsp </label>
-                                    <input name="mapel" type="text" placeholder="Mata Pelajaran" class="form-control"> 
+                                    <input name="Mapel" type="text" placeholder="Mata Pelajaran" class="form-control"> 
                                 </div>
                             </div>
                             
                             <div class="row two-div">
                                 <div class="form-group two-div">
                                     <label for=""> Nama Guru : &nbsp </label>
-                                    <input name="guru" type="text" placeholder="Kode Guru" class="form-control"> 
+                                    <select class="form-select" name="guru" required>
+                                        <option selected>-- Nama Guru --</option>
+                                        @foreach($guru as $g)
+                                        <option value="{{ $g->id }}">{{ $g->nama }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
             
                                 <div class="form-group two-div">
                                     <label for=""> Kelas : &nbsp </label>
-                                    <input name="kodeKelas" type="text" placeholder="Kode Kelas" class="form-control"> 
+                                    <select class="form-select" name="kelas" required>
+                                        <option selected>-- Kelas --</option>
+                                        @foreach($kelas as $k)
+                                        <option value="{{ $k->id }}">{{ $k->kelas }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 

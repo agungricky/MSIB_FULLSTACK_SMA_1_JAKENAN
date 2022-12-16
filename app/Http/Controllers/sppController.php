@@ -17,7 +17,7 @@ class SppController extends Controller
     public function index()
     {
         $spp = DB::table('spp')
-            ->join('siswa', 'siswa.id', '=', 'spp.id')
+            ->join('siswa', 'spp.siswa_id', '=', 'siswa.id')
             ->select('spp.*', 'siswa.NIS', 'siswa.nama_siswa AS nama')->get();
         return view('spp.index', compact('spp'));
     }
@@ -117,7 +117,7 @@ class SppController extends Controller
     {   //paginate Mengatur berapa data Yang tampil Pada Halaman
         $keyword = $request->search;
         $spp = DB::table('spp')
-            ->join('siswa', 'siswa.id', '=', 'spp.id')
+            ->join('siswa', 'spp.siswa_id', '=', 'siswa.id')
             ->select('spp.*', 'siswa.NIS', 'siswa.nama_siswa AS nama')->where('nama_siswa', 'like', "%" . $keyword . "%")->orderBy('tanggal', 'DESC')->paginate(25);
         return view('spp.index', compact('spp'))->with('i', (request()->input('page', 1) - 1) * 25);
     }
