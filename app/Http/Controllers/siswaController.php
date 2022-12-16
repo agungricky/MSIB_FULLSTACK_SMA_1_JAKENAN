@@ -71,7 +71,7 @@ class siswaController extends Controller
         //------------apakah user  ingin upload foto-----------
         //yang diedit fiki new
         if (!empty($request->file('foto'))) {
-            $nameFoto = $request->nama_siswa . '-' . $request->nip . '.' . $request->file('foto')->extension();
+            $nameFoto = 'siswa-' . $request->nip . '.' . $request->file('foto')->extension();
             //$nameFoto = $request->foto->getClientOriginalName();
             $request->file('foto')->move(public_path('admin/images/siswa'), $nameFoto);
         } else {

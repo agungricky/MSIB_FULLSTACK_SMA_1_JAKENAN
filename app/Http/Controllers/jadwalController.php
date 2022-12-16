@@ -45,14 +45,14 @@ class jadwalController extends Controller
     {
         DB::table('jadwal')->insert(
             [
-                'Hari' => $request->hari,
+                'Hari' => $request->Hari,
                 'Jam' => $request->Jam,
                 'kelas_id' => $request->kelas,
-                'Mapel' => $request->mapel,
+                'Mapel' => $request->Mapel,
                 'guru_id' => $request->guru
             ]
         );
-        return redirect()->route('jadwal.store')
+        return redirect()->route('jadwal.index')
             ->with('success', 'Data Jadwal Baru Berhasil Disimpan');
     }
 
@@ -95,11 +95,11 @@ class jadwalController extends Controller
     {
         DB::table('jadwal')->where('id', '=', $id)->update(
             [
-                'Hari' => $request->hari,
+                'Hari' => $request->Hari,
                 'Jam' => $request->Jam,
                 'mapel' => $request->Mapel,
-                'guru' => $request->guru,
-                'kelas' => $request->kelas,
+                'guru_id' => $request->guru,
+                'kelas_id' => $request->kelas,
             ]
 
         );

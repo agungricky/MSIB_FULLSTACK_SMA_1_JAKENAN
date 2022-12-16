@@ -127,6 +127,20 @@ Route::get('/kalender', function () {
     return view('kalender_akademik.kalender');
 });
 
+// Route::get('/kalender', function () {
+//     return view('admin.kalender');
+// });
+
+// Route::get('/mapel', function () {
+//     return view('mapel.mapel');
+// });
+// Route::get('/form_mapel', function () {
+//     return view('mapel.form_mapel');
+// });
+Route::get('/kalender', function () {
+    return view('kalender_akademik.kalender');
+});
+
 Route::get('/form_kelas', function () {
     return view('kelas.form_kelas');
 });
@@ -135,6 +149,8 @@ Route::get('/form_nilai', function () {
     return view('nilai.form_nilai');
 });
 // Route::resource('staff', StaffController::class);
+
+Route::resource('staff', StaffController::class);
 
 Route::resource('siswa', siswaController::class);
 Route::get('/search_siswa', [siswaController::class, 'search_siswa'])->name('search_siswa');
@@ -172,6 +188,10 @@ Route::get('/search_event', [eventController::class, 'search_event'])->name('sea
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/user', function () {
+    return view('Layout.user');
+});
 
 Route::get('/api-guru', [guruController::class, 'apiGuru']);
 Route::get('/api-guru/{id}', [guruController::class, 'apiGuruDetail']);
