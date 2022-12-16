@@ -1,8 +1,10 @@
 @extends('admin.index')
 @section('content')
 
+
 @php
 $ar_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+$ar_perihal = ['Quis', 'Tugas Harian', 'UTS', 'UAS', 'Lainnya'];
 @endphp
 
 <div class="main-panel">
@@ -72,10 +74,29 @@ $ar_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                             <label for=""> Perihal : &nbsp </label>
                             <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal">{{$row->perihal}}</textarea>
                         </div>
-
                         <div class="form-group">
-                            <input type="file" class="form-control" id="upload value={{$row->upload}}">
+                            <select class="form-control form-control-lg countrylist" name="perihal">
+                                <option selected>----- Perihal -----</option>
+                                @foreach($ar_perihal as $perihal)
+                                @php
+                                    $sel2 = ($perihal == $row->perihal) ? 'selected' : '';
+                                @endphp
+                                    <option value="{{ $perihal }}" {{ $sel2 }}>{{ $perihal }}</option>
+                                @endforeach
+                            </select>   
                         </div>
+
+                        <div class="row">
+                            <input type="hidden" name="oldImage" value="{{$row->upload}}">
+                            @if($row->upload)
+                            <img src="{{asset('admin/images/tugas/'.$row->upload)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" >
+                            @else
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                            @endif
+                        </div> 
+                        <div class="form-group">
+                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
+                        </div> 
 
                         <div>
                             <input type="submit" name="inputMapel" class="form-control submit-btn">

@@ -39,7 +39,7 @@ $ar_status = ['Lulus','Aktif','Pindah','Keluar'];
                             @endif
 
 
-                            <form method="POST" action="{{route('siswa.store')}}">
+                            <form method="post" role="form" action="{{route('siswa.store')}}" enctype="multipart/form-data" >
                                 @csrf
                                 
                                 <div class="row mb-3">
