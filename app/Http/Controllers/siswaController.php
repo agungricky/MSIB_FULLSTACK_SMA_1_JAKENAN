@@ -44,7 +44,7 @@ class siswaController extends Controller
         $ar_agama = ['Islam', 'Hindu', 'Khatolik', 'Budha', 'Kristen', 'Lainya'];
         $ar_status = ['Lulus', 'Aktif', 'Pindah', 'Keluar'];
         // return view::make('siswa.form_siswa')->with('ar_gender', $ar_gender);
-        return view('siswa.form_siswa', compact('kelas'));
+        return view('siswa.form_siswa1', compact('kelas'));
         // return View('siswa.form_siswa', ['ar_gender' => $ar_gender, 'ar_agama' => $ar_agama, 'ar_status' => $ar_status, 'kelas' => $kelas]);
         // return view('siswa.form_siswa', compact('kelas'));
         // return view('siswa.form_siswa', compact('ar_gender', 'kelas', 'ar_agama', 'ar_status'));

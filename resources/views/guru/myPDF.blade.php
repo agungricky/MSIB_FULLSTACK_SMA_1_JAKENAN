@@ -32,7 +32,6 @@
                 <th class="font-weight-bold">Gender</th>
                 <th class="font-weight-bold">Tempat Lahir</th>
                 <th class="font-weight-bold">No Telp</th>
-                <th class="font-weight-bold">Email</th>
                 <th class="font-weight-bold">Agama</th>
             </tr>
         </thead>
@@ -50,7 +49,6 @@
                 <td>{{$row->gender }}</td>
                 <td>{{$row->tempat_lahir }}</td>
                 <td>{{$row->no_telp}}</td>
-                <td>{{$row->email }}</td>
                 <td>{{$row->agama }}</td>
             </tr>
             @endforeach

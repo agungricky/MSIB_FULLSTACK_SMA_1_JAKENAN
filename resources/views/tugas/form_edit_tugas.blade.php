@@ -6,7 +6,6 @@
 $ar_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 $ar_perihal = ['Quis', 'Tugas Harian', 'UTS', 'UAS', 'Lainnya'];
 @endphp
-
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row purchace-popup">
@@ -107,6 +106,8 @@ $ar_perihal = ['Quis', 'Tugas Harian', 'UTS', 'UAS', 'Lainnya'];
             </div>
         </div>
 
+=======
+>>>>>>> f5363c12d318ff4c66dab6e48d3d0eafc1d89045
     </div>
 </div>
 <!-- content-wrapper ends -->

@@ -36,6 +36,7 @@
                                         <th class="font-weight-bold">Perihal</th>
                                         <th class="font-weight-bold">Hari</th>
                                         <th class="font-weight-bold">Tanggal</th>
+                                        <th class="font-weight-bold">Jam</th>
                                         <th class="font-weight-bold">Keterangan</th>
                                         <th class=" font-weight-bold">Perihal</th>
                                         <th class=" font-weight-bold">Upload</th>
@@ -57,8 +58,8 @@
                                                 <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('tugas.show', $row->id) }}" class="btn btn-info btn-sm">
-                                                        <i class="fa-solid fa-eye"></i>
+                                                    <a href="admin/images/tugas/{{ $row->upload }}" class="btn btn-success btn-sm">
+                                                        <i class="fa-solid fa-download"></i>
                                                     </a>
                                                     &nbsp;
                                                     <a class="btn btn-warning btn-sm" title="Ubah Pegawai"

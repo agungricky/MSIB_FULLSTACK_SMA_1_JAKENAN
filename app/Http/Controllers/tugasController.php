@@ -78,8 +78,8 @@ class tugasController extends Controller
      */
     public function show($id)
     {
-        $row = Tugas::find($id);
-        return view('tugas.detail_tugas', compact('row'));
+        // $row = Tugas::find($id);
+        // return view('tugas.detail_tugas', compact('row'));
     }
 
     /**
