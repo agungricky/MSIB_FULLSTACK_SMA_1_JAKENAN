@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\event;
 
 class eventController extends Controller
 {
@@ -68,7 +69,8 @@ class eventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('event')->where('id', '=', $id)->get();
+        return view('event.form_edit_event', compact('data'));
     }
 
     /**
@@ -80,7 +82,16 @@ class eventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        DB::table('event')->where('id', '=', $id)->update(
+            [
+                'nama' => $request->nama,
+                'tgl' => $request->tgl,
+                'deskripsi' => $request->deskripsi,
+                
+            ]
+
+        );
+        return redirect('/event');
     }
 
     /**
@@ -91,7 +102,10 @@ class eventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = event::find($id);
+        event::where('id', $id)->delete();
+        return redirect()->route('event.index')
+            ->with('success', 'Data Siswa Berhasil Dihapus');
     }
 
     public function search_event(Request $request)

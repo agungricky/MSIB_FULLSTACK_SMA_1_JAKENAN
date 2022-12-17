@@ -80,7 +80,7 @@ Route::get('/laporan_akademik', function () {
 // });
 
 Route::get('/form_siswa', function () {
-    return view('siswa.form_siswa');
+    return view('siswa.form_siswa1');
 });
 Route::get('/form_siswa', [App\Http\Controllers\siswaController::class, 'create']);
 
@@ -96,9 +96,14 @@ Route::get('/form_guru', function () {
 Route::get('/tugas', function () {
     return view('tugas.index');
 });
+
 Route::get('/form_tugas', function () {
     return view('tugas.form_tugas');
 });
+
+// Route::get('/tugas/{id}/edit', [App\Http\Controllers\tugasController::class, 'create']);
+
+// Route::get('/form_edit_tugas', [App\Http\Controllers\tugasController::class, 'create']);
 
 Route::get('/form_jadwal', function () {
     return view('jadwal.form_jadwal');
@@ -127,6 +132,12 @@ Route::get('/kalender', function () {
     return view('kalender_akademik.kalender');
 });
 
+
+Route::get('/event', function () {
+    return view('event.index');
+});
+
+
 // Route::get('/kalender', function () {
 //     return view('admin.kalender');
 // });
@@ -141,16 +152,20 @@ Route::get('/kalender', function () {
     return view('kalender_akademik.kalender');
 });
 
+
 Route::get('/form_kelas', function () {
     return view('kelas.form_kelas');
+});
+
+Route::get('/nilai', function () {
+    return view('nilai.index');
 });
 
 Route::get('/form_nilai', function () {
     return view('nilai.form_nilai');
 });
-// Route::resource('staff', StaffController::class);
 
-Route::resource('staff', StaffController::class);
+// Route::resource('staff', StaffController::class);
 
 Route::resource('siswa', siswaController::class);
 Route::get('/search_siswa', [siswaController::class, 'search_siswa'])->name('search_siswa');
@@ -174,8 +189,6 @@ Route::get('/search_jadwal', [jadwalController::class, 'search_jadwal'])->name('
 Route::resource('spp', sppController::class);
 Route::get('/search_spp', [sppController::class, 'search_spp'])->name('search_spp');
 
-Route::resource('spp', SppController::class);
-
 Route::get('generate-pdf', [guruController::class, 'generatePDF']);
 Route::get('guru-pdf', [guruController::class, 'guruPDF']);
 
@@ -190,10 +203,6 @@ Route::get('/search_event', [eventController::class, 'search_event'])->name('sea
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/user', function () {
-    return view('Layout.user');
-});
 
 Route::get('/api-guru', [guruController::class, 'apiGuru']);
 Route::get('/api-guru/{id}', [guruController::class, 'apiGuruDetail']);

@@ -1,5 +1,11 @@
 @php
 $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+
+use App\Models\Guru;
+use App\Models\Kelas;
+$guru = Guru::all();
+$kelas = Kelas::all();
+
 @endphp
 
 @extends('admin.index')
@@ -8,31 +14,24 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
 <div class="main-panel">
     <div class="content-wrapper">
-        <div class="row purchace-popup">
-            <div class="col-12 stretch-card grid-margin">
-                <div class="card card-secondary">
-                    <span class="card-body d-lg-flex align-items-center">
-                        <p class="mb-lg-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more! </p>
-                        <a href="https://www.bootstrapdash.com/product/stellar-admin/?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn btn-warning purchase-button btn-sm my-1 my-sm-0 ml-auto">Upgrade To Pro</a>
-                        <button class="close popup-dismiss ml-2">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-
         <div class="container-fluid">
             <div class="row">
-                {{-- <div class="col-md-6">
-                    <img src="admin/images/guru/guru.png" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
-                </div> --}}
+                <div class="col-md-6">
+                    <br><br><br><br>
+                    <img src="{{url('admin\images\carousel\jadwal.png')}}" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
+                </div>
 
-                <div class="col">
-                    @foreach ($data as $row)
-                    <form action="{{route('jadwal.update',$row->id)}}" method="post" class="php-email-form">
+                <div class="col-md-6">
+                    <div class="alert alert-warning fs-4 fw-bold mb-5" role="alert">
+                        #Table Edit Jadwal
+                    </div>
+                      
+                @foreach ($data as $data)
+                
+                    <form action="{{route('jadwal.update', $data->id)}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
                         @method('put')
+
                         <div class="row two-div">
                             <div class="form-group two-div">
                                 <label for=""> Mata Pelajaran : &nbsp </label>
@@ -89,8 +88,16 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                         <div>
                             <input type="submit" name="inputMapel" class="form-control submit-btn">
                         </div>
+                        
+
+                        <div class="my-3">
+                            <div class="">Data ini akan kami simpan di <span class="text-danger">DATABASE</span></div>
+                            <div class="sent-message">Jika data sudah benar klik tombol simpan di bawah!!!</div>
+                        </div>
+                        <div class="text-center"><button type="submit" class="btn btn-primary">Simpan data</button></div>
                     </form>
-                    @endforeach
+                @endforeach
+                
                 </div>
             </div>
         </div>

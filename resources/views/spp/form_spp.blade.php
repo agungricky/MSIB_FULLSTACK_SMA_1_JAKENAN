@@ -3,9 +3,7 @@
 @if (Auth::user()->role =='administrator')
 
 <div class="main-panel">
-
     <div class="content-wrapper">
-
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin headForm">
                 <div class="card card-secondary ">
@@ -50,21 +48,12 @@
                             <input name="siswa" type="text" placeholder="Siswa" class="form-control">
                         </div>
                     </div>
+                </div>
 
-
-                    {{-- <div class="form-group">
-                        <label for=""> Perihal : &nbsp </label>
-                        <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
-                    </div> --}}
-
-                    <div>
-                        <input type="submit" name="inputMapel" class="form-control submit-btn">
-                    </div>
-                </form>
             </div>
-        </div>
+        
 
-    </div>
+</div>
 </div>
 </div>
 </div>

@@ -4,11 +4,16 @@
 
 @php
 $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+
+use App\Models\Guru;
+use App\Models\Kelas;
+$guru = Guru::all();
+$kelas = Kelas::all();
 @endphp
 
 <div class="main-panel">
-
     <div class="content-wrapper">
+
 
         <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin headForm">
@@ -82,15 +87,45 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                             <input type="time" class="form-control"> --}}
                     </div>
 
-                    {{-- <div class="form-group">
-                        <label for=""> Perihal : &nbsp </label>
-                        <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
-                    </div> --}}
 
-                    <div>
-                        <input type="submit" name="inputMapel" class="form-control submit-btn">
+                                <div class="form-group">
+                                    <label for=""> Mata Pelajaran : &nbsp </label>
+                                    <input name="Mapel" type="text" placeholder="Mata Pelajaran" class="form-control"> 
+                                </div>
+                            </div>
+                            
+                            <div class="row two-div">
+                                <div class="form-group two-div">
+                                    <label for=""> Nama Guru : &nbsp </label>
+                                    <select class="form-select" name="guru" required>
+                                        <option selected>-- Nama Guru --</option>
+                                        @foreach($guru as $g)
+                                        <option value="{{ $g->id }}">{{ $g->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+            
+                                <div class="form-group two-div">
+                                    <label for=""> Kelas : &nbsp </label>
+                                    <select class="form-select" name="kelas" required>
+                                        <option selected>-- Kelas --</option>
+                                        @foreach($kelas as $k)
+                                        <option value="{{ $k->id }}">{{ $k->kelas }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="my-3">
+                                <div class="">Data ini akan kami simpan di <span class="text-danger">DATABASE</span></div>
+                                <div class="sent-message">Jika data sudah benar klik tombol simpan di bawah!!!</div>
+                            </div>
+        
+                            <div>
+                                <input type="submit" name="inputMapel" class="form-control submit-btn">
+                            </div>
+                        </form>
                     </div>
-                </form>
             </div>
         </div>
 

@@ -22,9 +22,13 @@ class nilaiController extends Controller
     public function index()
     {
         $nilai = DB::table('nilai')
-            ->join('guru', 'guru.id', '=', 'nilai.id')
-            ->join('tugas', 'tugas.id', '=', 'nilai.id')
-            ->join('siswa', 'siswa.id', '=', 'nilai.id')
+
+            ->join('guru', 'guru.id', '=', 'nilai.guru_id')
+            ->join('tugas', 'tugas.id', '=', 'nilai.tugas_id')
+            ->join('siswa', 'siswa.id', '=', 'nilai.siswa_id')
+            // ->join('guru', 'guru.id', '=', 'nilai.id')
+            // ->join('tugas', 'tugas.id', '=', 'nilai.id')
+            // ->join('siswa', 'siswa.id', '=', 'nilai.id')
             ->select('nilai.*', 'guru.nama AS guru', 'tugas.perihal AS tugas', 'siswa.nama_siswa AS siswa')->get();
         return view('nilai.index', compact('nilai'));
     }
@@ -65,18 +69,16 @@ class nilaiController extends Controller
         //lakukan insert data dari request form
         DB::table('nilai')->insert(
             [
-
                 'nilai' => $request->nilai,
                 'perihal' => $request->perihal,
                 'guru_id' => $request->guru_id,
                 'tugas_id' => $request->tugas_id,
-                'siswa_id' => $request->siswa_id,
+                'siswa_id' => $request->siswa_id
                 // 'created_at' => now() ini gak ada di db
-
             ]
         );
 
-        return redirect()->route('/nilai')
+        return redirect()->route('nilai.store')
             ->with('success', 'Data nilai Baru Berhasil Disimpan');
     }
 
@@ -99,7 +101,8 @@ class nilaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('nilai')->where('id', '=', $id)->get();
+        return view('nilai.form_edit_nilai', compact('data'));
     }
 
     /**
@@ -111,7 +114,25 @@ class nilaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'nilai' => 'required|unique:nilai|max:11',
+            'perihal' => 'required',
+            'guru_id' => 'required |Integer',
+            'tugas_id' => 'required |Integer',
+            'siswa_id' => 'required |Integer'
+        ];
+
+        DB::table('nilai')->where('id', '=', $id)->update(
+            [
+                'nilai' => $request->nilai,
+                'perihal' => $request->perihal,
+                'guru_id' => $request->guru_id,
+                'tugas_id' => $request->tugas_id,
+                'siswa_id' => $request->siswa_id
+            ]
+
+        );
+        return redirect('/nilai');
     }
 
     /**
@@ -122,16 +143,19 @@ class nilaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $row = Nilai::find($id);
+        Nilai::where('id', $id)->delete();
+        return redirect()->route('nilai.index')
+            ->with('success', 'Data Nilai Berhasil Dihapus');
     }
 
     public function search_nilai(Request $request)
     {   //paginate Mengatur berapa data Yang tampil Pada Halaman
         $keyword = $request->search;
         $nilai = DB::table('nilai')
-            ->join('guru', 'guru.id', '=', 'nilai.id')
-            ->join('tugas', 'tugas.id', '=', 'nilai.id')
-            ->join('siswa', 'siswa.id', '=', 'nilai.id')
+            ->join('guru', 'nilai.guru_id', '=', 'guru.id')
+            ->join('tugas', 'nilai.tugas_id', '=', 'tugas.id')
+            ->join('siswa', 'nilai.siswa_id', '=', 'siswa.id')
             ->select('nilai.*', 'guru.nama AS guru', 'tugas.perihal AS tugas', 'siswa.nama_siswa AS siswa')->where('siswa.nama_siswa', 'like', "%" . $keyword . "%")->paginate(25);
         return view('nilai.index', compact('nilai'))->with('i', (request()->input('page', 1) - 1) * 25);
     }

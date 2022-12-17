@@ -5,9 +5,9 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h2>Contact</h2>
-        <h3><span>Contact Us</span></h3>
-        <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+        <h2>Hubungi Kami</h2>
+        <h3><span>Apakah ada yang bisa di Bantu?</span></h3>
+        <p>Dukung kami dengan memberikan support, saran, dan Kritik yang membangun</p>
       </div>
 
       <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -69,6 +69,40 @@
         </div>
 
       </div>
+
+
+      <form id="salsa" method="get" accept-charset="utf-8">
+        @csrf
+        @method('get')
+        <div class="form-group">
+        <div class="input Nomer"><label for="Nomer">Your Number</label><input placeholder="62812xxxx" name="nomer" type="number" class="form-control" id="nomer" required /></div>
+        </div>
+        <div class="form-group">
+        <div class="input nama"><label for="nama">Your Name</label><input placeholder="nama" name="nama" type="text" class="form-control" id="nama" required /></div>
+        </div>
+        <div class="form-group">
+        <div class="input pesan"><label for="pesan">Message</label><textarea class="form-control" rows="4" id="pesan" name="pesan" placeholder="pesan"></textarea></div>
+        </div>
+        <div class="form-group">
+        <div class="submit"><button type="submit" id="btn-wa" class="btn btn-primary btn-user btn-block">Send</button>
+        </div>
+        </form>
+
+        <script type="b81031a443e8c52bbfdadb60-text/javascript">
+          $("#btn-wa").click(function(){
+              var nomor = document.getElementById('nomer').value;
+              var pesan = document.getElementById('pesan').value;
+              var win = window.open('https://api.whatsapp.com/send?phone='+nomor+'&text='+pesan);
+              if (win) {
+                  //Browser has allowed it to be opened
+                  win.focus();
+              } else {
+                  //Browser has blocked it
+                  alert('Please allow popups for this website');
+              }
+          return false;
+          });
+          </script>
 
     </div>
   </section><!-- End Contact Section -->

@@ -64,7 +64,7 @@ $ar_siswa = Siswa::all();
                                     <label class="col-sm-2 col-form-label">guru </label>
                                     <div class="col-sm-10">
                                         <select class="form-select" name="guru_id">
-                                            <option selected>-- Pilih guru --</option>
+                                            <option selected >-- Pilih guru --</option>
                                             @foreach($ar_guru as $guru)
                                             <option value=" {{$guru->id}} ">{{$guru->nama}}</option>
                                             @endforeach
