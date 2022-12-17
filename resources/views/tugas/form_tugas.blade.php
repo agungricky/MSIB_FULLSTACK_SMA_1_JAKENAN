@@ -26,7 +26,7 @@
 
                         <div class="row">
                                 <div class="col-3 form-group">
-                                    <select class="form-control form-control-lg countrylist" name="hari">
+                                    <select class="form-control" name="hari" required style="border: 2px">
                                         <option selected>----- Hari -----</option>
                                         <option value="Senin">Senin</option>
                                         <option value="Selasa">Selasa</option>
@@ -71,7 +71,7 @@
                             </div>
     
                             <div class="">
-                                <input type="file" class="form-control " name="upload" id="image" placeholder="Foto" onchange="previewImage()">                              
+                                <input type="file" class="form-control" name="upload" id="image" placeholder="Foto" onchange="previewImage()">                              
                             </div> 
                         </div>
 

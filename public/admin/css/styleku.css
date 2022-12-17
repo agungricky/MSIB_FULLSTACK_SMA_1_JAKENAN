@@ -8,6 +8,10 @@
     background-color: #4649FF;
 }
 
+.form-check {
+    padding-left: 2rem;
+}
+
 /* Form Mapel */
 .wrapper {
     padding-left: 5%;

@@ -23,9 +23,11 @@ class siswaController extends Controller
     {
         // menampilkan seluruh data siswa
         $siswa = DB::table('siswa')
-            ->join('kelas', 'kelas.id', '=', 'siswa.id')
-            ->select('siswa.*', 'kelas.kelas')->get();
+            ->Join('kelas', 'kelas.id', '=', 'siswa.kelas_id')
+            ->select('siswa.*', 'kelas.kelas')
+            ->get();
         return view('siswa.index', compact('siswa'));
+        // return view('siswa.index', dd($siswa));
     }
 
 
@@ -75,7 +77,7 @@ class siswaController extends Controller
         if (!empty($request->file('foto'))) {
             $nameFoto = 'siswa-' . $request->NIS . '.' . $request->file('foto')->extension();
             //$nameFoto = $request->foto->getClientOriginalName();
-            $request->file('foto')->move(public_path('admin/images/tugas/'), $nameFoto);
+            $request->file('foto')->move(public_path('admin/images/siswa'), $nameFoto);
         } else {
             $nameFoto = '';
         }
