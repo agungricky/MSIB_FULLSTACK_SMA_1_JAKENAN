@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\Kelas;
 use Illuminate\Support\Facades\DB;
-use File;
+use Illuminate\Support\Facades\File;
+use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
@@ -22,9 +23,11 @@ class siswaController extends Controller
     {
         // menampilkan seluruh data siswa
         $siswa = DB::table('siswa')
-            ->join('kelas', 'siswa.kelas_id', '=', 'kelas.id')
-            ->select('siswa.*', 'kelas.kelas')->get();
+            ->Join('kelas', 'kelas.id', '=', 'siswa.kelas_id')
+            ->select('siswa.*', 'kelas.kelas')
+            ->get();
         return view('siswa.index', compact('siswa'));
+        // return view('siswa.index', dd($siswa));
     }
 
 
@@ -56,22 +59,23 @@ class siswaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'NIS' => 'required|unique:siswa|max:11',
-            'nama_siswa' => 'required',
-            'kelas_id' => 'required',
-            'tempat_lahir' => 'required',
-            'jenis_kelamin' => 'required',
-            'tgl_lahir' => 'required',
-            'agama' => 'required',
-            'alamat' => 'nullable|string|min:10',
-            'status_siswa' => 'required',
-            'foto' => 'required',
-        ]);
+        // $request->validate([
+        //     'NIS' => 'required|unique:siswa|max:11',
+        //     'nama_siswa' => 'required',
+        //     'kelas_id' => 'required',
+        //     'tempat_lahir' => 'required',
+        //     'jenis_kelamin' => 'required',
+        //     'tgl_lahir' => 'required',
+        //     'agama' => 'required',
+        //     'alamat' => 'nullable|string|min:10',
+        //     'status_siswa' => 'required',
+        //     'foto' => 'required',
+        // ]);
         //------------apakah user  ingin upload foto-----------
         //yang diedit fiki new
+
         if (!empty($request->file('foto'))) {
-            $nameFoto = 'siswa-' . $request->nip . '.' . $request->file('foto')->extension();
+            $nameFoto = 'siswa-' . $request->NIS . '.' . $request->file('foto')->extension();
             //$nameFoto = $request->foto->getClientOriginalName();
             $request->file('foto')->move(public_path('admin/images/siswa'), $nameFoto);
         } else {
@@ -90,9 +94,8 @@ class siswaController extends Controller
                 'agama' => $request->agama,
                 'alamat' => $request->alamat,
                 'status_siswa' => $request->status_siswa,
-                'foto' => $request->foto,
-                'created_at' => now()
-
+                'foto' => $nameFoto,
+                'created_at' => now(),
             ]
         );
 
