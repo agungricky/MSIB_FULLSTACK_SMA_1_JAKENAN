@@ -6,6 +6,7 @@
                 <div class="card-body tugas-card pt-4 d-flex flex-column align-items-center" style="">
                 <!-- // ============================= Fergi : Detail Tugas ========================= -->
                     {{-- <h2>{{ $row->keterangan }}</h2> --}}
+                    {{-- update fahmi --}}
                     <h3>{{ $row->perihal }}</h3>
                     @php
                         if(!empty($row->upload)){
