@@ -2,7 +2,7 @@
 @section('content')
 <div class="main-panel">
     <div class="content-wrapper">
-        {{-- <div class="row purchace-popup">
+        <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center">
@@ -10,14 +10,14 @@
                     </span>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
         <!-- // ============================= Fergi : Membuat Form Input Tugas ========================= -->
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="assets/img/tugasBanner.png" alt="" style="border:0; width: 100%; height: 384px; max-width:100%; margin-bottom:auto;">
+                    <img src="admin/images/guru/guru.png" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
                 </div>
 
                 <div class="col-md-6">
@@ -26,7 +26,7 @@
 
                         <div class="row">
                                 <div class="col-3 form-group">
-                                    <select class="form-control" name="hari" required style="border: 2px">
+                                    <select class="form-control form-control-lg countrylist" name="hari">
                                         <option selected>----- Hari -----</option>
                                         <option value="Senin">Senin</option>
                                         <option value="Selasa">Selasa</option>
@@ -39,7 +39,7 @@
                                 </div>
 
                                 <div class="col-5 form-group">    
-                                    <input type="text" class="form-control" name="jam" id="" placeholder="00.00 - 00.00" required>
+                                    <input type="text" class="form-control" name="jam" id="" placeholder="Jam" required>
                                 </div>
                                 
                                 <div class="col-4 form-group">    
@@ -64,16 +64,9 @@
                             </div>    
                         </div>  
                         
-
                         <div class="form-group">
-                            <div class="">
-                                <img class="img-preview img-fluid mb-2">
-                            </div>
-    
-                            <div class="">
-                                <input type="file" class="form-control" name="upload" id="image" placeholder="Foto" onchange="previewImage()">                              
-                            </div> 
-                        </div>
+                            <input type="file" class="form-control" name="upload" id="" placeholder="Upload">                              
+                        </div> 
 
                         {{-- <div class="my-3">
                             <div class="loading">Loading</div>
