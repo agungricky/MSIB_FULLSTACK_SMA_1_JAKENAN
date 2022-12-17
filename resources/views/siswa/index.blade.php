@@ -61,17 +61,17 @@
                                         <td>{{ $row->alamat }}</td>
                                         <td>{{ $row->status_siswa }}</td>
                                         <td>{{ $row->kelas }}</td>
-                                        <td>{{ $row->foto }}</td>
+                                        <td width="10%">
+                                            @empty($row->foto)
+                                                <img src="{{ url('admin/images/siswa/nophoto.png') }}" width="35%" alt="Profile" class="rounded-circle">
+                                            @else
+                                                <img src="{{ url('admin/images/siswa')}}/{{$row->foto}}" width="35%" alt="Profile" class="rounded-circle">
+                                            @endempty
+                                        </td>
                                         <td>
                                             <form method="POST" action="{{ route('siswa.destroy',$row->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-
-                                                {{-- ================ Ricky Siswa Tidak Butuh Detail ==================== --}}
-                                                {{-- <a href="{{ route('siswa.show', $row->id) }}" class="btn btn-info btn-sm">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                </a> --}}
-                                                &nbsp;
                                                 <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
                                                     href=" {{ route('siswa.edit',$row->id) }}">
                                                     <i class="fa-solid fa-pencil"></i>

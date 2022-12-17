@@ -42,12 +42,6 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{url('event')}}">
-          <span class="menu-title">event</span>
-          <i class="icon-grid menu-icon"></i>
-        </a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-title">Tables</span>
           <i class="icon-layers menu-icon"></i>
@@ -58,10 +52,9 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('siswa')}}">Siswa</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('jadwal')}}">Jadwal</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">SPP</a></li>
-           {{-- // <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">Spp</a></li>
-           // <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
-           // <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li> --}}
+            <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">Spp</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li>
 
           </ul>
         </div>
@@ -83,14 +76,19 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
 
             <li class="nav-item"> <a class="nav-link" href="{{url('form_kelas')}}">Kelas</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_spp')}}">SPP</a></li>
           </ul>
         </div>
       </li>
 
-
       <li class="nav-item nav-category"><span class="nav-link">Information</span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('event')}}">
+          <span class="menu-title">Event</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="{{url('kalender')}}">
           <span class="menu-title">Kalender Akademik</span>
