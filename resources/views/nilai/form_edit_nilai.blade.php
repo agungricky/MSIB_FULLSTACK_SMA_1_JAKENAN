@@ -42,20 +42,21 @@ $ar_siswa = Siswa::all();
                             </div>
                             @endif
 
-
-                            <form method="POST" action="{{route('nilai.store')}}">
+                            @foreach ($data as $nilai) 
+                            <form method="POST" action="{{route('nilai.update', $nilai->id)}}"  role="form" class="php-email-form" enctype="multipart/form-data">
                                 @csrf
+                                @method('put')
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">nilai</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="nilai" class="form-control">
+                                        <input type="text" name="nilai" class="form-control" value="{{$nilai->nilai}}">
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">perihal</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="perihal" class="form-control">
+                                        <input type="text" name="perihal" class="form-control" value="{{$nilai->perihal}}">
                                     </div>
                                 </div>
 
@@ -65,7 +66,10 @@ $ar_siswa = Siswa::all();
                                         <select class="form-select" name="guru_id">
                                             <option selected >-- Pilih guru --</option>
                                             @foreach($ar_guru as $guru)
-                                            <option value=" {{$guru->id}} ">{{$guru->nama}}</option>
+                                            @php
+                                                $selGuru = ($guru->id == $nilai->guru_id) ? 'selected' : '';
+                                            @endphp
+                                            <option value=" {{$guru->id}} "{{$selGuru}}>{{$guru->nama}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -77,7 +81,10 @@ $ar_siswa = Siswa::all();
                                         <select class="form-select" name="tugas_id">
                                             <option selected>-- Pilih tugas --</option>
                                             @foreach ($ar_tugas as $tugas)
-                                            <option value="{{ $tugas->id }}">{{ $tugas->keterangan }}</option>
+                                            @php
+                                                $selTugas = ($tugas->id == $nilai->tugas_id) ? 'selected' : '';
+                                            @endphp
+                                            <option value="{{ $tugas->id }}" {{$selTugas}}>{{ $tugas->keterangan }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -88,7 +95,10 @@ $ar_siswa = Siswa::all();
                                         <select class="form-select" name="siswa_id">
                                             <option selected>-- Pilih siswa --</option>
                                             @foreach ($ar_siswa as $siswa)
-                                            <option value="{{ $siswa->id }}">{{ $siswa->nama_siswa }}</option>
+                                            @php
+                                                $selSiswa = ($siswa->id == $nilai->siswa_id) ? 'selected' : '';
+                                            @endphp
+                                            <option value="{{ $siswa->id }}" {{$selSiswa}}>{{ $siswa->nama_siswa }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -100,7 +110,9 @@ $ar_siswa = Siswa::all();
                                         <button type="submit" class="form-control submit-btn" title="Simpan siswa"><i class="bi bi-save"></i> Simpan</button>
                                     </div>
                                 </div>
-                            </form><!-- End General Form Elements -->
+                            </form>
+                            
+                        @endforeach<!-- End General Form Elements -->
 
                         </div>
                     </div>

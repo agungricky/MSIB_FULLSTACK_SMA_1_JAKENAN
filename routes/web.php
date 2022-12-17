@@ -132,13 +132,39 @@ Route::get('/kalender', function () {
     return view('kalender_akademik.kalender');
 });
 
+
+Route::get('/event', function () {
+    return view('event.index');
+});
+
+
+// Route::get('/kalender', function () {
+//     return view('admin.kalender');
+// });
+
+// Route::get('/mapel', function () {
+//     return view('mapel.mapel');
+// });
+// Route::get('/form_mapel', function () {
+//     return view('mapel.form_mapel');
+// });
+Route::get('/kalender', function () {
+    return view('kalender_akademik.kalender');
+});
+
+
 Route::get('/form_kelas', function () {
     return view('kelas.form_kelas');
+});
+
+Route::get('/nilai', function () {
+    return view('nilai.index');
 });
 
 Route::get('/form_nilai', function () {
     return view('nilai.form_nilai');
 });
+
 // Route::resource('staff', StaffController::class);
 
 Route::resource('siswa', siswaController::class);
