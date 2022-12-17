@@ -103,6 +103,24 @@
                                             <td>{{ $row->nama }}</td>
                                             <td>{{ $row->tgl }}</td>
                                             <td>{{ $row->deskripsi}}</td>
+                                            <td>
+                                                <form method="POST" action="{{ route('event.destroy',$row->id) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    {{-- <a href="{{ route('event.show', $row->id) }}" class="btn btn-info btn-sm">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                    </a> --}}
+                                                    &nbsp;
+                                                    <a class="btn btn-warning btn-sm" title="Ubah event" href=" {{ route('event.edit',$row->id) }}">
+                                                        <i class="fa-solid fa-pencil"></i>
+                                                    </a>
+                                                    &nbsp;
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Event" onclick="return confirm('Anda Yakin Data akan diHapus?')">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

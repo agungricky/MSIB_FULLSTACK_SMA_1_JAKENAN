@@ -59,8 +59,8 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('jadwal')}}">Jadwal</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">SPP</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
            {{-- // <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">Spp</a></li>
-           // <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
            // <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li> --}}
 
           </ul>
@@ -77,7 +77,7 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('form_guru')}}">Guru & Staff</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
             @if (Auth::user()->role=='administrator' && 'guru' )
-            <li class="nav-item"> <a class="nav-link" href="{{url('form_nilai')}}">nilai</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_nilai')}}">Nilai</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
             @endif
             <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>

@@ -54,14 +54,14 @@
                                         <td>{{ $row->nilai }}</td>
                                         <!-- {{-- <td>{{ $row->upload }}</td> --}} -->
                                         <td>
-                                            <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
+                                            <form method="POST" action="{{ route('nilai.destroy',$row->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn btn-warning btn-sm" title="Ubah Pegawai" href=" {{ route('tugas.edit',$row->id) }}">
+                                                <a class="btn btn-warning btn-sm" title="Ubah Nilai" href=" {{ route('nilai.edit',$row->id) }}">
                                                     <i class="fa-solid fa-pencil"></i>
                                                 </a>
                                                 &nbsp;
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pegawai" onclick="return confirm('Anda Yakin Data akan diHapus?')">
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus Nilai" onclick="return confirm('Anda Yakin Data akan diHapus?')">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </form>
