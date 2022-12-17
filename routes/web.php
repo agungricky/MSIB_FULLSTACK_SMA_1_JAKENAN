@@ -96,14 +96,9 @@ Route::get('/form_guru', function () {
 Route::get('/tugas', function () {
     return view('tugas.index');
 });
-
 Route::get('/form_tugas', function () {
     return view('tugas.form_tugas');
 });
-
-// Route::get('/tugas/{id}/edit', [App\Http\Controllers\tugasController::class, 'create']);
-
-// Route::get('/form_edit_tugas', [App\Http\Controllers\tugasController::class, 'create']);
 
 Route::get('/form_jadwal', function () {
     return view('jadwal.form_jadwal');

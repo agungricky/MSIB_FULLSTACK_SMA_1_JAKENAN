@@ -8,20 +8,6 @@
     background-color: #4649FF;
 }
 
-.tugas-card {
-    background-color: white;
-    width: 80%;
-    height: 96% !important;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-/* iframe.img-task {
-    width: 100%;
-    height: auto;
-} */
-
 /* Form Mapel */
 .wrapper {
     padding-left: 5%;

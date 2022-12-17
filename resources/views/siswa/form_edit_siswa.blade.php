@@ -7,7 +7,7 @@
 
 <div class="main-panel">
     <div class="content-wrapper">
-        {{-- <div class="row purchace-popup">
+        <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center">
@@ -19,7 +19,7 @@
                     </span>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
         <div class="container-fluid">
             <div class="row">
