@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+@if (Auth::user()->role =='administrator')
 @php
 $ar_gender = ['L','P'];
 $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
@@ -14,11 +15,11 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
 
                 <div class="col-md-6">
                     @foreach ($data as $rs)
-                        <form action="{{route('guru.update', $rs->id)}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                    <form action="{{route('guru.update', $rs->id)}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
                         {{-- ========== Ricky Update : Yang di Rubah method put =============== --}}
                         @method('put')
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col form-group">
                                 <input type="text" name="nip" class="form-control" value="{{ $rs->nip }}" required>
                             </div>
@@ -39,17 +40,16 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                                     @foreach($ar_gender as $gender)
                                     {{-- Ricky edit --}}
                                     @php
-                                        $sel1 = ($gender == $rs->gender) ? 'selected' : '';
+                                    $sel1 = ($gender == $rs->gender) ? 'selected' : '';
                                     @endphp
-                                        <option value="{{$gender}}" {{ $sel1 }}>{{ $gender }}</option>
+                                    <option value="{{$gender}}" {{ $sel1 }}>{{ $gender }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col form-group">
-                                <input type="text" name="tempat_lahir" class="form-control" id="" 
-                                value="{{ $rs->tempat_lahir }}" required>
+                                <input type="text" name="tempat_lahir" class="form-control" id="" value="{{ $rs->tempat_lahir }}" required>
                             </div>
                             <div class="col form-group">
                                 <input type="text" class="form-control" name="no_telp" value="{{ $rs->no_telp }}" required>
@@ -64,9 +64,9 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                                     <option selected>----- Agama -----</option>
                                     @foreach($ar_agama as $agama)
                                     @php
-                                        $sel2 = ($agama == $rs->agama) ? 'selected' : '';
+                                    $sel2 = ($agama == $rs->agama) ? 'selected' : '';
                                     @endphp
-                                        <option value="{{ $agama }}" {{ $sel2 }}>{{ $agama }}</option>
+                                    <option value="{{ $agama }}" {{ $sel2 }}>{{ $agama }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -74,36 +74,36 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                         {{-- {{-- <div class="row">
                             <div class="col-4 form-group">
                                 <img src="{{asset('admin/images/guru') }}/{{ $rs->foto }}" width="100%" />
-                            </div>
-                            <div class="col form-group">
-                                <input type="text" name="foto" class="form-control" id="" value="{{ $rs->foto }}">
-                            </div>
-                        </div> --}}
-                        
-                        <div class="row">
-                            <input type="hidden" name="oldImage" value="{{$rs->foto}}">
-                            @if($rs->foto)
-                            <img src="{{asset('admin/images/guru/'.$rs->foto)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" >
-                            @else
-                            <img class="img-preview img-fluid mb-3 col-sm-5">
-                            @endif
-                        </div> 
-                        <div class="form-group">
-                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
-                        </div> 
-
-                        <div class="my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                        </div>
-                        <div class="text-center"><button type="submit">Simpan</button></div>
-                    </form>
-                @endforeach    
                 </div>
+                <div class="col form-group">
+                    <input type="text" name="foto" class="form-control" id="" value="{{ $rs->foto }}">
+                </div>
+            </div> --}}
+
+            <div class="row">
+                <input type="hidden" name="oldImage" value="{{$rs->foto}}">
+                @if($rs->foto)
+                <img src="{{asset('admin/images/guru/'.$rs->foto)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                @else
+                <img class="img-preview img-fluid mb-3 col-sm-5">
+                @endif
             </div>
+            <div class="form-group">
+                <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">
+            </div>
+
+            <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Simpan</button></div>
+            </form>
+            @endforeach
         </div>
     </div>
+</div>
+</div>
 </div>
 
 
@@ -125,5 +125,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
     }
 </script> --}}
 
-
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection

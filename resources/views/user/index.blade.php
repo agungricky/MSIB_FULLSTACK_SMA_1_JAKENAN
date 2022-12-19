@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('content')
+
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="row">
@@ -14,7 +15,7 @@
                                     <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
                                 </div>
                             </form>
-    
+
                         </div>
                         <div class="table-responsive border rounded p-1">
                             <table class="table">
@@ -31,28 +32,26 @@
                                 <tbody>
                                     @php $no = 1; @endphp
                                     @foreach ($user as $row)
-                                        <tr>
-                                            <td>{{ $no++ }}</td>
-                                            <td>{{ $row->name }}</td>
-                                            <td>{{ $row->email }}</td>
-                                            <td>{{ $row->password }}</td>
-                                            <td>{{ $row->role }}</td>
-                                            <td>
-                                                <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a class="btn btn-warning btn-sm" title="Ubah Pegawai"
-                                                        href=" {{ route('user.edit',$row->id) }}">
-                                                        <i class="fa-solid fa-pencil"></i>
-                                                    </a>
-                                                    &nbsp;
-                                                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pegawai"
-                                                        onclick="return confirm('Anda Yakin Data akan diHapus?')">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $row->name }}</td>
+                                        <td>{{ $row->email }}</td>
+                                        <td>{{ $row->password }}</td>
+                                        <td>{{ $row->role }}</td>
+                                        <td>
+                                            <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a class="btn btn-warning btn-sm" title="Ubah Pegawai" href=" {{ route('user.edit',$row->id) }}">
+                                                    <i class="fa-solid fa-pencil"></i>
+                                                </a>
+                                                &nbsp;
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pegawai" onclick="return confirm('Anda Yakin Data akan diHapus?')">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>

@@ -1,5 +1,7 @@
 @extends('admin.index')
 @section('content')
+@if (Auth::user()->role =='administrator')
+
 @php
 $ar_gender = ['L','P'];
 $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
@@ -20,7 +22,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                       
                     <form action="{{route('guru.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col form-group">
                                 <label> NIP : &nbsp</label>
                                 <input type="text" name="nip" class="form-control" id="" placeholder="NIP" required>
@@ -44,7 +46,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                                 <select class="form-control form-control-lg countrylist" name="gender">
                                     <option selected>----- Jenis Kelamin -----</option>
                                     @foreach ($ar_gender as $g)
-                                        <option value="{{ $g }}">{{ $g }}</option>
+                                    <option value="{{ $g }}">{{ $g }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -70,16 +72,17 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                                 <select class="form-control form-control-lg countrylist" name="agama">
                                     <option selected>----- Agama -----</option>
                                     @foreach ($ar_agama as $agama)
-                                        <option value="{{ $agama }}">{{ $agama }}</option>
+                                    <option value="{{ $agama }}">{{ $agama }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label>  Foto : &nbsp</label>
-                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
-                        </div> 
+
+                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">
+                        </div>
+
 
                         <div class="my-3">
                             <div class="">Data ini akan kami simpan di <span class="text-danger">DATABASE</span></div>
@@ -96,7 +99,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
 <script>
-    function previewImage(){
+    function previewImage() {
         const image = document.querySelector('#image')
         const imgPreview = document.querySelector('.img-preview')
 
@@ -105,10 +108,12 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
         const oFReader = new FileReader();
         oFReader.readAsDataURL(image.files[0]);
 
-        oFReader.onload = function(oFREvent){
+        oFReader.onload = function(oFREvent) {
             imgPreview.src = oFREvent.target.result;
         }
     }
 </script>
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection
-

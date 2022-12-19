@@ -1,5 +1,7 @@
 @extends('admin.index')
 @section('content')
+@if (Auth::user()->role =='administrator')
+
 {{-- Novia --}}
 
 
@@ -36,37 +38,35 @@
                         </ul>
                     </div>
                     @endif
-                
-                {{-- Ricky edit --}}
-                @foreach ($data as $rs)        
+
+                    {{-- Ricky edit --}}
+                    @foreach ($data as $rs)
                     <form action="{{route('siswa.update', $rs->id)}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
                         @method('put')
-                        <div class="row"> 
+                        <div class="row">
                             <div class="col form-group">
                                 <input type="text" name="NIS" class="form-control" id="" value="{{ $rs->NIS }}" required>
                             </div>
                             <div class="col form-group">
-                                <input type="text" class="form-control" name="nama_siswa" 
-                                value="{{ $rs->nama_siswa }}" required>
+                                <input type="text" class="form-control" name="nama_siswa" value="{{ $rs->nama_siswa }}" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
-                            <input type="text" class="form-control" name="tempat_lahir" id="" 
-                            value="{{ $rs->tempat_lahir }}" required>
+                            <input type="text" class="form-control" name="tempat_lahir" id="" value="{{ $rs->tempat_lahir }}" required>
                         </div>
                         <div class="row">
                             <div class="form-group col-4">
                                 {{-- Ricky --}}
-                                 <select class="form-control form-control-lg countrylist" name="jenis_kelamin">
+                                <select class="form-control form-control-lg countrylist" name="jenis_kelamin">
                                     <option selected>----- jenis_kelamin -----</option>
                                     @foreach($ar_gender as $gender)
                                     {{-- Ricky edit --}}
                                     @php
-                                        $sel1 = ($gender == $rs->jenis_kelamin) ? 'selected' : '';
+                                    $sel1 = ($gender == $rs->jenis_kelamin) ? 'selected' : '';
                                     @endphp
-                                        <option value="{{$gender}}" {{ $sel1 }}>{{ $gender }}</option>
+                                    <option value="{{$gender}}" {{ $sel1 }}>{{ $gender }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -80,16 +80,15 @@
                                     <option selected>----- Agama -----</option>
                                     @foreach($ar_agama as $agama)
                                     @php
-                                        $sel2 = ($agama == $rs->agama) ? 'selected' : '';
+                                    $sel2 = ($agama == $rs->agama) ? 'selected' : '';
                                     @endphp
-                                        <option value="{{ $agama }}" {{ $sel2 }}>{{ $agama }}</option>
+                                    <option value="{{ $agama }}" {{ $sel2 }}>{{ $agama }}</option>
                                     @endforeach
                                 </select>
                             </div>
 
                             <div class="col form-group col-8">
-                                <input type="text" name="alamat" class="form-control" id="" 
-                                value=" {{ $rs->alamat }}" required>
+                                <input type="text" name="alamat" class="form-control" id="" value=" {{ $rs->alamat }}" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -97,23 +96,23 @@
                                 <option selected>----- Status Siswa -----</option>
                                 @foreach($ar_status as $status)
                                 @php
-                                    $sel3 = ($status == $rs->status_siswa) ? 'selected' : '';
+                                $sel3 = ($status == $rs->status_siswa) ? 'selected' : '';
                                 @endphp
-                                    <option value="{{ $status }}" {{ $sel3 }}>{{ $status }}</option>
+                                <option value="{{ $status }}" {{ $sel3 }}>{{ $status }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="row">
                             <input type="hidden" name="oldImage" value="{{$rs->foto}}">
                             @if($rs->foto)
-                            <img src="{{asset('admin/images/siswa/'.$rs->foto)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block" >
+                            <img src="{{asset('admin/images/siswa/'.$rs->foto)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                             @else
                             <img class="img-preview img-fluid mb-3 col-sm-5">
                             @endif
-                        </div> 
+                        </div>
                         <div class="form-group">
-                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">                              
-                        </div> 
+                            <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">
+                        </div>
 
                         <div class="my-3">
                             <div class="loading">Loading</div>
@@ -122,8 +121,8 @@
                         </div>
                         <div class="text-center"><button type="submit">Simpan</button></div>
                     </form>
-                @endforeach
-                
+                    @endforeach
+
                 </div>
             </div>
         </div>
@@ -132,4 +131,7 @@
 </div>
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
+@else
+@include('layouts.accessdenied')
+@endif
 @endsection
