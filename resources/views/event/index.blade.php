@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="main-panel bg-light">
+    <div class="main-panel bg-dark bg-gradient">
         <div class="container mt-4">
             <div class="row">
                 <div class="row mb-0">
@@ -18,23 +18,23 @@
                     @if (Auth::user()->role=='administrator')
 
                         <div class="alert alert-warning" role="alert">
-                            <h4>Form Kegiatan</h4>
+                            <label>Form Kegiatan</label>
                         </div>
                         <div class="card">                        
                             <form action="{{route('event.store')}}" method="POST">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <div class="form-label">Nama Kegiatan</div>
+                                        <label>Nama Kegiatan</label>
                                         <textarea name="nama" class="form-control" id="nama" cols="30" rows="2"></textarea>
                                     </div>
                                     <div class="form-group mt-4">
-                                        <div class="form-label">Tgl Mulai</div>
+                                        <label>Tgl Mulai</label>
                                         <input type="date" class="form-control" name="tgl" id="tgl">
     
                                     </div>
                                     <div class="form-group">
-                                        <div class="form-label">Deskripsi Kegiatan</div>
+                                        <label>Deskripsi Kegiatan</label>
                                         <textarea name="deskripsi" class="form-control" id="deskripsi" cols="30" rows="2"></textarea>
                                     </div>
                                     <div class="form-group mt-4">

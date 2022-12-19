@@ -14,6 +14,9 @@
                 </div>
 
                 <div class="col-md-6">
+                    <div class="alert alert-warning fs-4 fw-bold" role="alert">
+                        #Form Kelas
+                    </div>
                     <form action="{{route('kelas.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf
 

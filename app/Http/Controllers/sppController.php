@@ -107,8 +107,8 @@ class SppController extends Controller
      */
     public function destroy($id)
     {
-        $row = Spp::find($id);
-        Spp::where('id', $id)->delete();
+        // $row = Spp::find($id);
+        DB::table('spp')->where('id', $id)->delete();
         return redirect()->route('spp.index')
             ->with('success', 'Data Siswa Berhasil Dihapus');
     }
