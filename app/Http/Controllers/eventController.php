@@ -87,7 +87,7 @@ class eventController extends Controller
                 'nama' => $request->nama,
                 'tgl' => $request->tgl,
                 'deskripsi' => $request->deskripsi,
-                
+
             ]
 
         );

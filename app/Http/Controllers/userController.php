@@ -103,7 +103,9 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id', $id)->delete();
+        return redirect()->route('user.index')
+            ->with('success', 'Data Siswa Berhasil Dihapus');
     }
 
     public function search_user(Request $request)

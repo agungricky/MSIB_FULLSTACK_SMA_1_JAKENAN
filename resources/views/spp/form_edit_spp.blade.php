@@ -1,70 +1,72 @@
 @extends('admin.index')
 @section('content')
+@php
+    use App\Models\Spp;
+    $siswa = Spp::all();
+@endphp
 @if (Auth::user()->role =='administrator')
 
 <div class="main-panel">
 
     <div class="content-wrapper">
-
-        <div class="row purchace-popup">
-            <div class="col-12 stretch-card grid-margin headForm">
-                <div class="card card-secondary ">
-                    <span class="card-body d-lg-flex align-items-center motivasi cardCenter">
-                        <h1 class="mb-lg-0">Form SPP</h1>
-                        {{-- <button class="close popup-dismiss ml-2">
-                            <span aria-hidden="true">&times;</span>
-                        </button> --}}
-                    </span>
+    
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ url('admin\images\carousel\spp.png') }}" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
+            </div>
+        
+            <div class="col-md-6">
+                <div class="row form-panel">
+                    <div class="col-md-12 wrapper">
+                        <div class="alert alert-warning fs-4 fw-bold mb-4" role="alert">
+                            #Form Edit SPP Siswa
+                        </div>
+                        @foreach ($data as $row)
+                        <form action="{{route('spp.update', $row->id)}}" method="post" name="mapelForm" >
+                            @csrf
+                            @method('put')
+                            
+                            <div class="row two-div">
+                            <div class="form-group two-div">
+                                    <label for=""> Tanggal : &nbsp </label>
+                                    <input name="tanggal" type="date" placeholder="Tanggal" class="form-control" value="{{$row->tanggal}}">
+                                </div>
+        
+                                <div class="form-group two-div">
+                                    <label for=""> Total : &nbsp </label>
+                                    <input name="total" type="text" placeholder="Total" class="form-control" value="{{$row->total}}"> 
+                                </div>
+                            </div>
+        
+                            <div class="row two-div">
+                                <div class="form-group two-div">
+                                    <label for=""> Kurang : &nbsp </label>
+                                    <input name="kurang" type="text" placeholder="Kurang" class="form-control" value="{{$row->kurang}}"> 
+                                </div>
+        
+                                <div class="form-group two-div">
+                                    <label for=""> Siswa : &nbsp </label>
+                                    <select class="form-select" name="siswa" required>
+                                        <option selected>-- Nama Siswa --</option>
+                                        @foreach($siswa as $s)
+                                        @php
+                                            $s1 = ($s->id == $row->siswa_id) ? 'selected' : '';
+                                        @endphp
+                                            <option value="{{$s->id}}" {{ $s1 }}>{{ $s->nama_siswa }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>    
+                            </div>
+        
+                            <div>
+                                <input type="submit" name="inputSpp" class="form-control submit-btn">
+                            </div>
+                        </form>
+                     @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-
-        {{-- Form --}}
-        <div class="row form-panel">
-            <div class="col-md-12 wrapper">
-                @foreach ($data as $row)
-                <form action="{{route('spp.update', $row->id)}}" method="post" name="mapelForm">
-                    @csrf
-                    @method('put')
-
-                    <div class="row two-div">
-                        <div class="form-group two-div">
-                            <label for=""> Tanggal : &nbsp </label>
-                            <input name="tanggal" type="date" placeholder="Tanggal" class="form-control" value="{{$row->tanggal}}">
-                        </div>
-
-                        <div class="form-group two-div">
-                            <label for=""> Total : &nbsp </label>
-                            <input name="total" type="text" placeholder="Total" class="form-control" value="{{$row->total}}">
-                        </div>
-                    </div>
-
-                    <div class="row two-div">
-                        <div class="form-group two-div">
-                            <label for=""> Kurang : &nbsp </label>
-                            <input name="kurang" type="text" placeholder="Kurang" class="form-control" value="{{$row->kurang}}">
-                        </div>
-
-                        <div class="form-group two-div">
-                            <label for=""> Siswa : &nbsp </label>
-                            <input name="siswa" type="text" placeholder="Siswa" class="form-control" value="{{$row->siswa_id}}">
-                        </div>
-                    </div>
-
-
-                    {{-- <div class="form-group">
-                        <label for=""> Perihal : &nbsp </label>
-                        <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
-                    </div> --}}
-
-                    <div>
-                        <input type="submit" name="inputSpp" class="form-control submit-btn">
-                    </div>
-                </form>
-                @endforeach
-            </div>
-        </div>
-
     </div>
 </div>
 </div>

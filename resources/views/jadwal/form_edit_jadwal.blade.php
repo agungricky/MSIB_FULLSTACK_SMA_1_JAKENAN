@@ -28,74 +28,65 @@ $kelas = Kelas::all();
                       
                 @foreach ($data as $data)
                 
-                    <form action="{{route('jadwal.update', $data->id)}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
-
-                        <div class="row two-div">
-                            <div class="form-group two-div">
-                                <label for=""> Mata Pelajaran : &nbsp </label>
-                                <input name="mapel" type="text" placeholder="Mata Pelajaran" class="form-control" value="{{$row->Mapel}}">
-                            </div>
-
-                            <div class="form-group two-div">
-                                <label for=""> Kelas : &nbsp </label>
-                                <input name="kodeKelas" type="text" placeholder="Kode Kelas" class="form-control" value="{{$row->kelas_id}}">
-                            </div>
-                        </div>
-
-                        {{-- <div class="row two-div">
-                            <div class="form-group two-div">
-                                <label for=""> Tugas : &nbsp </label>
-                                <input name="tugas" type="text" placeholder="Tugas" class="form-control"> 
-                            </div>
-                            
-                            <div class="form-group two-div">
-                                <label for=""> Tanggal : &nbsp </label>
-                                <input name="tanggal" type="date" placeholder="Tanggal" class="form-control">
-                            </div>
-                        </div> --}}
-
-                        <div class="row two-div">
-
-                            <div class="form-group two-div">
-                                <label for=""> Hari : &nbsp</label>
-                                <select name="hari" id="hari" class="form-select form-control">
-                                    <option selected>Hari</option>
-                                    @foreach ($arr_hari as $hari)
+                <form action="{{route('jadwal.update', $data->id)}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class="row"> 
+                        <div class="col form-group">
+                            <select class="form-control form-control-lg countrylist" name="Hari">
+                                <option selected>----- Hari -----</option>
+                                    @foreach($arr_hari as $h)
                                     @php
-                                    $sel1 = ($hari == $row->Hari) ? 'selected' : '';
+                                        $hari = ($h == $data->Hari) ? 'selected' : '';
                                     @endphp
-                                    <option value="{{$hari}}" {{ $sel1 }}>{{ $hari }}</option>
+                                        <option value="{{$h}}" {{ $hari }}>{{ $h }}</option>
                                     @endforeach
-                                </select>
-                            </div>
-
-
-                            <div class="form-group two-div">
-                                <label for=""> Jam &nbsp</label>
-                                <input name="jam" type="time" class="form-control" value="{{$row->Jam}}">
-                            </div>
-                            {{-- <label for=""> Selesai &nbsp </label>
-                                <input type="time" class="form-control"> --}}
+                            </select>
                         </div>
-
-                        {{-- <div class="form-group">
-                            <label for=""> Perihal : &nbsp </label>
-                            <textarea name="perihal" id="perihal" cols="30" rows="10" class="form-control perihal" placeholder="Perihal"></textarea>
-                        </div> --}}
-
-                        <div>
-                            <input type="submit" name="inputMapel" class="form-control submit-btn">
+                        <div class="col form-group">
+                            <input type="text" class="form-control" name="Jam" id="" placeholder="Jam" value="{{ $data->Jam }}" required>
                         </div>
-                        
-
-                        <div class="my-3">
-                            <div class="">Data ini akan kami simpan di <span class="text-danger">DATABASE</span></div>
-                            <div class="sent-message">Jika data sudah benar klik tombol simpan di bawah!!!</div>
+                    </div>
+                    <div class="form-group">
+                        <input name="Mapel" type="text" class="form-control" id="" placeholder="Mapel"
+                        value="{{ $data->Mapel }}" required>
+                    </div>
+                    <div class="row two-div">
+                        <div class="form-group two-div">
+                            <label for=""> Nama Guru : &nbsp </label>
+                            <select class="form-select" name="guru" required>
+                                <option selected>-- Nama Guru --</option>
+                                @foreach($guru as $g)
+                                @php
+                                    $s1 = ($g->id == $data->guru_id) ? 'selected' : '';
+                                @endphp
+                                    <option value="{{$g->id}}" {{ $s1 }}>{{ $g->nama }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="text-center"><button type="submit" class="btn btn-primary">Simpan data</button></div>
-                    </form>
+    
+                        <div class="form-group two-div">
+                            <label for=""> Kelas : &nbsp </label>
+                            <select class="form-select" name="kelas" required>
+                                <option selected>-- Kelas --</option>
+                                @foreach($kelas as $k)
+                                @php
+                                    $s2 = ($k->id == $data->kelas_id) ? 'selected' : '';
+                                @endphp
+                                    <option value="{{$k->id}}" {{ $s2 }}>{{ $k->kelas }}</option>
+                                @endforeach
+                                {{-- <option value="8">Coba</option> --}}
+                            </select>
+                        </div>
+                    </div>
+                    
+
+                    <div class="my-3">
+                        <div class="">Data ini akan kami simpan di <span class="text-danger">DATABASE</span></div>
+                        <div class="sent-message">Jika data sudah benar klik tombol simpan di bawah!!!</div>
+                    </div>
+                    <div class="text-center"><button type="submit" class="btn btn-primary">Simpan data</button></div>
+                </form>
                 @endforeach
                 
                 </div>
