@@ -9,16 +9,18 @@
 </head>
 
 <body>
-    <div class="main-panel">
+    <div class="main-panel bg-light">
         <div class="container mt-4">
             <div class="row">
                 <div class="row mb-0">
-    
+                    
                     <div class="col-lg-4">
+                    @if (Auth::user()->role=='administrator')
+
                         <div class="alert alert-warning" role="alert">
                             <h4>Form Kegiatan</h4>
                         </div>
-                        <div class="card">
+                        <div class="card">                        
                             <form action="{{route('event.store')}}" method="POST">
                                 @csrf
                                 <div class="card-body">
@@ -39,12 +41,12 @@
                                         <button type="submit" class="btn btn-success" title="Simpan event">Simpan</button>
                                     </div>
                                 </div>
-                            </form>
-    
-    
+                            </form>             
                         </div>
+                    @endif
                     </div>
-                    <div class="col-lg-8">
+
+                    <div class="col-lg-8 mb-3">
                         <div id="calendar">
                             <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
                             <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.8.0/main.js'></script>
@@ -100,14 +102,11 @@
                                             <td>{{ $row->nama }}</td>
                                             <td>{{ $row->tgl }}</td>
                                             <td>{{ $row->deskripsi}}</td>
+                                        @if (Auth::user()->role=='administrator')
                                             <td>
                                                 <form method="POST" action="{{ route('event.destroy',$row->id) }}">
                                                     @csrf
                                                     @method('DELETE')
-
-                                                    {{-- <a href="{{ route('event.show', $row->id) }}" class="btn btn-info btn-sm">
-                                                    <i class="fa-solid fa-eye"></i>
-                                                    </a> --}}
                                                     &nbsp;
                                                     <a class="btn btn-warning btn-sm" title="Ubah event" href=" {{ route('event.edit',$row->id) }}">
                                                         <i class="fa-solid fa-pencil"></i>
@@ -118,6 +117,7 @@
                                                     </button>
                                                 </form>
                                             </td>
+                                        @endif
                                         </tr>
                                         @endforeach
                                     </tbody>

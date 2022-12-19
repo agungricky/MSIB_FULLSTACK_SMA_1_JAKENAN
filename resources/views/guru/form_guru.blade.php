@@ -58,7 +58,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                             </div>
 
                             <div class="col form-group">
-                                <label> NIP : &nbsp</label>
+                                <label> No Telp : &nbsp</label>
                                 <input type="text" class="form-control" name="no_telp" id="" placeholder="Nomer Telp" required>
                             </div>
                         </div>
@@ -85,8 +85,8 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
 
 
                         <div class="my-3">
-                            <div class="">Data ini akan kami simpan di <span class="text-danger">DATABASE</span></div>
-                            <div class="sent-message">Jika data sudah benar klik tombol simpan di bawah!!!</div>
+                            <label>Data ini akan kami simpan di <span class="text-danger">DATABASE</span></label>
+                            <label>Jika data sudah benar klik tombol simpan di bawah!!!</label>
                         </div>
                         <div class="text-center"><button type="submit" class="btn btn-primary">Simpan data</button></div>
                     </form>
@@ -98,6 +98,7 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
 </div>
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
+
 <script>
     function previewImage() {
         const image = document.querySelector('#image')
