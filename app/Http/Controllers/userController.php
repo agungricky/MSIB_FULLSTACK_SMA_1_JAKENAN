@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Auth\Events\Validated;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -81,7 +82,7 @@ class userController extends Controller
             'email' => 'Required',
             'role' => 'Required',
             'password' => 'Required',
-            'isactive' => 'isactive'
+            'isactive' => 'Required'
         ]);
 
         DB::table('users')->where('id', '=', $id)->dd();
