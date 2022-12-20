@@ -33,67 +33,63 @@
             <li class="nav-item"> <a class="nav-link" href="{{url('tugas')}}">Tugas</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('jadwal')}}">Jadwal</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('nilai')}}">Nilai</a></li>
+            @if (Auth::user()->role=='siswa' )
             <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">SPP</a></li>
+            @endif
             @if (Auth::user()->role=='administrator' )
             <li class="nav-item"> <a class="nav-link" href="{{url('user')}}">User</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('spp')}}">SPP</a></li>
+
             @endif
 
 
 
-    </ul>
-</div>
-</li>
+          </ul>
+        </div>
+      </li>
 
-<li class="nav-item">
-  <a class="nav-link" data-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="ui-basic">
-    <span class="menu-title">Form</span>
-    <i class="icon-book-open menu-icon"></i>
-  </a>
-  <div class="collapse" id="forms">
-    <ul class="nav flex-column sub-menu">
-      @if (Auth::user()->role=='administrator' )
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_guru')}}">Guru & Staff</a></li>
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_kelas')}}">Kelas</a></li>
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_spp')}}">SPP</a></li>
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_nilai')}}">nilai</a></li>
-      @endif
-      @if (Auth::user()->role=='guru' )
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_nilai')}}">nilai</a></li>
-      <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
-      @endif
-    </ul>
-  </div>
-</li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#forms" aria-expanded="false" aria-controls="ui-basic">
+          <span class="menu-title">Form</span>
+          <i class="icon-book-open menu-icon"></i>
+        </a>
+        <div class="collapse" id="forms">
+          <ul class="nav flex-column sub-menu">
+            @if (Auth::user()->role=='administrator' )
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_guru')}}">Guru & Staff</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_siswa')}}">Siswa</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_jadwal')}}">Jadwal</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_kelas')}}">Kelas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_spp')}}">SPP</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_nilai')}}">nilai</a></li>
+            @endif
+            @if (Auth::user()->role=='guru' )
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_nilai')}}">nilai</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('form_tugas')}}">Tugas</a></li>
+            @endif
+          </ul>
+        </div>
+      </li>
 
-<li class="nav-item nav-category"><span class="nav-link">Information</span></li>
-<li class="nav-item">
-  <a class="nav-link" href="{{url('event')}}">
-    <span class="menu-title">Event</span>
-    <i class="icon-grid menu-icon"></i>
-  </a>
-</li>
-@if (Auth::user()->role=='administrator')
-<li class="nav-item">
-  <a class="nav-link" href="{{url('/register')}}">
-    <span class="menu-title">register</span>
-    <i class="icon-grid menu-icon"></i>
-  </a>
-</li>
-@endif
-<li class="nav-item">
-  <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+      <li class="nav-item nav-category"><span class="nav-link">Information</span></li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('event')}}">
+          <span class="menu-title">Event</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-    {{ __('Logout') }} <i class="icon-grid menu-icon"></i>
+          {{ __('Logout') }} <i class="icon-grid menu-icon"></i>
 
-  </a>
+        </a>
 
-  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-    @csrf </form>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf </form>
 
-</li>
+      </li>
 
-</ul>
-</nav>
+    </ul>
+  </nav>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Auth\Events\Validated;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
@@ -62,8 +63,9 @@ class userController extends Controller
     public function edit($id)
     {
         $role = ['administrator', 'staff', 'guru', 'siswa'];
+        $isactive = ['yes', 'no', 'banned'];
         $data = DB::table('users')->where('id', '=', $id)->get();
-        return view('user.user_edit', compact('data', 'role'));
+        return view('user.user_edit', compact('data', 'role', 'isactive'));
     }
 
     /**
@@ -79,7 +81,8 @@ class userController extends Controller
             'name' => 'Required',
             'email' => 'Required',
             'role' => 'Required',
-            'password' => 'Required'
+            'password' => 'Required',
+            'isactive' => 'Required'
         ]);
 
         DB::table('users')->where('id', '=', $id)->dd();
