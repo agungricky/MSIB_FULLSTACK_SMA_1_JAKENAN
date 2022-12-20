@@ -26,6 +26,7 @@
                                         <th class="font-weight-bold">Email</th>
                                         <th class="font-weight-bold">Password</th>
                                         <th class="font-weight-bold">Role</th>
+                                        <th class="font-weight-bold">isactive</th>
                                         <th class=" font-weight-bold">Aksi</th>
                                     </tr>
                                 </thead>
@@ -38,6 +39,8 @@
                                         <td>{{ $row->email }}</td>
                                         <td>{{ $row->password }}</td>
                                         <td>{{ $row->role }}</td>
+                                        <td>{{ $row->isactive}}</td>
+
                                         <td>
                                             <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
                                                 @csrf
