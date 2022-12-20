@@ -66,12 +66,12 @@ class siswaController extends Controller
             'agama' => 'required',
             'alamat' => 'nullable|string|min:10',
             'status_siswa' => 'required',
-            'foto' => 'required',
+            'foto' => 'image|file',
         ]);
         //------------apakah user  ingin upload foto-----------
         //yang diedit fiki new
         if (!empty($request->file('foto'))) {
-            $nameFoto = 'siswa-' . $request->nip . '.' . $request->file('foto')->extension();
+            $nameFoto = 'siswa-' . $request->NIS . '.' . $request->file('foto')->extension();
             //$nameFoto = $request->foto->getClientOriginalName();
             $request->file('foto')->move(public_path('admin/images/siswa'), $nameFoto);
         } else {
@@ -90,9 +90,8 @@ class siswaController extends Controller
                 'agama' => $request->agama,
                 'alamat' => $request->alamat,
                 'status_siswa' => $request->status_siswa,
-                'foto' => $request->foto,
-                'created_at' => now()
-
+                'foto' => $nameFoto,
+                'created_at' => now(),
             ]
         );
 
