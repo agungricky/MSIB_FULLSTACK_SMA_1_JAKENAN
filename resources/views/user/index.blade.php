@@ -12,7 +12,7 @@
                             <form action="{{ route('search_user') }}" method="GET" class="ml-auto col-4">
                                 <div class="input-group input-group-sm">
                                     <input type="search" name="search" class="form-control" placeholder="Cari Nama user" aria-label='Recipients username' aria-describedby="button-addon2">
-                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
                                 </div>
                             </form>
 
@@ -39,14 +39,14 @@
                                         <td>{{ $row->password }}</td>
                                         <td>{{ $row->role }}</td>
                                         <td>
-                                            <form method="POST" action="{{ route('tugas.destroy',$row->id) }}">
+                                            <form method="POST" action="{{ route('user.destroy',$row->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="btn btn-warning btn-sm" title="Ubah Pegawai" href=" {{ route('user.edit',$row->id) }}">
+                                                <a class="btn btn-warning btn-sm" title="Ubah User" href=" {{ route('user.edit',$row->id) }}">
                                                     <i class="fa-solid fa-pencil"></i>
                                                 </a>
                                                 &nbsp;
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pegawai" onclick="return confirm('Anda Yakin Data akan diHapus?')">
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus User" onclick="return confirm('Anda Yakin Data akan diHapus?')">
                                                     <i class="fa-solid fa-trash"></i>
                                                 </button>
                                             </form>

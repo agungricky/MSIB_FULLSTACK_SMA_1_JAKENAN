@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Auth\Events\Validated;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Contracts\Service\Attribute\Required;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 
 class userController extends Controller
 {
@@ -28,7 +30,7 @@ class userController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.index');
     }
 
     /**
@@ -39,7 +41,16 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('users')->insert(
+            [
+                 'name' => $request->name,
+                 'email' => $request->email,
+                 'role' => $request->role,
+                 'password' => Hash::make($request['password'])
+             ]
+        );
+        return redirect()->route('user.store')
+            ->with('success', 'Data user Baru Berhasil Disimpan');
     }
 
     /**
@@ -75,24 +86,24 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validateData = $request->validate([
-            'name' => 'Required',
-            'email' => 'Required',
-            'role' => 'Required',
-            'password' => 'Required'
-        ]);
+        //$validateData = $request->validate([
+        //    'name' => 'Required',
+        //    'email' => 'Required',
+        //    'role' => 'Required',
+        //    'password' => 'Required'
+        //]);
 
-        DB::table('users')->where('id', '=', $id)->dd();
+        //DB::table('users')->where('id', '=', $id)->dd();
 
-        // DB::table('users')->where('id', '=', $id)->update(
-        //     [
-        //         'name' => $request->name,
-        //         'email' => $request->email,
-        //         'role' => $request->role,
-        //         'password' => Hash::make($request['password'])
-        //     ]
-        // );
-        // return redirect('/user');
+        DB::table('users')->where('id', '=', $id)->update(
+            [
+                 'name' => $request->name,
+                 'email' => $request->input ('email'),
+                 'role' => $request->role,
+                 'password' => Hash::make($request['password'])
+             ]
+        );
+        return redirect('/user');
     }
 
     /**
@@ -105,7 +116,7 @@ class userController extends Controller
     {
         DB::table('users')->where('id', $id)->delete();
         return redirect()->route('user.index')
-            ->with('success', 'Data Siswa Berhasil Dihapus');
+            ->with('success', 'Data Berhasil Dihapus');
     }
 
     public function search_user(Request $request)

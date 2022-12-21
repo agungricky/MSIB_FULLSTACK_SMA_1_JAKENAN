@@ -160,6 +160,11 @@ Route::get('/form_nilai', function () {
     return view('nilai.form_nilai');
 });
 
+Route::get('/user', function () {
+    return view('user.index');
+});
+
+
 // Route::resource('staff', StaffController::class);
 
 Route::resource('siswa', siswaController::class);

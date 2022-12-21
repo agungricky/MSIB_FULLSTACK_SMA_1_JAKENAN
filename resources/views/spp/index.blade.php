@@ -8,9 +8,6 @@
                 <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center motivasi">
                         <p class="mb-lg-0">Semangat dan Tekunlah Menimba Ilmu demi Masedepanmu yang Cemerlang</p>
-                        <button class="close popup-dismiss ml-2">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </span>
                 </div>
             </div>
@@ -27,7 +24,7 @@
                            <form action="{{ route('search_spp') }}" method="GET" class="ml-auto col-4">
                                 <div class="input-group input-group-sm">
                                     <input type="search" name="search" class="form-control" placeholder="Cari Nama Siswa" aria-label='Recipients username' aria-describedby="button-addon2">
-                                    <button class="btn btn-primary" type="submit" id="button-addon2">Button</button>
+                                    <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
                                </div>
                             </form>
 
