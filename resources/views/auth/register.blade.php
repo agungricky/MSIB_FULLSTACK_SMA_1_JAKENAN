@@ -1,6 +1,8 @@
-@extends('layouts.index')
-
+@extends('admin.index')
 @section('content')
+@php
+$ar_role = ['administrator', 'guru', 'siswa'];
+@endphp
 <div class="container">
     <div class="top">
     </div>
@@ -41,7 +43,18 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('role') }}</label>
 
+                        <div class="col-md-6">
+                            <select class="form-select" name="role">
+                                <option selected>-- Pilih akses --</option>
+                                @foreach($ar_role as $role)
+                                <option value="{{ $role }}">{{ $role }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="row mb-3">
                         <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
@@ -68,15 +81,9 @@
 
                     <div class="row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" onclick="return confirm('user sudah di tambah!!!')">
                                 {{ __('Register') }}
                             </button>
-
-                            @if (Route::has('login'))
-                            <a class="btn btn-link" href="{{ route('login') }}">
-                                {{ __('login') }}
-                            </a>
-                            @endif
                         </div>
                     </div>
 

@@ -64,6 +64,10 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
+Route::get('/afterregister', function () {
+    return view('layouts.afterregister');
+});
+
 
 Route::get(
     'dashboard',

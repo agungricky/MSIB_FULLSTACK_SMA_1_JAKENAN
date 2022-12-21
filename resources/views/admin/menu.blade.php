@@ -79,6 +79,14 @@
           <i class="icon-grid menu-icon"></i>
         </a>
       </li>
+      @if (Auth::user()->role=='administrator' )
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('register')}}">
+          <span class="menu-title">Kelola User</span>
+          <i class="icon-grid menu-icon"></i>
+        </a>
+      </li>
+      @endif
       <li class="nav-item">
         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
