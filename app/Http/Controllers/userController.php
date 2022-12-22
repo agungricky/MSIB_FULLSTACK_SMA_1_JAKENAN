@@ -63,9 +63,8 @@ class userController extends Controller
     public function edit($id)
     {
         $role = ['administrator', 'staff', 'guru', 'siswa'];
-        $isactive = ['yes', 'no', 'banned'];
         $data = DB::table('users')->where('id', '=', $id)->get();
-        return view('user.user_edit', compact('data', 'role', 'isactive'));
+        return view('user.user_edit', compact('data', 'role'));
     }
 
     /**
@@ -82,7 +81,6 @@ class userController extends Controller
             'email' => 'Required',
             'role' => 'Required',
             'password' => 'Required',
-            'isactive' => 'Required'
         ]);
 
         DB::table('users')->where('id', '=', $id)->dd();

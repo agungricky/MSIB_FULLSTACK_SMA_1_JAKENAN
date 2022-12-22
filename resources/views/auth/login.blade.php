@@ -60,14 +60,9 @@
                                 {{ __('Login') }}
                             </button>
 
-
-
-
-                            @if (Route::has('register'))
-                            <a class="btn btn-link" href="{{ route('register') }}">
-                                {{ __('Register') }}
+                            <a class="btn btn-link" href="{{ url('/') }}">
+                                {{ __('Back') }}
                             </a>
-                            @endif
                         </div>
                     </div>
                 </form>
