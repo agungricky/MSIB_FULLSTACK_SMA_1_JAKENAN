@@ -19,6 +19,7 @@
             </li>
             <li><a class="nav-link scrollto" href="{{url('/contact')}}">Contact</a></li>
             <li><a class="nav-link scrollto" href="{{url('/login')}}">Login</a></li>
+
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

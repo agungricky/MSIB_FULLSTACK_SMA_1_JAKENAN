@@ -38,6 +38,7 @@
                                         <td>{{ $row->email }}</td>
                                         <td>{{ $row->password }}</td>
                                         <td>{{ $row->role }}</td>
+
                                         <td>
                                             <form method="POST" action="{{ route('user.destroy',$row->id) }}">
                                                 @csrf

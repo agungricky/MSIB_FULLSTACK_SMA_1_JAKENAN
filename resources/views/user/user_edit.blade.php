@@ -52,7 +52,7 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
                         <div class="row mb-3">
                             <div class="col">
-                                <label for="" class=" col-form-label"> Label : &nbsp </label>
+                                <label for="" class=" col-form-label"> Role : &nbsp </label>
                                 <select class="form-select" name="role">
                                     <option selected>-- Pilih Role --</option>
                                     @foreach($role as $rl)
@@ -64,6 +64,8 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                                 </select>
                             </div>
                         </div>
+
+
                 </div>
 
                 <div class="">            
