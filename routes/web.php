@@ -178,6 +178,8 @@ Route::get('/search_user', [userController::class, 'search_user'])->name('search
 Route::resource('tugas', tugasController::class);
 Route::get('/search_tugas', [tugasController::class, 'search_tugas'])->name('search_tugas');
 
+Route::get('/tugas/{id}/edit', [App\Http\Controllers\tugasController::class, 'hapusFile']);
+// Route::get('/form_siswa', [App\Http\Controllers\siswaController::class, 'create']);
 Route::resource('jadwal', jadwalController::class);
 Route::get('/search_jadwal', [jadwalController::class, 'search_jadwal'])->name('search_jadwal');
 

@@ -1,8 +1,16 @@
+
+
 @extends('admin.index')
 @section('content')
+
+@php
+$arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+$arr_perihal = ['Quiz', 'Tugas Harian', 'UTS', 'UAS', 'Praktikum', 'Lainnya'];
+@endphp
+
 <div class="main-panel">
     <div class="content-wrapper">
-        <div class="row purchace-popup">
+        {{-- <div class="row purchace-popup">
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center">
@@ -10,59 +18,64 @@
                     </span>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- // ============================= Fergi : Membuat Form Input Tugas ========================= -->
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="admin/images/guru/guru.png" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
+                    <img src="{{ url('admin\images\carousel\spp.png') }}" alt="" style="border:0; width: 100%; height: 384px;" allowfullscreen>
                 </div>
 
                 <div class="col-md-6">
+                    <div class="alert alert-warning fs-4 fw-bold mb-4" role="alert">
+                        #Form Tugas
+                    </div>
                     <form action="{{route('tugas.store')}}" method="post" role="form" class="php-email-form" enctype="multipart/form-data">
                         @csrf 
 
-                        <div class="row">
-                                <div class="col-3 form-group">
-                                    <select class="form-control form-control-lg countrylist" name="hari">
-                                        <option selected>----- Hari -----</option>
-                                        <option value="Senin">Senin</option>
-                                        <option value="Selasa">Selasa</option>
-                                        <option value="Rabu">Rabu</option>
-                                        <option value="Kamis">Kamis</option>
-                                        <option value="Jumat">Jumat</option>
-                                        <option value="Sabtu">Sabtu</option>
-                                        <option value="Minggu">Minggu</option>
-                                    </select>      
-                                </div>
+                        <div class="form-group">
+                            <label for=""> Perihal : &nbsp </label>
+                                <select name="perihal" id=""  class="form-select form-control">
+                                    <option selected>----- Perihal -----</option>
+                                    @foreach ($arr_perihal as $hal)
+                                        <option value="{{$hal}}"> {{$hal}}</option>
+                                    @endforeach
+                                </select>
 
-                                <div class="col-5 form-group">    
-                                    <input type="text" class="form-control" name="jam" id="" placeholder="Jam" required>
-                                </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for=""> Hari : &nbsp</label>
+                            <select name="hari" id="hari" class="form-select form-control">
+                                @foreach ($arr_hari as $hari)
+                                    {{-- @php
+                                        $sel1 = ($hari == $row->hari) ? 'selected' : '';
+                                    @endphp --}}
+                                        <option value="{{$hari}}">{{ $hari }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="row two-div">
+                            <div class="form-group two-div">
+                                <label for=""> Tanggal : &nbsp </label>
+                                <input name="tanggal" type="date" placeholder="Tanggal" class="form-control" >
+                            </div>
+
+                            <div class="form-group two-div">
+                                <label for=""> Jam &nbsp</label>
                                 
-                                <div class="col-4 form-group">    
-                                    <input type="date" name="tanggal" class="form-control" id="" placeholder="Tanggal" required>
-                                </div>
+                                    <input name="jam" type="text"class="form-control">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <select class="form-control form-control-lg countrylist" name="perihal">
-                                <option selected>----- Perihal -----</option>
-                                <option value="Quis">Quis</option>
-                                <option value="Tugas Harian">Tugas Harian</option>
-                                <option value="UTS">UTS</option>
-                                <option value="UAS">UAS</option>
-                                <option value="Lainya">Lainya</option>
-                            </select>   
+                        <div class="form-group ">
+                            <label for=""> Keterangan : &nbsp </label>
+                            <input name="keterangan" type="text" placeholder="Tugas" class="form-control" > 
                         </div>
-                        
-                        <div class="form-group">
-                            <div class="">
-                                <textarea name="keterangan" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Keterangan"></textarea>
-                            </div>    
-                        </div>  
                         
                         <div class="form-group">
                             <input type="file" class="form-control" name="upload" id="" placeholder="Upload">                              
@@ -76,6 +89,7 @@
                         <div class="text-center"><button type="submit" class="form-control submit-btn">Simpan</button></div>
                     </form>
                 </div>
+                
             </div>
         </div>
 

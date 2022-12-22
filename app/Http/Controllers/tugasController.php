@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Tugas;
+use Illuminate\Support\Facades\File;
 
 class tugasController extends Controller
 {
@@ -42,7 +43,7 @@ class tugasController extends Controller
         if (!empty($request->file('upload'))) {
             $nameTugas = 'tugas-' . $request->perihal . '.' . $request->file('upload')->extension();
             //$nameTugas = $request->foto->getClientOriginalName();
-            $request->file('upload')->move(public_path('admin/images/tugas'), $nameTugas);
+            $request->file('upload')->move(public_path('admin/images/tugas/'), $nameTugas);
         } else {
             $nameTugas = '';
         }
@@ -96,14 +97,14 @@ class tugasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = [
-            'perihal' => 'required|max:11',
-            'jam' => 'required',
-            'hari' => 'required',
-            'tanggal' => 'required',
-            'keterangan' => 'required',
-            'upload' => 'file',
-        ];
+        // $validate = validate [
+        //     'perihal' => 'required|max:11',
+        //     'jam' => 'required',
+        //     'hari' => 'required',
+        //     'tanggal' => 'required',
+        //     'keterangan' => 'required',
+        //     'upload' => 'file',
+        // ];
         // Wes Beres no error masseh
         //proses upload,dicek ketika edit data ada upload file/tidak
         if (!empty($request->upload)) {
@@ -113,7 +114,7 @@ class tugasController extends Controller
             foreach ($upload as $u) {
                 $namaFile = $u->upload;
             }
-            File::delete(public_path('admin/images/tugas' . $namaFile));
+            File::delete(public_path('admin/images/tugas/' . $namaFile));
             //proses upload file baru 
             $request->validate([
                 'upload' => 'file|mimes:word,pptx,pdf,jpg,png|max:5024',
@@ -137,7 +138,7 @@ class tugasController extends Controller
                 'hari' => $request->hari,
                 'tanggal' => $request->tanggal,
                 'keterangan' => $request->keterangan,
-                // 'tugas' => $fileName,
+                'upload' => $fileName,
             ]
         );
         return redirect('/tugas');
@@ -155,6 +156,12 @@ class tugasController extends Controller
         Tugas::where('id', $id)->delete();
         return redirect()->route('tugas.index')
             ->with('success', 'Data Siswa Berhasil Dihapus');
+    }
+
+    public function hapusFile(Request $file)
+    {
+        $recentTugas = public_path('admin/images/tugas' . $file);
+        FILE::delete($recentTugas);
     }
 
     public function search_tugas(Request $request)

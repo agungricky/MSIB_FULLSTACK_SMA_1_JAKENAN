@@ -165,18 +165,18 @@ class guruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $rules = [
-            'nip' => 'required|unique:guru|max:11',
-            'nama' => 'required',
-            'alamat' => 'required',
-            'tgl_lahir' => 'required',
-            'geder' => 'required',
-            'tempat_lahir' => 'required',
-            'no_telp' => 'required',
-            'email' => 'required',
-            'agama' => 'required',
-            'foto' => 'image|file'
-        ];
+        // $rules = [
+        //     'nip' => 'required|unique:guru|max:11',
+        //     'nama' => 'required',
+        //     'alamat' => 'required',
+        //     'tgl_lahir' => 'required',
+        //     'geder' => 'required',
+        //     'tempat_lahir' => 'required',
+        //     'no_telp' => 'required',
+        //     'email' => 'required',
+        //     'agama' => 'required',
+        //     'foto' => 'image|file'
+        // ];
         // Wes Beres no error masseh
         //proses upload,dicek ketika edit data ada upload file/tidak
         if (!empty($request->foto)) {

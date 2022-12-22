@@ -18,7 +18,7 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                         </div>
 
                             @foreach ($data as $row)
-                            <form action="{{route('tugas.update', $row->id)}}" method="post" >
+                            <form action="{{route('tugas.update', $row->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('put')
                                 
@@ -54,10 +54,18 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                                 <div class="form-group">
                                     <label for=""> Keterangan : &nbsp </label>
                                     <input name="keterangan" type="text" placeholder="Tugas" class="form-control" value="{{$row->keterangan}}"> 
+                                    @if($row->upload)
+                                    <img src="{{asset('admin/images/tugas/'.$row->upload)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                                    @else
+                                    <img class="img-preview img-fluid mb-3 col-sm-5">
+                                    @endif
+                                    
                                 </div>
+
+                                
         
                                 <div class="form-group">
-                                    <input type="file" class="form-control" name="tugas" id="image" placeholder="Upload" onchange="previewImage()">                              
+                                    <input type="file" class="form-control" name="upload" id="image" placeholder="Upload" onchange="previewImage()">                              
                                 </div> 
         
                                 <div>
@@ -65,6 +73,12 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                                 </div>   
                                 @endforeach
                             </form>
+                            {{-- <form method="POST" action="{{ route('tugas.hapusFile', $row->upload) }}">
+                                <button type="submit" class="btn btn-danger btn-sm" title="Hapus Pegawai"
+                                                    onclick="return confirm('Anda Yakin Data akan diHapus?')">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                </form> --}}
                     </div>
                 </div>
             </div>
