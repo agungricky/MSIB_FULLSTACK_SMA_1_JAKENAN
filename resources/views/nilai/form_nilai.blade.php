@@ -20,9 +20,6 @@ $ar_siswa = Siswa::all();
                 <div class="card card-secondary motivasi">
                     <span class="card-body d-lg-flex align-items-center">
                         <p class="mb-lg-0">"Belajar memang kadang membosankan tapi demi menggapai impianmu dan masa depan yang cerah, bersemangatlah dalam mencari ilmu." </p>
-                        <button class="close popup-dismiss ml-2">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </span>
                 </div>
             </div>

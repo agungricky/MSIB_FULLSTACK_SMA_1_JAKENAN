@@ -6,7 +6,7 @@
             <div class="col-12 stretch-card grid-margin">
                 <div class="card card-secondary">
                     <span class="card-body d-lg-flex align-items-center">
-                        <p class="mb-lg-0">Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more! </p>
+                        <p class="mb-lg-0">Semangat dan Tekunlah Menimba Ilmu demi Masedepanmu yang Cemerlang </p>
                     </span>
                 </div>
             </div>
