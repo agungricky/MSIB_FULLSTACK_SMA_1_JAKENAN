@@ -65,12 +65,16 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                         </div>
                             
                             {{-- <label for=""> Selesai &nbsp </label>
-                                <input type="time" class="form-control"> --}}
-                        </div> 
+                                <input type="time" class="form-control"> --}} 
 
-                        {{-- <div class="form-group">
-                            <input type="file" name="tugas" class="form-control" id="upload value={{$row->upload}}">
-                        </div> --}}
+                        <div class="form-group">
+                            <input type="hidden" name="oldImage" value="{{$rs->foto}}">
+                            @if($rs->foto)
+                            <img src="{{asset('admin/images/tugas/'.$rs->foto)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                            @else
+                            <img class="img-preview img-fluid mb-3 col-sm-5">
+                            @endif
+                        </div>
 
                         <div class="form-group">
                             <input type="file" class="form-control" name="tugas" id="image" placeholder="Upload" onchange="previewImage()">                              
@@ -84,9 +88,8 @@ $arr_hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <!-- content-wrapper ends -->
 <!-- partial:partials/_footer.html -->
-@endsection
+@endsection+

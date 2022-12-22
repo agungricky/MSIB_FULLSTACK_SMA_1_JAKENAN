@@ -29,7 +29,7 @@
                       </div>
                       @endif
                       
-                      <form method="POST" action="{{route('siswa.store')}}">
+                      <form method="POST" action="{{route('siswa.store')}}" enctype="multipart/form-data">
                         @csrf
                         
                         <div class="row mb-3">
@@ -69,7 +69,7 @@
 
                             <div class="col-md-6">
                                 <label>Jenis Kelamin :</label>
-                                <select class="form-select" name="gender">
+                                <select class="form-select" name="jenis_kelamin">
                                     <option selected>-- Pilih --</option>
                                     @foreach($ar_gender as $gender)
                                     <option value="{{ $gender }}">{{ $gender }}</option>

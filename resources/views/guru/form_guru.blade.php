@@ -79,7 +79,6 @@ $ar_agama = ['Islam','Hindu','Budha','Kristen','Lainya'];
                         </div>
 
                         <div class="form-group">
-
                             <input type="file" class="form-control" name="foto" id="image" placeholder="Foto" onchange="previewImage()">
                         </div>
 
