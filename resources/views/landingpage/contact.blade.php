@@ -90,13 +90,13 @@
 			}
 
 			if (input_name != "" && input_perihal != "") {
-				/* Whatsapp URL */
+				/* Eksekusi Data */
 				var checkout_whatsapp = walink + '?phone=' + phone + '&text=' + text + '%0A%0A' +
 					'*Nama* : ' + input_name + '%0A' +
 					'*Perihal* : ' + input_perihal + '%0A' +
 					'*Catatan* : ' + input_description + '%0A';
 
-				/* Whatsapp Window Open */
+				/* jika berhasil buka Whatsapp */
 				window.open(checkout_whatsapp, '_blank');
 				document.getElementById("text-info").innerHTML = '<div class="alert alert-success">' + text_yes + '</div>';
 			} else {

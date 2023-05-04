@@ -12,6 +12,7 @@ use App\Http\Controllers\eventController;
 use App\Http\Controllers\nilaiController;
 use App\Http\Controllers\sppController;
 use App\Http\Controllers\userController;
+use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
